@@ -51,11 +51,17 @@
 
 
 ;; packages
-(add-to-list 'load-path (concat user-emacs-directory "packages"))
+(setq dotfiles-dir (file-name-directory
+                    (or (buffer-file-name) (file-chase-links load-file-name))))
+
+(add-to-list 'load-path (concat dotfiles-dir "packages"))
 (let* ((package-names '(sunra-magit
                         sunra-projectile
                         sunra-autopair
-			sunra-smartmodeline)))
+			sunra-smartmodeline
+			sunra-company
+			sunra-ido
+			sunra-clojuremode)))
   (mapc (lambda (ech)
           (require ech))
         package-names))
