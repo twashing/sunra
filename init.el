@@ -66,7 +66,8 @@
 			sunra-ido
 			sunra-smartparens
 			sunra-rainbowdelimiters
-			sunra-clojuremode)))
+			sunra-clojuremode
+			sunra-haskell)))
   (mapc (lambda (ech)
           (require ech))
         package-names))
