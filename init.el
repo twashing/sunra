@@ -20,7 +20,9 @@
 (setq user-mail-address "twashing@interruptsoftware.com")
 (setq vc-follow-symlinks nil)
 (setq debug-on-error t)
-
+(setq echo-keystrokes 0.1
+      use-dialog-box nil
+      visible-bell t)
 
 ;; Require Common Lisp - http://www.aaronbedra.com/emacs.d/#sec-1
 (require 'cl)
@@ -50,6 +52,7 @@
 (require 'use-package)
 
 
+
 ;; packages
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) (file-chase-links load-file-name))))
@@ -61,6 +64,8 @@
 			sunra-smartmodeline
 			sunra-company
 			sunra-ido
+			sunra-smartparens
+			sunra-rainbowdelimiters
 			sunra-clojuremode)))
   (mapc (lambda (ech)
           (require ech))
