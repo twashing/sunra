@@ -9,17 +9,16 @@ Yet another .emacs.d
 
 ## Introduction
 
-Sunra emacs is an attempt to make a light, fast-loading .emacs.d . It leverages the functionality in John Wiegley's [use-package](https://github.com/jwiegley/use-package).
+Sunra emacs is an attempt to make a light, fast-loading ***.emacs.d*** . It leverages the functionality in John Wiegley's [use-package](https://github.com/jwiegley/use-package).
 
-Just git clone (or downlown) this repo, to your `~/.emacs.d` directory. With that, initial use will download all necessary packages. Afterwards, emacs loading should be fast (aiming for under 2 seconds).
+Just git clone (or download) this repo, to your `~/.emacs.d` directory. With that, initial use will download all necessary packages. Afterwards, emacs loading should be fast (aiming for under 2 seconds).
 
 
 ## Requirements
 
 - emacs 24+
-- package.el
-- clojure's cider package requires
-- `[cider/cider-nrepl "0.9.0-SNAPSHOT"]` in **.lein/profiles**
+- package.el (bundled with emacs 24)
+- clojure's cider package requires `[cider/cider-nrepl "0.9.0-SNAPSHOT"]` in ***.lein/profiles***
 
 
 ## TODO
