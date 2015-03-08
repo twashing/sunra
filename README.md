@@ -25,7 +25,7 @@ Just git clone (or download) this repo, to your `~/.emacs.d` directory. With tha
 
 - Themes (on desktop vs terminal)
   - Zenburn
-  - Cyberpunk-theme
+  - Cyberpunk
   - Solarized
 - Documentation for All Modes: 
   - SmartParens / Rainbow

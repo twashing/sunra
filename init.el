@@ -67,6 +67,8 @@
 			sunra-smartparens
 			sunra-rainbowdelimiters
 			sunra-markdown
+			sunra-skewer
+			sunra-yasnippet
 			sunra-clojuremode
 			sunra-haskell
 			sunra-purescript
