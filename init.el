@@ -66,14 +66,15 @@
 			sunra-ido
 			sunra-smartparens
 			sunra-rainbowdelimiters
+			sunra-multiplecursors
+			;;sunra-defaultbindings
 			sunra-markdown
 			sunra-skewer
 			sunra-yasnippet
 			sunra-clojuremode
 			sunra-haskell
 			sunra-purescript
-			sunra-multiplecursors
-			;;sunra-defaultbindings
+			sunra-scala
 			)))
   (mapc (lambda (ech)
           (require ech))
