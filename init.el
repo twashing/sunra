@@ -66,8 +66,10 @@
 			sunra-ido
 			sunra-smartparens
 			sunra-rainbowdelimiters
+			sunra-markdown
 			sunra-clojuremode
 			sunra-haskell
+			sunra-purescript
 			sunra-multiplecursors
 			;;sunra-defaultbindings
 			)))
