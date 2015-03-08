@@ -27,11 +27,11 @@ Just git clone (or download) this repo, to your `~/.emacs.d` directory. With tha
   - Zenburn
   - Cyberpunk-theme
   - Solarized
-  - documentation for All Modes: 
-    - SmartParens / Rainbow
-    - Ido
-    - Company
-    - Clojure (cider, refactor)
-    - Multiple-Cursors
-    - ...
-    - Navigation
+- Documentation for All Modes: 
+  - SmartParens / Rainbow
+  - Ido
+  - Company
+  - Clojure (cider, refactor)
+  - Multiple-Cursors
+  - ...
+  - Navigation
