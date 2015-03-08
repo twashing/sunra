@@ -7,3 +7,4 @@
     (sml/apply-theme 'smart-mode-line-dark)))
 
 (provide 'sunra-smartmodeline)
+

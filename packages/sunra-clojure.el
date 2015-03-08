@@ -1,7 +1,9 @@
 (use-package clojure-mode
   :ensure t
+  :diminish paredit-mode
   :config
   (progn
+    (add-hook 'clojure-mode-hook #'paredit-mode)
     (add-hook 'clojure-mode-hook #'smartparens-strict-mode)
     (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)))
 
@@ -16,6 +18,7 @@
     (setq nrepl-buffer-name-separator "/")
     (setq nrepl-buffer-name-show-port t)
     (setq cider-repl-use-clojure-font-lock t)
+    (add-hook 'cider-repl-mode-hook #'paredit-mode)
     (add-hook 'cider-repl-mode-hook #'smartparens-strict-mode)
     (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
     (add-hook 'cider-repl-mode-hook #'subword-mode)

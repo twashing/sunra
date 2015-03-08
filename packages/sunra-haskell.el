@@ -1,4 +1,5 @@
 (use-package haskell-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (provide 'sunra-haskell)
