@@ -40,5 +40,5 @@
 					 ;; bindings: https://github.com/clojure-emacs/clj-refactor.el#usage
 					 (cljr-add-keybindings-with-prefix "C-c C-m"))))
 
-(provide 'sunra-clojuremode)
 
+(provide 'sunra-clojuremode)
