@@ -1,4 +1,7 @@
 
+;; Auto Indent on newline
+(define-key global-map (kbd "RET") 'newline-and-indent)
+
 ;; Show Column and Line Numbers  
 (column-number-mode)
 

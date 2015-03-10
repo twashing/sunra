@@ -24,11 +24,10 @@
   :config
   (progn
     (require 'smartparens-config)
-    (smartparens-global-mode 1)))
+    (smartparens-global-mode 1)
+    (show-paren-mode 1)))
     
 (use-package rainbow-delimiters
-  :ensure t
-  :config
-  (add-hook 'lisp-interaction-mode-hook #'rainbow-delimiters-mode))
+  :ensure t)
   
 (provide 'sunra-baseline-packages)
