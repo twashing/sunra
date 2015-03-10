@@ -2,3 +2,6 @@
 /elpa/
 /auto-save-list/
 .mc-lists.el
+smex-items
+/custom
+/eshell
