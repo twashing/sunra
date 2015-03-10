@@ -32,4 +32,5 @@
                sunra-git
                sunra-elisp
       	       sunra-clojure
+               sunra-hy
       	       sunra-haskell))

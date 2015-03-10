@@ -1,3 +1,7 @@
+;; Add /usr/local/bin to PATH variable
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+(setq exec-path (cons "/usr/local/bin" exec-path))
+
 ;; Skip the default splash screen.
 (setq inhibit-startup-message t)
 
@@ -19,7 +23,6 @@
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 (load-library "iso-transl")
-
 
 ;; Automatically save buffers before compiling
 (setq compilation-ask-about-save nil)
