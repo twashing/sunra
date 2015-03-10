@@ -4,7 +4,9 @@
                sunra-line-numbers
       	       sunra-recentf
       	       sunra-ido
-               sunra-theme
-               sunra-git))
+               ;;sunra-theme
+               sunra-git
+	       sunra-markdown
+	       sunra-multiplecursors))
                
 (provide 'sunra-core)

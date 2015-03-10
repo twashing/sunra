@@ -10,6 +10,7 @@
 ;; Highlight Current Line
 (global-hl-line-mode 1)
 (hl-line-mode +1)
+(set-face-background 'hl-line "#171717")  ;; or #2E2E2E (http://www.w3schools.com/tags/ref_colorpicker.asp)
 
 ;; Indicate Empty Lines
 (setq-default indicate-empty-lines t)
@@ -18,6 +19,9 @@
 
 ;; Linum Mode 
 (global-linum-mode)
+(setq linum-format "%2d ")
+(custom-set-faces  ;; should only be 1 of these (http://redbrain.co.uk/2013/11/11/my-dot-emacs-and-screenshot/)
+  '(linum ((t (:foreground "#171717")))))
 
 (defvar *linum-mdown-line* nil)
 
