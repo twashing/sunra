@@ -4,3 +4,4 @@
 .mc-lists.el
 smex-items
 /custom
+/eshell

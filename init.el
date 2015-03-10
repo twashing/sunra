@@ -20,17 +20,19 @@
 	      (first args))))
 
 (setq emacs-dir (file-name-directory
-                    (or (buffer-file-name) (file-chase-links load-file-name))))                    
-(add-to-list 'load-path (concat emacs-dir "packages"))
+                    (or (buffer-file-name) (file-chase-links load-file-name)))) 
+                 
+(add-to-list 'load-path (concat emacs-dir "packages"))                   
+(add-to-list 'load-path (concat emacs-dir "packages/core"))
+(add-to-list 'load-path (concat emacs-dir "packages/lang"))
 
-(use-packages (sunra-baseline
-               sunra-baseline-packages
-               sunra-line-numbers
-      	       sunra-recentf
-      	       sunra-ido
-               sunra-theme
-               sunra-git
-               sunra-elisp
+(use-packages (sunra-core
+               ;sunra-yasnippet
       	       sunra-clojure
+               sunra-elisp
                sunra-hy
-      	       sunra-haskell))
+      	       ;sunra-haskell
+               ;sunra-purescript
+               ;sunra-scala
+               ;sunra-web
+               ))

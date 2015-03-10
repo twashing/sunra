@@ -12,7 +12,12 @@
   :config
   (add-hook 'after-init-hook 'global-company-mode))
 
-(use-package projectile :ensure t)
+(use-package projectile 
+  :ensure t
+  :config
+  (progn
+    (global-set-key (kbd "s-t") 'projectile-find-file)
+    (global-set-key (kbd "C-c C-f") 'projectile-find-file)))
   
 (use-package paredit
   :ensure t
