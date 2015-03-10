@@ -12,5 +12,11 @@
 (use-package flx-ido
   :ensure t)
 
+(use-package smex 
+  :ensure t
+  :config
+  (progn
+    (smex-initialize)
+    (global-set-key (kbd "M-x") 'smex)))
 
 (provide 'sunra-ido)

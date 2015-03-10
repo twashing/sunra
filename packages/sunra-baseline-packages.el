@@ -1,16 +1,26 @@
-(use-package magit 
-  :ensure t)
+(use-package smart-mode-line
+  :ensure t
+  :init (setq sml/no-confirm-load-theme t)
+  :config 
+  (progn
+    (sml/setup)
+    (sml/apply-theme 'smart-mode-line-dark)))
 
-(use-package projectile 
-  :ensure t)
-  
 (use-package company
   :ensure t
+  :diminish company-mode
   :config
   (add-hook 'after-init-hook 'global-company-mode))
 
+(use-package projectile :ensure t)
+  
+(use-package paredit
+  :ensure t
+  :diminish paredit-mode)
+  
 (use-package smartparens
   :ensure t
+  :diminish smartparens-mode
   :config
   (progn
     (require 'smartparens-config)
@@ -20,11 +30,5 @@
   :ensure t
   :config
   (add-hook 'lisp-interaction-mode-hook #'rainbow-delimiters-mode))
-
-(use-package smart-mode-line
-  :ensure t
-  :init (setq sml/no-confirm-load-theme t)
-  :config 
-  (progn
-    (sml/setup)
-    (sml/apply-theme 'smart-mode-line-dark)))
+  
+(provide 'sunra-baseline-packages)

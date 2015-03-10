@@ -38,9 +38,4 @@
 (setq tab-width 2
       indent-tabs-mode nil)
 
-(setq-default indicate-empty-lines t)
-(when (not indicate-empty-lines)
-  (toggle-indicate-empty-lines))
-
-
-(provide 'sunra-base)
+(provide 'sunra-baseline)
