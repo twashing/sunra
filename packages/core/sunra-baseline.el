@@ -9,8 +9,6 @@
 (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
   (when (fboundp mode) (funcall mode -1)))
 
-(setq user-full-name "Chris Zheng")
-(setq user-mail-address "z@caudate.me")
 (setq vc-follow-symlinks nil)
 (setq debug-on-error t)
 (setq echo-keystrokes 0.1

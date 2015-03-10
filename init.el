@@ -36,3 +36,27 @@
                ;sunra-scala
                ;sunra-web
                ))
+
+;; User Local changes
+
+;; ask user if they want this created
+
+;; recursively call make-directory
+(let* ((local-sunradir (file-name-as-directory "~/.sunra.d")))
+  (if (not (file-exists-p local-sunradir)) 
+      (progn
+	(make-directory local-sunradir)
+	
+	(make-directory (concat local-sunradir
+				(file-name-as-directory "packages")))
+	(make-directory (concat local-sunradir
+				(file-name-as-directory "packages")
+				(file-name-as-directory "user"))))))
+
+
+;; Copy userinit
+
+;; Copy sunra-theme.el
+
+;; Eval userinit
+
