@@ -2,8 +2,14 @@
 ;; Auto Indent on newline
 (define-key global-map (kbd "RET") 'newline-and-indent)
 
+
+
 ;; Show Column and Line Numbers  
 (column-number-mode)
+
+;; Highlight Current Line
+(global-hl-line-mode 1)
+(hl-line-mode +1)
 
 ;; Indicate Empty Lines
 (setq-default indicate-empty-lines t)
