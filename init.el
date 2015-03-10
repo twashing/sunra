@@ -37,26 +37,38 @@
                ;sunra-web
                ))
 
-;; User Local changes
+;; User Localization
+(defun create-nested-dirs (dirlist dirparent)
+  (let* ((top (car dirlist)))
+    (if top
+	(let* ((dircombined (concat (file-name-as-directory dirparent)
+				    (file-name-as-directory top))))
+	  (message (file-name-as-directory dirparent))
+	  (make-directory dircombined)
+	  (create-nested-dirs (cdr dirlist) dircombined)))))
 
-;; ask user if they want this created
-
-;; recursively call make-directory
-(let* ((local-sunradir (file-name-as-directory "~/.sunra.d")))
-  (if (not (file-exists-p local-sunradir)) 
-      (progn
-	(make-directory local-sunradir)
-	
-	(make-directory (concat local-sunradir
-				(file-name-as-directory "packages")))
-	(make-directory (concat local-sunradir
-				(file-name-as-directory "packages")
-				(file-name-as-directory "user"))))))
+(defun create-user-dirs () 
+  (let* ((local-packagedirs '(".sunra.d" "packages" "user"))
+	 (local-sunradir "~"))
+    
+    (create-nested-dirs local-packagedirs local-sunradir)))
 
 
-;; Copy userinit
+(if (not (file-exists-p "~/.sunra.d"))
 
-;; Copy sunra-theme.el
+    (progn
+      
+      ;; ask user if they want this created
+      (create-user-dirs)
+
+      ;; Copy userinit
+      (copy-file "~/.emacs.d/packages/userinit.el"
+		 "~/.sunra.d/init.el")
+
+      ;; Copy sunra-theme.el
+      (copy-file "~/.emacs.d/packages/user/sunra-theme.el"
+		 "~/.sunra.d/packages/user/")))
 
 ;; Eval userinit
+(load "~/.sunra.d/init.el")
 
