@@ -5,16 +5,48 @@
     (add-hook 'clojure-mode-hook #'paredit-mode)
     (add-hook 'clojure-mode-hook #'smartparens-strict-mode)
     (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
+
+    ;; try 3 - https://github.com/alexander-yakushev/compliment
+    ;;(require 'auto-complete)
+    ;;(add-hook 'clojure-mode-hook #'auto-complete-mode)
     
-    (require 'auto-complete-config)
-    ;;(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-    (setq ac-delay 0.0)
-    ;;(setq ac-use-quick-help t)
-    (setq ac-quick-help-delay 0.0)
-    ;;(setq ac-use-fuzzy 1)
-    ;;(setq ac-auto-start 1)
-    ;;(setq ac-auto-show-menu 1)
-    (ac-config-default)))
+    ;; try 1 - http://stackoverflow.com/questions/23766483/emacs-cider-clojure-auto-complete-how-to-get-the-docstring
+    ;(require 'auto-complete-config)
+    ;;;;(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+    ;(setq ac-delay 0.0)
+    ;;;;(setq ac-use-quick-help t)
+    ;(setq ac-quick-help-delay 0.0)
+    ;;;;(setq ac-use-fuzzy 1)
+    ;;;;(setq ac-auto-start 1)
+    ;;;;(setq ac-auto-show-menu 1)
+    ;(ac-config-default)
+    ))
+
+;; try 2 - http://martintrojer.github.io/clojure/2014/10/02/clojure-and-emacs-without-cider/
+(defun get-clj-completions (prefix)
+  (let* ((proc (inferior-lisp-proc))
+	 (comint-filt (process-filter proc))
+	 (kept ""))
+    (set-process-filter proc (lambda (proc string) (setq kept (concat kept string))))
+    (process-send-string proc (format "(complete.core/completions \"%s\")\n"
+				      (substring-no-properties prefix)))
+    (while (accept-process-output proc 0.1))
+    (setq completions (read kept))
+    (set-process-filter proc comint-filt)
+    completions))
+
+(defun company-infclj (command &optional arg &rest ignored)
+  (interactive (list 'interactive))
+
+  (cl-case command
+    (interactive (company-begin-backend 'company-infclj))
+    (prefix (and (eq major-mode 'inferior-lisp-mode)
+		 (company-grab-symbol)))
+    (candidates (get-clj-completions arg))))
+
+;;(require 'company-etags)
+;;(add-to-list 'company-etags-modes 'clojure-mode)
+;;(add-to-list 'company-backends 'company-infclj)
 
 (use-package cider
   :ensure t
