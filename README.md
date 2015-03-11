@@ -33,5 +33,5 @@ Just git clone (or download) this repo, to your `~/.emacs.d` directory. With tha
   - Company
   - Clojure (cider, refactor)
   - Multiple-Cursors
-  - ...
+  - User Localization (~/.sunra.d/)
   - Navigation

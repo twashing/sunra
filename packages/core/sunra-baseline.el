@@ -13,7 +13,7 @@
 (setq debug-on-error t)
 (setq echo-keystrokes 0.1
       use-dialog-box nil
-      visible-bell t)
+      visible-bell nil)
 
 
 ;; Use UTF-8

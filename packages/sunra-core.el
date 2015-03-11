@@ -5,7 +5,8 @@
       	       sunra-recentf
       	       sunra-ido
                sunra-git
-	       sunra-markdown
-	       sunra-multiplecursors))
+	       ;sunra-markdown
+	       ;sunra-multiplecursors
+	       ))
                
 (provide 'sunra-core)

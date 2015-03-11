@@ -4,7 +4,17 @@
   (progn
     (add-hook 'clojure-mode-hook #'paredit-mode)
     (add-hook 'clojure-mode-hook #'smartparens-strict-mode)
-    (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)))
+    (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
+    
+    (require 'auto-complete-config)
+    ;;(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+    (setq ac-delay 0.0)
+    ;;(setq ac-use-quick-help t)
+    (setq ac-quick-help-delay 0.0)
+    ;;(setq ac-use-fuzzy 1)
+    ;;(setq ac-auto-start 1)
+    ;;(setq ac-auto-show-menu 1)
+    (ac-config-default)))
 
 (use-package cider
   :ensure t
@@ -38,6 +48,7 @@
   :config (progn
 	    (add-to-list 'ac-modes 'cider-mode)
 	    (add-to-list 'ac-modes 'cider-repl-mode)))
+
 
 (use-package clj-refactor
   :ensure t
