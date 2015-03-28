@@ -27,8 +27,11 @@
 
 ;; backup policy - http://stackoverflow.com/questions/151945/how-do-i-control-how-emacs-makes-backup-files
 ;; (setq make-backup-files nil)
-(setq backup-directory-alist `(("." . "~/.emacs.backup")))
 (auto-save-mode)
+
+(custom-set-variables
+   '(auto-save-file-name-transforms '((".*" "~/.emacs.d/.autosaves/\\1" t)))
+   '(backup-directory-alist '((".*" . "~/.emacs.d/.backup/"))))
 
 (delete-selection-mode t)
 

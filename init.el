@@ -31,7 +31,7 @@
       	       sunra-clojure
                sunra-elisp
                sunra-hy
-      	       ;sunra-haskell
+      	       sunra-haskell
                ;sunra-purescript
                ;sunra-scala
                ;sunra-web

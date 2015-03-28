@@ -5,6 +5,7 @@
       	       sunra-recentf
       	       sunra-ido
                sunra-git
+	       sunra-navigation
 	       ;sunra-markdown
 	       ;sunra-multiplecursors
 	       ))
