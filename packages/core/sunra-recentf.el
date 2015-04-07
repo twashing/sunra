@@ -6,7 +6,8 @@
       (find-file file))))
       
 (use-package recentf
-  :ensure t
+  ;:ensure t
+  :defer t
   :config
   (progn
     (require 'recentf)

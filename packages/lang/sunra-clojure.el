@@ -1,5 +1,6 @@
 (use-package clojure-mode
-  :ensure t
+  ;:ensure t
+  :defer t
   :config
   (progn
     (add-hook 'clojure-mode-hook #'paredit-mode)
