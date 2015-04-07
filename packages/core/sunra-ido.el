@@ -1,6 +1,5 @@
 (use-package ido
-  ;:ensure t
-  :defer t
+  :ensure t
   :config
   (progn
     (setq ido-enable-flex-matching t)
@@ -8,18 +7,13 @@
     (ido-mode 1)))
 
 (use-package ido-ubiquitous
-  ;:ensure t
-  :defer t
-  )
+  :ensure t)
 
 (use-package flx-ido
-  ;:ensure t
-  :defer t
-  )
+  :ensure t)
 
 (use-package smex 
-  ;:ensure t
-  :defer t
+  :ensure t
   :config
   (progn
     (smex-initialize)
