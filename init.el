@@ -6,6 +6,7 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))) ;; For important compatibility libraries like cl-lib
 (package-initialize)
 
+
 ;; use-package
 (setq package-enable-at-startup nil)
 (unless (package-installed-p 'use-package)
@@ -21,7 +22,7 @@
 
 (setq emacs-dir (file-name-directory
                     (or (buffer-file-name) (file-chase-links load-file-name)))) 
-                 
+
 (add-to-list 'load-path (concat emacs-dir "packages"))                   
 (add-to-list 'load-path (concat emacs-dir "packages/core"))
 (add-to-list 'load-path (concat emacs-dir "packages/lang"))

@@ -5,5 +5,6 @@
 (global-set-key (kbd "M-U") 'buf-move-up)
 (global-set-key (kbd "M-D") 'buf-move-down)
 
+(global-set-key (kbd "C-d") 'sp-kill-sexp)
 
 (provide 'sunra-navigation)

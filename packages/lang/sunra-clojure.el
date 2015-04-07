@@ -1,6 +1,7 @@
 (use-package clojure-mode
-  ;:ensure t
-  :defer t
+  ;:defer t
+  :ensure t
+  ;:bind ("C-d" . sp-kill-sexp)
   :config
   (progn
     (add-hook 'clojure-mode-hook #'paredit-mode)
@@ -50,7 +51,9 @@
 ;;(add-to-list 'company-backends 'company-infclj)
 
 (use-package cider
+  ;:defer t
   :ensure t
+  :bind ("C-d" . sp-kill-sexp)
   :config
   (progn
     (add-hook 'cider-mode-hook #'eldoc-mode)
