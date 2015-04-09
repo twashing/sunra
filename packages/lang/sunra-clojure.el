@@ -1,28 +1,12 @@
 (use-package clojure-mode
-  ;:defer t
-  :ensure t
-  ;:bind ("C-d" . sp-kill-sexp)
+  :defer t
+  ;:ensure t
+  :bind ("C-d" . sp-kill-sexp)
   :config
   (progn
     (add-hook 'clojure-mode-hook #'paredit-mode)
     (add-hook 'clojure-mode-hook #'smartparens-strict-mode)
-    (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
-
-    ;; try 3 - https://github.com/alexander-yakushev/compliment
-    ;;(require 'auto-complete)
-    ;;(add-hook 'clojure-mode-hook #'auto-complete-mode)
-    
-    ;; try 1 - http://stackoverflow.com/questions/23766483/emacs-cider-clojure-auto-complete-how-to-get-the-docstring
-    ;(require 'auto-complete-config)
-    ;;;;(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-    ;(setq ac-delay 0.0)
-    ;;;;(setq ac-use-quick-help t)
-    ;(setq ac-quick-help-delay 0.0)
-    ;;;;(setq ac-use-fuzzy 1)
-    ;;;;(setq ac-auto-start 1)
-    ;;;;(setq ac-auto-show-menu 1)
-    ;(ac-config-default)
-    ))
+    (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)))
 
 ;; try 2 - http://martintrojer.github.io/clojure/2014/10/02/clojure-and-emacs-without-cider/
 (defun get-clj-completions (prefix)
@@ -51,8 +35,8 @@
 ;;(add-to-list 'company-backends 'company-infclj)
 
 (use-package cider
-  ;:defer t
-  :ensure t
+  :defer t
+  ;:ensure t
   :bind ("C-d" . sp-kill-sexp)
   :config
   (progn
@@ -71,7 +55,8 @@
     (add-hook 'cider-mode-hook #'company-mode)))
 
 (use-package ac-cider
-  :ensure t
+  ;:ensure t
+  :defer t
   :init (progn
 	  (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
 	  (add-hook 'cider-mode-hook 'ac-cider-setup)
@@ -87,7 +72,8 @@
 
 
 (use-package clj-refactor
-  :ensure t
+  ;:ensure t
+  :defer t
   :diminish clj-refactor-mode)
   :config (add-hook 'clojure-mode-hook (lambda ()
 					 (clj-refactor-mode 1)
@@ -101,7 +87,8 @@
   (diminish 'hs-minor-mode))
 
 (use-package midje-mode 
-  :ensure t
+  ;:ensure t
+  :defer t
   :diminish midje-mode
   :config (progn
 	    (add-hook 'clojure-mode-hook 'midje-mode)

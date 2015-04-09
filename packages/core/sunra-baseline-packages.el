@@ -27,8 +27,8 @@
   :diminish paredit-mode)
   
 (use-package smartparens
-  ;:ensure t
-  :defer t
+  :ensure t
+  ;:defer t
   :diminish smartparens-mode
   :config
   (progn

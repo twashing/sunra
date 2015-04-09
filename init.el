@@ -14,16 +14,6 @@
   (package-install 'use-package))
 (require 'use-package)
 
-(use-package smartparens
-  :ensure t
-  ;:defer t
-  :diminish smartparens-mode
-  :config
-  (progn
-    (require 'smartparens-config)
-    (smartparens-global-mode 1)
-    (show-paren-mode 1)))
-
 
 (defmacro use-packages (&rest args)
    (cons 'progn 
@@ -40,7 +30,7 @@
 
 (use-packages (sunra-core
                ;sunra-yasnippet
-      	       ;; sunra-clojure
+      	       sunra-clojure
                ;; sunra-elisp
                ;; sunra-hy
       	       ;; sunra-haskell
