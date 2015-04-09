@@ -6,8 +6,7 @@
       	       sunra-ido
                sunra-git
 	       sunra-navigation
-	       ;sunra-markdown
-	       ;sunra-multiplecursors
-	       ))
+	       sunra-markdown
+	       sunra-multiplecursors))
                
 (provide 'sunra-core)

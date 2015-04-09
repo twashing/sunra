@@ -25,16 +25,6 @@
     (show-paren-mode 1)))
 
 
-(fset 'buf-move-up "\C-u10\C-p")
-(fset 'buf-move-down "\C-u10\C-n")
-
-(global-set-key (kbd "M-U") 'buf-move-up)
-(global-set-key (kbd "M-D") 'buf-move-down)
-
-(global-set-key (kbd "C-d") 'sp-kill-sexp)
-
-
-
 (defmacro use-packages (&rest args)
    (cons 'progn 
 	 (mapcar (lambda (pkg)
@@ -48,16 +38,16 @@
 (add-to-list 'load-path (concat emacs-dir "packages/core"))
 (add-to-list 'load-path (concat emacs-dir "packages/lang"))
 
-;(use-packages (sunra-core
-;               ;sunra-yasnippet
-;      	       sunra-clojure
-;               sunra-elisp
-;               sunra-hy
-;      	       sunra-haskell
-;               ;sunra-purescript
-;               ;sunra-scala
-;               ;sunra-web
-;               ))
+(use-packages (sunra-core
+               ;sunra-yasnippet
+      	       ;; sunra-clojure
+               ;; sunra-elisp
+               ;; sunra-hy
+      	       ;; sunra-haskell
+               ;sunra-purescript
+               ;sunra-scala
+               ;sunra-web
+               ))
 
 ;; User Localization
 (defun create-nested-dirs (dirlist dirparent)
