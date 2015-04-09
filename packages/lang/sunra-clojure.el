@@ -4,9 +4,10 @@
   :bind ("C-d" . sp-kill-sexp)
   :config
   (progn
-    (add-hook 'clojure-mode-hook #'paredit-mode)
+    ;(add-hook 'clojure-mode-hook #'paredit-mode)
     (add-hook 'clojure-mode-hook #'smartparens-strict-mode)
-    (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)))
+    (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode))
+  )
 
 ;; try 2 - http://martintrojer.github.io/clojure/2014/10/02/clojure-and-emacs-without-cider/
 (defun get-clj-completions (prefix)
@@ -35,8 +36,8 @@
 ;;(add-to-list 'company-backends 'company-infclj)
 
 (use-package cider
-  :defer t
-  ;:ensure t
+  ;:defer t
+  :ensure t
   :bind ("C-d" . sp-kill-sexp)
   :config
   (progn
@@ -47,7 +48,7 @@
     (setq nrepl-buffer-name-separator "/")
     (setq nrepl-buffer-name-show-port t)
     (setq cider-repl-use-clojure-font-lock t)
-    (add-hook 'cider-repl-mode-hook #'paredit-mode)
+    ;(add-hook 'cider-repl-mode-hook #'paredit-mode)
     (add-hook 'cider-repl-mode-hook #'smartparens-strict-mode)
     (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
     (add-hook 'cider-repl-mode-hook #'subword-mode)
@@ -55,8 +56,8 @@
     (add-hook 'cider-mode-hook #'company-mode)))
 
 (use-package ac-cider
-  ;:ensure t
-  :defer t
+  :ensure t
+  ;:defer t
   :init (progn
 	  (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
 	  (add-hook 'cider-mode-hook 'ac-cider-setup)
@@ -72,8 +73,8 @@
 
 
 (use-package clj-refactor
-  ;:ensure t
-  :defer t
+  :ensure t
+  ;:defer t
   :diminish clj-refactor-mode)
   :config (add-hook 'clojure-mode-hook (lambda ()
 					 (clj-refactor-mode 1)
@@ -87,8 +88,8 @@
   (diminish 'hs-minor-mode))
 
 (use-package midje-mode 
-  ;:ensure t
-  :defer t
+  :ensure t
+  ;:defer t
   :diminish midje-mode
   :config (progn
 	    (add-hook 'clojure-mode-hook 'midje-mode)
