@@ -35,18 +35,18 @@
 
 
 
-;(defmacro use-packages (&rest args)
-;   (cons 'progn 
-;	 (mapcar (lambda (pkg)
-;		   `(use-package ,pkg ,@(rest args)))
-;	      (first args))))
+(defmacro use-packages (&rest args)
+   (cons 'progn 
+	 (mapcar (lambda (pkg)
+		   `(use-package ,pkg ,@(rest args)))
+	      (first args))))
 
-;(setq emacs-dir (file-name-directory
-;                    (or (buffer-file-name) (file-chase-links load-file-name)))) 
+(setq emacs-dir (file-name-directory
+                    (or (buffer-file-name) (file-chase-links load-file-name)))) 
 
-;(add-to-list 'load-path (concat emacs-dir "packages"))                   
-;(add-to-list 'load-path (concat emacs-dir "packages/core"))
-;(add-to-list 'load-path (concat emacs-dir "packages/lang"))
+(add-to-list 'load-path (concat emacs-dir "packages"))                   
+(add-to-list 'load-path (concat emacs-dir "packages/core"))
+(add-to-list 'load-path (concat emacs-dir "packages/lang"))
 
 ;(use-packages (sunra-core
 ;               ;sunra-yasnippet
@@ -60,37 +60,37 @@
 ;               ))
 
 ;; User Localization
-;(defun create-nested-dirs (dirlist dirparent)
-;  (let* ((top (car dirlist)))
-;    (if top
-;	(let* ((dircombined (concat (file-name-as-directory dirparent)
-;				    (file-name-as-directory top))))
-;	  (message (file-name-as-directory dirparent))
-;	  (make-directory dircombined)
-;	  (create-nested-dirs (cdr dirlist) dircombined)))))
+(defun create-nested-dirs (dirlist dirparent)
+  (let* ((top (car dirlist)))
+    (if top
+	(let* ((dircombined (concat (file-name-as-directory dirparent)
+				    (file-name-as-directory top))))
+	  (message (file-name-as-directory dirparent))
+	  (make-directory dircombined)
+	  (create-nested-dirs (cdr dirlist) dircombined)))))
 
-;(defun create-user-dirs () 
-;  (let* ((local-packagedirs '(".sunra.d" "packages" "user"))
-;	 (local-sunradir "~"))
-    
-;    (create-nested-dirs local-packagedirs local-sunradir)))
+(defun create-user-dirs () 
+  (let* ((local-packagedirs '(".sunra.d" "packages" "user"))
+	 (local-sunradir "~"))
+   
+    (create-nested-dirs local-packagedirs local-sunradir)))
 
 
-;(if (not (file-exists-p "~/.sunra.d"))
-;
-;    (progn
-;      
-;      ;; ask user if they want this created
-;      (create-user-dirs)
-;
-;      ;; Copy userinit
-;      (copy-file "~/.emacs.d/packages/userinit.el"
-;		 "~/.sunra.d/init.el")
-;
-;      ;; Copy sunra-theme.el
-;      (copy-file "~/.emacs.d/packages/user/sunra-theme.el"
-;		 "~/.sunra.d/packages/user/")))
+(if (not (file-exists-p "~/.sunra.d"))
+
+    (progn
+      
+      ;; ask user if they want this created
+      (create-user-dirs)
+
+      ;; Copy userinit
+      (copy-file "~/.emacs.d/packages/userinit.el"
+		 "~/.sunra.d/init.el")
+
+      ;; Copy sunra-theme.el
+      (copy-file "~/.emacs.d/packages/user/sunra-theme.el"
+		 "~/.sunra.d/packages/user/")))
 
 ;; Eval userinit
-;(load "~/.sunra.d/init.el")
+(load "~/.sunra.d/init.el")
 
