@@ -1,4 +1,10 @@
 
+(use-package ace-window
+  :ensure t)
+
+(use-package browse-kill-ring
+  :ensure t)
+
 (defun copy-sexp-at-point ()
     (interactive)
       (kill-new (thing-at-point 'sexp)))
@@ -10,5 +16,8 @@
 (global-set-key (kbd "M-D") 'buf-move-down)
 (global-set-key (kbd "C-d") 'sp-kill-sexp)
 (global-set-key (kbd "C-M-k") 'copy-sexp-at-point)
+(global-set-key (kbd "M-p") 'ace-window)
+(global-set-key (kbd "M-y") 'browse-kill-ring)
+
 
 (provide 'sunra-navigation)
