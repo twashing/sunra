@@ -19,5 +19,17 @@
 (global-set-key (kbd "M-p") 'ace-window)
 (global-set-key (kbd "M-y") 'browse-kill-ring)
 
+(global-set-key (kbd "C-M-u") 'sp-up-sexp)
+(global-set-key (kbd "C-M-d") 'sp-down-sexp)
+
+(global-set-key (kbd "C-M-n") 'sp-next-sexp)
+(global-set-key (kbd "C-M-b") 'sp-beginning-of-sexp)
+
+(global-set-key (kbd "C-M-j") 'sp-forward-slurp-sexp)
+(global-set-key (kbd "C-M-y") 'sp-forward-barf-sexp)
+(global-set-key (kbd "C-M-s") 'sp-backward-slurp-sexp)
+(global-set-key (kbd "C-M-e") 'sp-backward-barf-sexp)
+
+
 
 (provide 'sunra-navigation)
