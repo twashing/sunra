@@ -28,16 +28,25 @@
 (add-to-list 'load-path (concat emacs-dir "packages/core"))
 (add-to-list 'load-path (concat emacs-dir "packages/lang"))
 
-(use-packages (sunra-core
-               ;sunra-yasnippet
+               
+(use-packages (sunra-baseline
+               sunra-baseline-packages
+               sunra-programming
+               sunra-line-numbers
+      	       sunra-recentf
+      	       sunra-ido
+               sunra-git
+	       sunra-navigation
+	       sunra-markdown
+	       sunra-multiplecursors
+               sunra-yasnippet
       	       sunra-clojure
                ;; sunra-elisp
                ;; sunra-hy
-      	       ;; sunra-haskell
-               ;sunra-purescript
-               ;sunra-scala
-               ;sunra-web
-               ))
+      	       sunra-haskell
+               sunra-purescript
+               sunra-scala
+               sunra-web))
 
 ;; User Localization
 (defun create-nested-dirs (dirlist dirparent)
