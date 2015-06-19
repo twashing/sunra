@@ -5,6 +5,9 @@
 ;; Skip the default splash screen.
 (setq inhibit-startup-message t)
 
+;; I've seen the Magit setup instructions
+(setq magit-last-seen-setup-instructions "1.4.0")
+
 ;; Remove menu, tool, and scrolls
 (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
   (when (fboundp mode) (funcall mode -1)))
