@@ -37,5 +37,11 @@
     
 (use-package rainbow-delimiters
   :ensure t)
-  
+
+(use-package puppet-file
+  :ensure)
+
+(use-package puppetfile-mode
+  :ensure)
+
 (provide 'sunra-baseline-packages)

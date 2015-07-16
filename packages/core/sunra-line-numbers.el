@@ -9,7 +9,7 @@
 ;; Highlight Current Line
 (global-hl-line-mode 1)
 (hl-line-mode +1)
-(set-face-background 'hl-line "#171717")  ;; or #2E2E2E (http://www.w3schools.com/tags/ref_colorpicker.asp)
+(set-face-background 'hl-line "#2E2E2E")  ;; #171717 or #2E2E2E (http://www.w3schools.com/tags/ref_colorpicker.asp)
 
 ;; Indicate Empty Lines
 (setq-default indicate-empty-lines t)
