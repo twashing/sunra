@@ -1,7 +1,12 @@
--*- mode: grep; default-directory: "~/.emacs.sunra/packages/user/" -*-
-Grep started at Tue Apr  7 05:58:17
+;;(use-package solarized-theme
+  ;;:ensure t
+  ;;:defer t
+  ;;)
 
-find . -type f -exec grep -nH -e sunra-theme {} +
-./sunra-theme.el:7:(provide 'sunra-theme)
+;;(load-theme 'solarized-dark t)
+;;(set-face-foreground 'linum "steel blue")
 
-Grep finished (matches found) at Tue Apr  7 05:58:17
+(use-package cyberpunk-theme
+  :ensure t)
+
+(provide 'sunra-theme)

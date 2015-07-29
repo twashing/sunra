@@ -31,6 +31,7 @@
 (add-to-list 'load-path (concat emacs-dir "packages"))                   
 (add-to-list 'load-path (concat emacs-dir "packages/core"))
 (add-to-list 'load-path (concat emacs-dir "packages/lang"))
+(add-to-list 'load-path (concat emacs-dir "packages/user"))
 
                
 (use-packages (sunra-baseline
@@ -51,7 +52,7 @@
                sunra-purescript
                sunra-scala
                sunra-web
-	       ))
+	       sunra-theme))
 
 ;; User Localization
 (defun create-nested-dirs (dirlist dirparent)
