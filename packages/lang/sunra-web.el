@@ -1,6 +1,6 @@
 (use-package skewer-mode
-  ;:ensure t
-  :defer t
+  :ensure t
+  :defer 2
   )
 
 (provide 'sunra-web)

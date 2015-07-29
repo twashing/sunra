@@ -1,6 +1,6 @@
 (use-package haskell-mode
   :ensure t
-  :defer t
+  :defer 2
   :config
   (progn
     (add-hook 'haskell-mode-hook 'haskell-indentation-mode)

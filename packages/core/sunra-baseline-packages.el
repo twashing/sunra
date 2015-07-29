@@ -8,12 +8,13 @@
 
 (use-package company
   :ensure t
+  :defer 2
   :config
   (add-hook 'after-init-hook 'global-company-mode))
 
 (use-package projectile 
   ;:ensure t
-  :defer t
+  :defer 2
   :config
   (progn
     (global-set-key (kbd "s-t") 'projectile-find-file)
@@ -26,6 +27,7 @@
   
 (use-package smartparens
   :ensure t
+  :defer 2
   :diminish smartparens-mode
   :config
   (progn
@@ -36,12 +38,17 @@
   (setq sp-highlight-pair-overlay nil))
     
 (use-package rainbow-delimiters
-  :ensure t)
+  :ensure t
+  :defer 2)
 
-(use-package puppet-file
-  :ensure)
+;;(use-package puppet-file
+;;  :ensure)
 
-(use-package puppetfile-mode
-  :ensure)
+;;(use-package puppetfile-mode
+;;  :ensure)
+
+(use-package groovy-mode
+  :ensure t
+  :defer 2)
 
 (provide 'sunra-baseline-packages)

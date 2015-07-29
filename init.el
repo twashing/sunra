@@ -45,12 +45,13 @@
 	       sunra-multiplecursors
                sunra-yasnippet
       	       sunra-clojure
-               ;; sunra-elisp
-               ;; sunra-hy
+               sunra-elisp
+               sunra-hy
       	       sunra-haskell
                sunra-purescript
                sunra-scala
-               sunra-web))
+               sunra-web
+	       ))
 
 ;; User Localization
 (defun create-nested-dirs (dirlist dirparent)

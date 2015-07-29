@@ -1,6 +1,6 @@
 (use-package clojure-mode
-  :defer t
-  ;:ensure t
+  :defer 2
+  :ensure t
   :bind ("C-d" . sp-kill-sexp)
   :config
   (progn
@@ -36,7 +36,7 @@
 ;;(add-to-list 'company-backends 'company-infclj)
 
 (use-package cider
-  ;:defer t
+  :defer 2
   :ensure t
   :bind ("C-d" . sp-kill-sexp)
   :config
@@ -57,7 +57,7 @@
 
 (use-package ac-cider
   :ensure t
-  ;:defer t
+  :defer 2
   :init (progn
 	  (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
 	  (add-hook 'cider-mode-hook 'ac-cider-setup)
@@ -74,7 +74,7 @@
 
 (use-package clj-refactor
   :ensure t
-  ;:defer t
+  :defer 2
   :diminish clj-refactor-mode)
   :config (add-hook 'clojure-mode-hook (lambda ()
 					 (clj-refactor-mode 1)
@@ -89,7 +89,7 @@
 
 (use-package midje-mode 
   :ensure t
-  ;:defer t
+  :defer 2
   :diminish midje-mode
   :config (progn
 	    (add-hook 'clojure-mode-hook 'midje-mode)

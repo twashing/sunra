@@ -4,7 +4,7 @@
 
 (use-package which-func
   :ensure t
-  ;:defer t
+  :defer 2
   :config (which-func-mode 1))
     
 (provide 'sunra-programming)
