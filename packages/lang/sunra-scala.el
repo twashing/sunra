@@ -1,9 +1,9 @@
 (use-package scala-mode2
-  ;; :ensure t
+  :ensure t
   :defer 2)
 
 (use-package ensime
-  ;;:ensure t
+  :ensure t
   :defer 2
   :config
   (progn
