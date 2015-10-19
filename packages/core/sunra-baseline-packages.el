@@ -36,10 +36,13 @@
     (show-paren-mode 1))
   :init
   (setq sp-highlight-pair-overlay nil))
-    
+
 (use-package rainbow-delimiters
   :ensure t
   :defer 2)
+
+(use-package erc
+  :ensure t)
 
 ;;(use-package puppet-file
 ;;  :ensure)

@@ -7,7 +7,7 @@
     ;(add-hook 'clojure-mode-hook #'paredit-mode)
     (add-hook 'clojure-mode-hook #'smartparens-strict-mode)
     (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode))
-  )
+ )
 
 ;; try 2 - http://martintrojer.github.io/clojure/2014/10/02/clojure-and-emacs-without-cider/
 (defun get-clj-completions (prefix)
@@ -38,7 +38,8 @@
 (use-package cider
   :defer 2
   :ensure t
-  :bind ("C-d" . sp-kill-sexp)
+  ;;:bind ("C-d" . sp-kill-sexp)
+  :bind ("C-d" . kill-sexp)
   :config
   (progn
     (add-hook 'cider-mode-hook #'eldoc-mode)
