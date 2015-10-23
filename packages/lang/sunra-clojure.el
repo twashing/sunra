@@ -39,7 +39,7 @@
   :defer 2
   :ensure t
   ;;:bind ("C-d" . sp-kill-sexp)
-  :bind ("C-d" . kill-sexp)
+  :bind ("M-d" . kill-sexp)
   :config
   (progn
     (add-hook 'cider-mode-hook #'eldoc-mode)
