@@ -6,8 +6,7 @@
   (progn
     ;(add-hook 'clojure-mode-hook #'paredit-mode)
     (add-hook 'clojure-mode-hook #'smartparens-strict-mode)
-    (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode))
- )
+    (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)))
 
 ;; try 2 - http://martintrojer.github.io/clojure/2014/10/02/clojure-and-emacs-without-cider/
 (defun get-clj-completions (prefix)
@@ -79,6 +78,7 @@
   :diminish clj-refactor-mode)
   :config (add-hook 'clojure-mode-hook (lambda ()
 					 (clj-refactor-mode 1)
+					 (setq cljr-magic-requires nil)
 					 
 					 ;; bindings: https://github.com/clojure-emacs/clj-refactor.el#usage
 					 (cljr-add-keybindings-with-prefix "C-c C-m")))
