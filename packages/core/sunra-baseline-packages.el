@@ -6,6 +6,10 @@
     (sml/setup)
     (sml/apply-theme 'smart-mode-line-dark)))
 
+;;(use-package nyan-mode
+;;  :ensure t
+;;  :config (nyan-mode 1))
+
 (use-package company
   :ensure t
   :defer 2

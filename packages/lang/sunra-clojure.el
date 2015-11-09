@@ -78,6 +78,10 @@
   :diminish clj-refactor-mode)
   :config (add-hook 'clojure-mode-hook (lambda ()
 					 (clj-refactor-mode 1)
+
+					 ;; typing / tries to automatically pull in a pre-defined require
+					 ;; this breaks the act of pasting in a string with a /
+					 ;; https://github.com/clojure-emacs/clj-refactor.el/wiki#customization
 					 (setq cljr-magic-requires nil)
 					 
 					 ;; bindings: https://github.com/clojure-emacs/clj-refactor.el#usage
