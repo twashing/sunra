@@ -6,9 +6,19 @@
     (sml/setup)
     (sml/apply-theme 'smart-mode-line-dark)))
 
-;;(use-package nyan-mode
-;;  :ensure t
-;;  :config (nyan-mode 1))
+(use-package nyan-mode
+  :ensure t
+  :config (nyan-mode 1))
+
+(use-package helm
+  :ensure t
+  :config
+  (progn
+    (global-set-key (kbd "C-x m") 'helm-M-x)
+    (global-set-key (kbd "C-x b") 'helm-buffers-list)
+    (global-set-key (kbd "M-y") 'helm-show-kill-ring)
+    (global-set-key (kbd "C-x C-f") 'helm-find-files)))
+
 
 (use-package company
   :ensure t
