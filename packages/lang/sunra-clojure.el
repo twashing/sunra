@@ -1,7 +1,9 @@
 (use-package clojure-mode
   :defer 2
   :ensure t
-  :bind ("C-d" . sp-kill-sexp)
+  :bind (("C-d" . sp-kill-sexp)
+	 ("M-r" . sp-raise-sexp)
+	 ("C-M-b" . sp-previous-sexp))
   :config
   (progn
     ;(add-hook 'clojure-mode-hook #'paredit-mode)
