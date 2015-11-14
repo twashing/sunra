@@ -54,6 +54,10 @@
                sunra-web
 	       sunra-theme))
 
+(use-package nyan-mode
+  :ensure t
+  :config (nyan-mode 1))
+
 ;; User Localization
 (defun create-nested-dirs (dirlist dirparent)
   (let* ((top (car dirlist)))
