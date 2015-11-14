@@ -1,9 +1,10 @@
 (use-package clojure-mode
   :defer 2
   :ensure t
-  :bind (("C-d" . sp-kill-sexp)
+  :bind (("M-d" . sp-kill-sexp)
 	 ("M-r" . sp-raise-sexp)
-	 ("C-M-b" . sp-previous-sexp))
+	 ("C-M-b" . sp-previous-sexp)
+	 ("C-x M-e" . cider-eval-print-last-sexp))
   :config
   (progn
     ;(add-hook 'clojure-mode-hook #'paredit-mode)
@@ -39,8 +40,10 @@
 (use-package cider
   :defer 2
   :ensure t
-  ;;:bind ("C-d" . sp-kill-sexp)
-  :bind ("M-d" . kill-sexp)
+  :bind (("M-d" . sp-kill-sexp)
+	 ("M-r" . sp-raise-sexp)
+	 ("C-M-b" . sp-previous-sexp)
+	 ("C-x M-e" . cider-eval-print-last-sexp))
   :config
   (progn
     (add-hook 'cider-mode-hook #'eldoc-mode)
