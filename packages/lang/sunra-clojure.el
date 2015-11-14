@@ -1,13 +1,15 @@
 (use-package clojure-mode
   :defer 2
   :ensure t
-  :bind ("C-d" . sp-kill-sexp)
+  :bind (("M-d" . sp-kill-sexp)
+	 ("M-r" . sp-raise-sexp)
+	 ("C-M-b" . sp-previous-sexp)
+	 ("C-x M-e" . cider-eval-print-last-sexp))
   :config
   (progn
     ;(add-hook 'clojure-mode-hook #'paredit-mode)
     (add-hook 'clojure-mode-hook #'smartparens-strict-mode)
-    (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode))
- )
+    (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)))
 
 ;; try 2 - http://martintrojer.github.io/clojure/2014/10/02/clojure-and-emacs-without-cider/
 (defun get-clj-completions (prefix)
@@ -38,8 +40,10 @@
 (use-package cider
   :defer 2
   :ensure t
-  ;;:bind ("C-d" . sp-kill-sexp)
-  :bind ("M-d" . kill-sexp)
+  :bind (("M-d" . sp-kill-sexp)
+	 ("M-r" . sp-raise-sexp)
+	 ("C-M-b" . sp-previous-sexp)
+	 ("C-x M-e" . cider-eval-print-last-sexp))
   :config
   (progn
     (add-hook 'cider-mode-hook #'eldoc-mode)
@@ -79,6 +83,11 @@
   :diminish clj-refactor-mode)
   :config (add-hook 'clojure-mode-hook (lambda ()
 					 (clj-refactor-mode 1)
+
+					 ;; typing / tries to automatically pull in a pre-defined require
+					 ;; this breaks the act of pasting in a string with a /
+					 ;; https://github.com/clojure-emacs/clj-refactor.el/wiki#customization
+					 (setq cljr-magic-requires nil)
 					 
 					 ;; bindings: https://github.com/clojure-emacs/clj-refactor.el#usage
 					 (cljr-add-keybindings-with-prefix "C-c C-m")))

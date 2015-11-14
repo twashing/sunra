@@ -6,6 +6,8 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))) ;; For important compatibility libraries like cl-lib
 (package-initialize)
 
+(add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
+
 
 ;; use-package
 (setq package-enable-at-startup nil)
@@ -37,7 +39,7 @@
 (use-packages (sunra-baseline
                sunra-baseline-packages
                sunra-programming
-               sunra-line-numbers
+               ;;sunra-line-numbers
       	       sunra-recentf
       	       sunra-ido
                sunra-git
