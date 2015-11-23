@@ -10,5 +10,7 @@
 
 (global-set-key (kbd "C-d") 'sp-kill-sexp)
 
+(use-package eval-sexp-fu
+  :ensure t)
 
 (provide 'sunra-elisp)

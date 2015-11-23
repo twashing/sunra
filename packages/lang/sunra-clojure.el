@@ -77,6 +77,9 @@
 	    (add-to-list 'ac-modes 'cider-repl-mode)))
 
 
+(use-package cider-eval-sexp-fu
+  :ensure t)
+
 (use-package clj-refactor
   :ensure t
   :defer 2

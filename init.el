@@ -21,6 +21,7 @@
 (require 'bind-key)                ;; if you use any :bind variant
 
 
+
 (defmacro use-packages (&rest args)
    (cons 'progn 
 	 (mapcar (lambda (pkg)
@@ -55,6 +56,7 @@
                sunra-scala
                sunra-web
 	       sunra-theme))
+
 
 ;; User Localization
 (defun create-nested-dirs (dirlist dirparent)

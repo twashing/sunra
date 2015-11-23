@@ -6,19 +6,49 @@
     (sml/setup)
     (sml/apply-theme 'smart-mode-line-dark)))
 
-(use-package nyan-mode
+;;(use-package nyan-mode
+;;  :ensure t
+;;  :config (nyan-mode 1))
+
+;;(require 'whitespace)
+;;(setq whitespace-line-column 80) ;; limit line length
+;;(setq whitespace-style '(face tabs trailing lines-tail))
+;;(add-hook 'prog-mode-hook (lambda nil (whitespace-mode +1)))
+;;(setq whitespace-action '(auto-cleanup))
+
+(use-package projectile
   :ensure t
-  :config (nyan-mode 1))
+  :config (progn
+	    (projectile-global-mode)))
+
+(use-package helm-projectile
+  :ensure t)
+
+(require 'helm-config)
 
 (use-package helm
   :ensure t
   :config
   (progn
-    (global-set-key (kbd "C-x m") 'helm-M-x)
+    (global-set-key (kbd "M-x") 'helm-M-x)
     (global-set-key (kbd "C-x b") 'helm-buffers-list)
+    (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
     (global-set-key (kbd "M-y") 'helm-show-kill-ring)
-    (global-set-key (kbd "C-x C-f") 'helm-find-files)))
+    (global-set-key (kbd "C-x C-f") 'helm-find-files)
 
+    ;; stolen from ohai emacs - Make Helm look nice
+    (setq-default helm-display-header-line nil
+              helm-autoresize-min-height 10
+              helm-autoresize-max-height 35
+              helm-split-window-in-side-p t
+
+              helm-M-x-fuzzy-match t
+              helm-buffers-fuzzy-matching t
+              helm-recentf-fuzzy-match t
+              helm-apropos-fuzzy-match t)))
+
+(use-package beacon
+  :config (beacon-mode 1))
 
 (use-package company
   :ensure t
