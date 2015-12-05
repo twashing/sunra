@@ -39,10 +39,10 @@
                
 (use-packages (sunra-baseline
                sunra-baseline-packages
-               sunra-programming
-               ;;sunra-line-numbers
+               sunra-programming  ;; what is this?
+               ;;sunra-line-numbers  ;; remove
       	       sunra-recentf
-      	       sunra-ido
+      	       sunra-ido  ;; remove
                sunra-git
 	       sunra-navigation
 	       sunra-markdown
@@ -50,12 +50,14 @@
                sunra-yasnippet
       	       sunra-clojure
                sunra-elisp
-               sunra-hy
+               sunra-hy  ; remove
       	       sunra-haskell
                sunra-purescript
                sunra-scala
                sunra-web
 	       sunra-theme))
+
+;; Add: Frege, Ruby
 
 
 ;; User Localization

@@ -16,12 +16,21 @@
 ;;(add-hook 'prog-mode-hook (lambda nil (whitespace-mode +1)))
 ;;(setq whitespace-action '(auto-cleanup))
 
+(use-package company
+  :ensure t
+  :defer 2
+  :config
+  (add-hook 'after-init-hook 'global-company-mode))
+
 (use-package projectile
   :ensure t
   :config (progn
 	    (projectile-global-mode)))
 
 (use-package helm-projectile
+  :ensure t)
+
+(use-package helm-company
   :ensure t)
 
 (require 'helm-config)
@@ -50,11 +59,28 @@
 (use-package beacon
   :config (beacon-mode 1))
 
-(use-package company
+(use-package swiper
+  :ensure t)
+
+(use-package swiper-helm
   :ensure t
-  :defer 2
-  :config
-  (add-hook 'after-init-hook 'global-company-mode))
+  :config (progn
+	    (global-set-key (kbd "C-s") 'swiper)))
+
+(use-package avy
+  :ensure t
+  :config (progn
+	    (avy-setup-default)
+	    (global-set-key (kbd "C-M-[") 'avy-goto-char)
+	    (global-set-key (kbd "C-M-]") 'avy-goto-char-2)
+	    (global-set-key (kbd "M-g f") 'avy-goto-line)
+	    (global-set-key (kbd "M-g w") 'avy-goto-word-1)
+	    (global-set-key (kbd "M-g e") 'avy-goto-word-0)))
+
+(use-package ace-window
+  :ensure t
+  :config (progn
+	    (global-set-key (kbd "M-p") 'ace-window)))
 
 (use-package projectile 
   ;:ensure t
