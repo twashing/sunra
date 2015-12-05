@@ -1,6 +1,5 @@
-(use-package hy-mode
-  :ensure t
-  :defer 2
+(use-package hy-mode  
+  :defer t
   :mode "\\.hy\\'"
   :config (progn
 	    (add-hook 'hy-mode-hook #'rainbow-delimiters-mode)

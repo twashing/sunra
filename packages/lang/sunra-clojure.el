@@ -1,6 +1,4 @@
 (use-package clojure-mode
-  :defer 2
-  :ensure t
   :bind (("M-d" . sp-kill-sexp)
 	 ("M-r" . sp-raise-sexp)
 	 ("C-M-b" . sp-previous-sexp)
@@ -12,8 +10,6 @@
     (add-hook 'clojure-mode-hook #'company-mode)))
 
 (use-package cider
-  :defer 2
-  :ensure t
   :bind (("M-d" . sp-kill-sexp)
 	 ("M-r" . sp-raise-sexp)
 	 ("C-M-b" . sp-previous-sexp)
@@ -37,29 +33,17 @@
 
 (use-package company-mode)
 
-(use-package ac-cider
-  :ensure t
-  :defer 2
+(use-package ac-cider  
+  :defer t
   :init (progn
-	  (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
-	  ;;(add-hook 'cider-mode-hook 'ac-cider-setup)
-	  ;;(add-hook 'cider-repl-mode-hook 'ac-cider-setup)
-
-	  ;;(defun set-auto-complete-as-completion-at-point-function ()
-	  ;;  (setq completion-at-point-functions '(auto-complete)))
-
-	  ;;(add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
-	  ;;(add-hook 'cider-mode-hook 'set-auto-complete-as-completion-at-point-function)
-	  ))
+	  (add-hook 'cider-mode-hook 'ac-flyspell-workaround)))
 
 
-(use-package cider-eval-sexp-fu
-  :ensure t)
+(use-package eval-sexp-fu)
+(use-package cider-eval-sexp-fu)
 
 (use-package clj-refactor
-  :ensure t
-  ;;:defer 2
-  ;;:diminish clj-refactor-mode)
+  :defer t
   :config (add-hook 'clojure-mode-hook (lambda ()
 					 (clj-refactor-mode 1)
 
@@ -76,8 +60,7 @@
   (diminish 'hs-minor-mode))
 
 (use-package midje-mode 
-  :ensure t
-  :defer 2
+  :defer t
   :diminish midje-mode
   :config (progn
 	    (add-hook 'clojure-mode-hook 'midje-mode)

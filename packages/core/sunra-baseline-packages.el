@@ -83,10 +83,11 @@
   (progn
     (global-set-key (kbd "s-t") 'projectile-find-file)
     (global-set-key (kbd "C-c C-f") 'projectile-find-file)))
-  
+
+
 (use-package smartparens
-  :defer t
   :diminish smartparens-mode
+  :bind (("C-d" . sp-kill-sexp))
   :config
   (progn
     (require 'smartparens-config)
