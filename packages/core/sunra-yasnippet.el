@@ -1,5 +1,4 @@
 (use-package yasnippet
-  :ensure t
-  :defer 2)
+  :defer t)
 
 (provide 'sunra-yasnippet)

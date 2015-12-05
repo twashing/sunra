@@ -1,74 +1,71 @@
+
+(if window-system
+    (use-package nyan-mode
+      :config (progn
+		(nyan-mode 1)
+		(setq nyan-bar-length 16
+		      nyan-wavy-trail t))))
+
+(font-lock-add-keywords
+   nil '(("\\<\\(\\(FIX\\(ME\\)?\\|TODO\\|OPTIMIZE\\|HACK\\|REFACTOR\\):\\)"
+	  1 font-lock-warning-face t)))
+
+(use-package which-func
+  :defer t
+  :config (which-func-mode 1))
+
+(use-package browse-kill-ring
+  :defer t)
+
 (use-package smart-mode-line
-  :ensure t
   :init (setq sml/no-confirm-load-theme t)
   :config 
   (progn
     (sml/setup)
     (sml/apply-theme 'smart-mode-line-dark)))
 
-;;(use-package nyan-mode
-;;  :ensure t
-;;  :config (nyan-mode 1))
-
-;;(require 'whitespace)
-;;(setq whitespace-line-column 80) ;; limit line length
-;;(setq whitespace-style '(face tabs trailing lines-tail))
-;;(add-hook 'prog-mode-hook (lambda nil (whitespace-mode +1)))
-;;(setq whitespace-action '(auto-cleanup))
-
 (use-package company
-  :ensure t
-  :defer 2
+  :defer t
   :config
   (add-hook 'after-init-hook 'global-company-mode))
 
 (use-package projectile
-  :ensure t
   :config (progn
 	    (projectile-global-mode)))
 
-(use-package helm-projectile
-  :ensure t)
-
-(use-package helm-company
-  :ensure t)
-
-(require 'helm-config)
-
+(use-package helm-projectile)
+(use-package helm-company)
+(use-package helm-config)
 (use-package helm
-  :ensure t
-  :config
-  (progn
-    (global-set-key (kbd "M-x") 'helm-M-x)
-    (global-set-key (kbd "C-x b") 'helm-buffers-list)
-    (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
-    (global-set-key (kbd "M-y") 'helm-show-kill-ring)
-    (global-set-key (kbd "C-x C-f") 'helm-find-files)
+  :bind (("M-x" . helm-M-x)
+	 ("C-x b" . helm-buffers-list)
+	 ("C-x C-b" . helm-buffers-list)
+	 ("M-y" . helm-show-kill-ring)
+	 ("C-x C-f" . helm-find-files))
 
-    ;; stolen from ohai emacs - Make Helm look nice
-    (setq-default helm-display-header-line nil
-              helm-autoresize-min-height 10
-              helm-autoresize-max-height 35
-              helm-split-window-in-side-p t
+  ;; stolen from ohai emacs - Make Helm look nice
+  :config (progn
 
-              helm-M-x-fuzzy-match t
-              helm-buffers-fuzzy-matching t
-              helm-recentf-fuzzy-match t
-              helm-apropos-fuzzy-match t)))
+	    (setq-default helm-display-header-line nil
+			  helm-autoresize-min-height 10
+			  helm-autoresize-max-height 35
+			  helm-split-window-in-side-p t
+
+			  helm-M-x-fuzzy-match t
+			  helm-buffers-fuzzy-matching t
+			  helm-recentf-fuzzy-match t
+			  helm-apropos-fuzzy-match t)))
 
 (use-package beacon
   :config (beacon-mode 1))
 
 (use-package swiper
-  :ensure t)
-
-(use-package swiper-helm
-  :ensure t
   :config (progn
-	    (global-set-key (kbd "C-s") 'swiper)))
+	    (global-set-key (kbd "M-s") 'swiper)))
+
+(use-package swiper-helm)
 
 (use-package avy
-  :ensure t
   :config (progn
 	    (avy-setup-default)
 	    (global-set-key (kbd "C-M-[") 'avy-goto-char)
@@ -78,26 +75,17 @@
 	    (global-set-key (kbd "M-g e") 'avy-goto-word-0)))
 
 (use-package ace-window
-  :ensure t
   :config (progn
 	    (global-set-key (kbd "M-p") 'ace-window)))
 
 (use-package projectile 
-  ;:ensure t
-  :defer 2
   :config
   (progn
     (global-set-key (kbd "s-t") 'projectile-find-file)
     (global-set-key (kbd "C-c C-f") 'projectile-find-file)))
   
-;; (use-package paredit
-;;   ;:ensure t
-;;   :defer t
-;;   :diminish paredit-mode)
-  
 (use-package smartparens
-  :ensure t
-  :defer 2
+  :defer t
   :diminish smartparens-mode
   :config
   (progn
@@ -108,20 +96,12 @@
   (setq sp-highlight-pair-overlay nil))
 
 (use-package rainbow-delimiters
-  :ensure t
-  :defer 2)
+  :defer t)
 
 (use-package erc
-  :ensure t)
-
-;;(use-package puppet-file
-;;  :ensure)
-
-;;(use-package puppetfile-mode
-;;  :ensure)
+  :defer t)
 
 (use-package groovy-mode
-  :ensure t
-  :defer 2)
+  :defer t)
 
 (provide 'sunra-baseline-packages)

@@ -1,12 +1,8 @@
 (use-package magit 
-  :ensure t
-  :defer 2
-  ;;:diminish magit-auto-revert-mode
-  )
+  :defer t)
 
-(use-package diff-hl 
-  :ensure t
-  :defer 2
+(use-package diff-hl  
+  :defer t
   :config (global-diff-hl-mode))
 
 (provide 'sunra-git)

@@ -1,10 +1,4 @@
 
-(use-package ace-window
-  :ensure t)
-
-(use-package browse-kill-ring
-  :ensure t)
-
 (defun copy-sexp-at-point ()
     (interactive)
       (kill-new (thing-at-point 'sexp)))
@@ -29,7 +23,6 @@
 (global-set-key (kbd "C-M-y") 'sp-forward-barf-sexp)
 (global-set-key (kbd "C-M-s") 'sp-backward-slurp-sexp)
 (global-set-key (kbd "C-M-e") 'sp-backward-barf-sexp)
-
 
 
 (provide 'sunra-navigation)

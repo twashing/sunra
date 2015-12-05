@@ -39,9 +39,7 @@
                
 (use-packages (sunra-baseline
                sunra-baseline-packages
-               sunra-programming  ;; what is this?
                ;;sunra-line-numbers  ;; remove
-      	       sunra-recentf
       	       sunra-ido  ;; remove
                sunra-git
 	       sunra-navigation
