@@ -1,13 +1,3 @@
-(use-package clojure-mode
-  :bind (("M-d" . sp-kill-sexp)
-	 ("M-r" . sp-raise-sexp)
-	 ("C-M-b" . sp-previous-sexp)
-	 ("C-x M-e" . cider-eval-print-last-sexp))
-  :config
-  (progn
-    (add-hook 'clojure-mode-hook #'smartparens-strict-mode)
-    (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
-    (add-hook 'clojure-mode-hook #'company-mode)))
 
 (use-package cider
   :bind (("M-d" . sp-kill-sexp)
@@ -31,7 +21,16 @@
     (add-hook 'cider-repl-mode-hook #'company-mode)
     (add-hook 'cider-mode-hook #'company-mode)))
 
-(use-package company-mode)
+(use-package clojure-mode
+  :bind (("M-d" . sp-kill-sexp)
+	 ("M-r" . sp-raise-sexp)
+	 ("C-M-b" . sp-previous-sexp)
+	 ("C-x M-e" . cider-eval-print-last-sexp))
+  :config
+  (progn
+    (add-hook 'clojure-mode-hook #'smartparens-strict-mode)
+    (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
+    (add-hook 'clojure-mode-hook #'company-mode)))
 
 (use-package ac-cider  
   :defer t

@@ -30,7 +30,7 @@
 
 ;; backup policy - http://stackoverflow.com/questions/151945/how-do-i-control-how-emacs-makes-backup-files
 ;; (setq make-backup-files nil)
-(auto-save-mode)
+;; (auto-save-mode)
 
 (custom-set-variables
    '(auto-save-file-name-transforms '((".*" "~/.emacs.d/.autosaves/\\1" t)))
@@ -47,3 +47,5 @@
 
 
 (provide 'sunra-baseline)
+
+;; (use-package sunra-baseline)

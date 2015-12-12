@@ -14,6 +14,7 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+(setq use-package-always-ensure t)
 
 (eval-when-compile
   (require 'use-package))
@@ -21,15 +22,15 @@
 (require 'bind-key)                ;; if you use any :bind variant
 
 
-
 (defmacro use-packages (&rest args)
-   (cons 'progn 
-	 (mapcar (lambda (pkg)
-		   `(use-package ,pkg ,@(rest args)))
-	      (first args))))
+  (cons 'progn 
+	(mapcar (lambda (pkg)
+		  `(use-package ,pkg :ensure nil ,@(rest args)))
+		(first args))))
+
 
 (setq emacs-dir (file-name-directory
-                    (or (buffer-file-name) (file-chase-links load-file-name)))) 
+                    (or (buffer-file-name) (file-chase-links load-file-name))))
 
 (add-to-list 'load-path (concat emacs-dir "packages"))                   
 (add-to-list 'load-path (concat emacs-dir "packages/core"))
@@ -39,12 +40,11 @@
                
 (use-packages (sunra-baseline
                sunra-baseline-packages
-               ;;sunra-line-numbers  ;; remove
       	       sunra-ido  ;; remove
                sunra-git
-	       sunra-navigation
-	       sunra-markdown
-	       sunra-multiplecursors
+               sunra-navigation
+               sunra-markdown
+               sunra-multiplecursors
                sunra-yasnippet
       	       sunra-clojure
                sunra-elisp
@@ -53,7 +53,7 @@
                sunra-purescript
                sunra-scala
                sunra-web
-	       sunra-theme))
+               sunra-theme))
 
 ;; Add: Frege, Ruby
 

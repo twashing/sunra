@@ -1,10 +1,10 @@
 
-(if window-system
-    (use-package nyan-mode
-      :config (progn
-		(nyan-mode 1)
-		(setq nyan-bar-length 16
-		      nyan-wavy-trail t))))
+(use-package nyan-mode
+  :if window-system
+  :config (progn
+	    (nyan-mode 1)
+	    (setq nyan-bar-length 16
+		  nyan-wavy-trail t)))
 
 (font-lock-add-keywords
    nil '(("\\<\\(\\(FIX\\(ME\\)?\\|TODO\\|OPTIMIZE\\|HACK\\|REFACTOR\\):\\)"
@@ -25,7 +25,6 @@
     (sml/apply-theme 'smart-mode-line-dark)))
 
 (use-package company
-  :defer t
   :config
   (add-hook 'after-init-hook 'global-company-mode))
 
@@ -35,7 +34,7 @@
 
 (use-package helm-projectile)
 (use-package helm-company)
-(use-package helm-config)
+(require 'helm-config)
 (use-package helm
   :bind (("M-x" . helm-M-x)
 	 ("C-x b" . helm-buffers-list)
@@ -55,6 +54,7 @@
 			  helm-buffers-fuzzy-matching t
 			  helm-recentf-fuzzy-match t
 			  helm-apropos-fuzzy-match t)))
+
 
 (use-package beacon
   :config (beacon-mode 1))
