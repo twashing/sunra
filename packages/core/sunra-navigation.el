@@ -19,10 +19,9 @@
 (global-set-key (kbd "M-p") 'ace-window)
 (global-set-key (kbd "M-y") 'browse-kill-ring)
 (global-set-key (kbd "M-SPC") 'delete-whitespace-except-one)
-(global-set-key (kbd "C-M-u") 'scroll-other-window-down)
-(global-set-key (kbd "C-M-d") 'scroll-other-window)
+(global-set-key (kbd "C-M-[") 'scroll-other-window-down)
+(global-set-key (kbd "C-M-]") 'scroll-other-window)
 
-scroll-other-window
 
 ;; Smart Parens Navigation
 (global-set-key (kbd "C-M-u") 'sp-up-sexp)

@@ -36,14 +36,12 @@
 (add-to-list 'load-path (concat emacs-dir "packages/core"))
 (add-to-list 'load-path (concat emacs-dir "packages/lang"))
 (add-to-list 'load-path (concat emacs-dir "packages/user"))
-(add-to-list 'load-path (concat emacs-dir "elpa"))
-
                
 (use-packages (sunra-baseline
                sunra-baseline-packages
       	       sunra-ido  ;; remove
                sunra-git
-               sunra-navigation
+               
                sunra-markdown
                sunra-multiplecursors
                sunra-yasnippet
@@ -55,6 +53,10 @@
                sunra-scala
                sunra-web
                sunra-theme))
+
+(use-package sunra-navigation
+  :defer 0
+  :ensure nil)
 
 ;; Add: Frege, Ruby
 
@@ -107,4 +109,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(mode-line-inactive ((t (:background "black" :foreground "color-243" :inverse-video nil :box nil)))))
