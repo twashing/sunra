@@ -36,6 +36,7 @@
 (add-to-list 'load-path (concat emacs-dir "packages/core"))
 (add-to-list 'load-path (concat emacs-dir "packages/lang"))
 (add-to-list 'load-path (concat emacs-dir "packages/user"))
+(add-to-list 'load-path (concat emacs-dir "elpa"))
 
                
 (use-packages (sunra-baseline

@@ -19,6 +19,7 @@
 
 (use-package smart-mode-line
   :init (setq sml/no-confirm-load-theme t)
+  :defer 0
   :config 
   (progn
     (sml/setup)
