@@ -3,6 +3,12 @@
     (interactive)
       (kill-new (thing-at-point 'sexp)))
 
+(defun delete-whitespace-except-one ()
+  (interactive)
+  (just-one-space -1))
+
+
+;; Navigation
 (fset 'buf-move-up "\C-u10\C-p")
 (fset 'buf-move-down "\C-u10\C-n")
 
@@ -12,7 +18,9 @@
 (global-set-key (kbd "C-M-k") 'copy-sexp-at-point)
 (global-set-key (kbd "M-p") 'ace-window)
 (global-set-key (kbd "M-y") 'browse-kill-ring)
+(global-set-key (kbd "M-SPC ") 'delete-whitespace-except-one)
 
+;; Smart Parens Navigation
 (global-set-key (kbd "C-M-u") 'sp-up-sexp)
 (global-set-key (kbd "C-M-d") 'sp-down-sexp)
 

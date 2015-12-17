@@ -32,10 +32,8 @@
     (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
     (add-hook 'clojure-mode-hook #'company-mode)))
 
-(use-package ac-cider  
-  :defer t
-  :init (progn
-	  (add-hook 'cider-mode-hook 'ac-flyspell-workaround)))
+(use-package ac-cider)
+(use-package clojure-snippets)
 
 
 (use-package eval-sexp-fu)
