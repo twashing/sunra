@@ -33,4 +33,6 @@
 (global-set-key (kbd "C-M-e") 'sp-backward-barf-sexp)
 
 
+(use-package smooth-scrolling)
+
 (provide 'sunra-navigation)
