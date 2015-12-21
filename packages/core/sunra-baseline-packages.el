@@ -1,4 +1,3 @@
-
 (use-package nyan-mode
   :if window-system
   :config (progn
@@ -35,6 +34,7 @@
 
 (use-package helm-projectile)
 (use-package helm-company)
+
 (require 'helm-config)
 (use-package helm
   :bind (("M-x" . helm-M-x)
@@ -54,8 +54,12 @@
 			  helm-M-x-fuzzy-match t
 			  helm-buffers-fuzzy-matching t
 			  helm-recentf-fuzzy-match t
-			  helm-apropos-fuzzy-match t)))
+			  helm-apropos-fuzzy-match t)
 
+	    (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
+	    (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
+	    (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
+	    ))
 
 (use-package beacon
   :config (beacon-mode 1))
@@ -69,8 +73,8 @@
 (use-package avy
   :config (progn
 	    (avy-setup-default)
-	    (global-set-key (kbd "C-M-[") 'avy-goto-char)
-	    (global-set-key (kbd "C-M-]") 'avy-goto-char-2)
+	    (global-set-key (kbd "C-{") 'avy-goto-char)
+	    (global-set-key (kbd "C-_") 'avy-goto-char-2)
 	    (global-set-key (kbd "M-g f") 'avy-goto-line)
 	    (global-set-key (kbd "M-g w") 'avy-goto-word-1)
 	    (global-set-key (kbd "M-g e") 'avy-goto-word-0)))

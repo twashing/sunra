@@ -14,6 +14,7 @@
     (setq nrepl-buffer-name-separator "/")
     (setq nrepl-buffer-name-show-port t)
     (setq cider-repl-use-clojure-font-lock t)
+    (setq cider-overlays-use-font-lock t)
 
     (add-hook 'cider-repl-mode-hook #'smartparens-strict-mode)
     (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
