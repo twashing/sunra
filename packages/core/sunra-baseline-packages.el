@@ -74,14 +74,14 @@
   :config (progn
 	    (avy-setup-default)
 	    (global-set-key (kbd "C-{") 'avy-goto-char)
-	    (global-set-key (kbd "C-_") 'avy-goto-char-2)
+	    (global-set-key (kbd "C--") 'avy-goto-char-2)
 	    (global-set-key (kbd "M-g f") 'avy-goto-line)
 	    (global-set-key (kbd "M-g w") 'avy-goto-word-1)
 	    (global-set-key (kbd "M-g e") 'avy-goto-word-0)))
 
 (use-package ace-window
   :config (progn
-	    (global-set-key (kbd "M-p") 'ace-window)))
+	    (global-set-key (kbd "C-M-p") 'ace-window)))
 
 (use-package projectile 
   :config

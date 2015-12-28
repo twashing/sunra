@@ -1,4 +1,3 @@
-
 (use-package cider
   :bind (("M-d" . sp-kill-sexp)
 	 ("M-r" . sp-raise-sexp)
@@ -15,6 +14,7 @@
     (setq nrepl-buffer-name-show-port t)
     (setq cider-repl-use-clojure-font-lock t)
     (setq cider-overlays-use-font-lock t)
+    (setq cider-font-lock-dynamically '(macro core function var))
 
     (add-hook 'cider-repl-mode-hook #'smartparens-strict-mode)
     (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
