@@ -20,6 +20,30 @@ Just git clone (or download) this repo, to your `~/.emacs.d` directory. With tha
 - package.el (bundled with emacs 24)
 - clojure's cider package requires `[cider/cider-nrepl "0.9.0-SNAPSHOT"]` in ***.lein/profiles***
 
+## Commands
+
+| Command Group | Binding |
++-----+-----+
+| Move | `C-c m` |
++-----+-----+
+| Goto | `C-c g` |
++-----+-----+
+| Window | `C-c w` |
++-----+-----+
+| Projectile | main `C-c P` |
++-----+-----+
+|   | other `C-c O` |
++-----+-----+
+| Smartparens | `C-c S` |
++-----+-----+
+| Multiplecursors | `C-c M` |
++-----+-----+
+| Yasnippet | `C-c Y` |
++-----+-----+
+| Helm | inlined `\\` |
++-----+-----+
+
+
 
 ## TODO
 
@@ -28,10 +52,5 @@ Just git clone (or download) this repo, to your `~/.emacs.d` directory. With tha
   - Cyberpunk (current)
   - Solarized
 - Documentation for All Modes: 
-  - SmartParens / Rainbow
-  - Ido
-  - Company
-  - Clojure (cider, refactor)
-  - Multiple-Cursors
   - User Localization (~/.sunra.d/)
   - Navigation
