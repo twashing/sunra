@@ -26,17 +26,18 @@ Just git clone (or download) this repo, to your `~/.emacs.d` directory. With tha
 | Command Group   | Binding       |
 |-----------------|---------------|
 | Move            | `C-c m`       |
+| Transpose       | `C-c t r`     |
 | Goto            | `C-c g`       |
-| Wind-w          | `C-c w`       |
-| Proj-ctile      | main `C-c P`  |
-|                 | other `C-c O` |
-| Smar-parens     | `C-c S`       |
-| Mult-plecursors | `C-c M`       |
-| Yasn-ppet       | `C-c Y`       |
-| Helm            | inlined `\\`  |
+| Window          | `C-c w`       |
+| Projectile      | `C-c P` main  |
+|                 | `C-c O` other |
+| Smartparens     | `C-c S`       |
+| Multiplecursors | `C-c M`       |
+| Yasnippet       | `C-c Y`       |
+| Helm            | `\\` inlined  |
 
 
-## TODO
+## Todo
 
 - Themes (on desktop vs terminal)
   - Zenburn
