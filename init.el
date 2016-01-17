@@ -5,7 +5,6 @@
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))) ;; For important compatibility libraries like cl-lib
 (package-initialize)
-
 (add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
 
 
@@ -21,38 +20,36 @@
 (require 'diminish)                ;; if you use :diminish
 (require 'bind-key)                ;; if you use any :bind variant
 
-
 (defmacro use-packages (&rest args)
-  (cons 'progn 
+  (cons 'progn
 	(mapcar (lambda (pkg)
 		  `(use-package ,pkg :ensure nil ,@(rest args)))
 		(first args))))
 
-
 (setq emacs-dir (file-name-directory
-                    (or (buffer-file-name) (file-chase-links load-file-name))))
+		 (or (buffer-file-name) (file-chase-links load-file-name))))
 
-(add-to-list 'load-path (concat emacs-dir "packages"))                   
+(add-to-list 'load-path (concat emacs-dir "packages"))
 (add-to-list 'load-path (concat emacs-dir "packages/core"))
 (add-to-list 'load-path (concat emacs-dir "packages/lang"))
 (add-to-list 'load-path (concat emacs-dir "packages/user"))
-               
+
 (use-packages (sunra-baseline
-               sunra-baseline-packages
-      	       sunra-ido  ;; remove
-               sunra-git
-               
-               sunra-markdown
-               sunra-multiplecursors
-               sunra-yasnippet
-      	       sunra-clojure
-               sunra-elisp
-               sunra-hy  ; remove
-      	       sunra-haskell
-               sunra-purescript
-               sunra-scala
-               sunra-web
-               sunra-theme))
+	       sunra-baseline-packages
+	       sunra-ido  ;; remove
+	       sunra-git
+
+	       sunra-markdown
+	       sunra-multiplecursors
+	       sunra-yasnippet
+	       sunra-clojure
+	       sunra-elisp
+	       sunra-hy  ; remove
+	       sunra-haskell
+	       sunra-purescript
+	       sunra-scala
+	       sunra-web
+	       sunra-theme))
 
 (use-package sunra-navigation
   :defer 0
@@ -71,17 +68,17 @@
 	  (make-directory dircombined)
 	  (create-nested-dirs (cdr dirlist) dircombined)))))
 
-(defun create-user-dirs () 
+(defun create-user-dirs ()
   (let* ((local-packagedirs '(".sunra.d" "packages" "user"))
 	 (local-sunradir "~"))
-   
+
     (create-nested-dirs local-packagedirs local-sunradir)))
 
 
 (if (not (file-exists-p "~/.sunra.d"))
 
     (progn
-      
+
       ;; ask user if they want this created
       (create-user-dirs)
 
@@ -96,12 +93,14 @@
 ;; Eval userinit
 (load "~/.sunra.d/init.el")
 (custom-set-variables
+
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/.autosaves/\\1" t))))
- '(backup-directory-alist (quote ((".*" . "~/.emacs.d/.backup/"))))
+ ;; '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/.autosaves/\\1" t))))
+ ;; '(backup-directory-alist (quote ((".*" . "~/.emacs.d/.backup/"))))
+
  '(cider-cljs-lein-repl
    "(do (require 'weasel.repl.websocket) (cemerick.piggieback/cljs-repl (weasel.repl.websocket/repl-env :ip \"127.0.0.1\" :port 9001)))"))
 (custom-set-faces
