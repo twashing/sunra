@@ -38,13 +38,13 @@
 	       sunra-baseline-packages
 	       sunra-ido  ;; remove
 	       sunra-git
-
 	       sunra-markdown
 	       sunra-multiplecursors
 	       sunra-yasnippet
 	       sunra-clojure
 	       sunra-elisp
-	       sunra-hy  ; remove
+	       sunra-hy
+	       sunra-yaml
 	       sunra-haskell
 	       sunra-purescript
 	       sunra-scala
@@ -99,7 +99,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  ;; '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/.autosaves/\\1" t))))
- ;; '(backup-directory-alist (quote ((".*" . "~/.emacs.d/.backup/"))))
+ '(backup-directory-alist (quote ((".*" . "~/.emacs.d/.backup/"))))
 
  '(cider-cljs-lein-repl
    "(do (require 'weasel.repl.websocket) (cemerick.piggieback/cljs-repl (weasel.repl.websocket/repl-env :ip \"127.0.0.1\" :port 9001)))"))
