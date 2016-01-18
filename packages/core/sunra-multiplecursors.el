@@ -1,5 +1,5 @@
 (use-package multiple-cursors
-  :defer t
+  ;; :defer t
   :config (global-set-key (kbd "C-c M")
 			  (defhydra multiple-cursors-hydra (:hint nil)
 			    "
@@ -9,7 +9,7 @@
 [_P_]   Skip    [_N_]   Skip    [_a_] Mark all
 [_M-p_] Unmark  [_M-n_] Unmark  [_r_] Mark by regexp
 ^ ^             ^ ^             [_q_] Quit
-                           "
+"
   ("l" mc/edit-lines :exit t)
   ("a" mc/mark-all-like-this :exit t)
   ("n" mc/mark-next-like-this)

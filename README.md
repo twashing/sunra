@@ -1,6 +1,6 @@
 # Sunra
 
-Yet another .emacs.d 
+Yet another .emacs.d
 
 ![Sun Ra](http://www.sensitiveskinmagazine.com/wp-content/images/blog/sun-ra.jpg)
 
@@ -36,13 +36,25 @@ Just git clone (or download) this repo, to your `~/.emacs.d` directory. With tha
 | Yasnippet       | `C-c Y`       |
 | Helm            | `\\` inlined  |
 
+| Navigation                   | Binding |
+|------------------------------|---------|
+| buf-move-up                  | `M-U`   |
+| buf-move-down                | `M-D`   |
+| sp-kill-sexp                 | `C-d`   |
+| copy-sexp-at-point           | `C-M-k` |
+| ace-window                   | `M-p`   |
+| browse-kill-ring             | `M-y`   |
+| delete-whitespace-except-one | `M-SPC` |
+| scroll-other-window-down     | `C-M-[` |
+| scroll-other-window          | `C-M-]` |
+
 
 ## Todo
 
 - Themes (on desktop vs terminal)
-  - Zenburn
-  - Cyberpunk (current)
-  - Solarized
-- Documentation for All Modes: 
-  - User Localization (~/.sunra.d/)
-  - Navigation
+- Zenburn
+- Cyberpunk (current)
+- Solarized
+- Documentation for All Modes:
+- User Localization (~/.sunra.d/)
+- Navigation
