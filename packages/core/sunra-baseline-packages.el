@@ -22,11 +22,11 @@
   :config (progn
 	    (super-save-mode +1)))
 
-(use-package crux
-  :config (progn
-	    (crux-with-region-or-buffer indent-region)
-	    (crux-with-region-or-buffer untabify)
-	    (add-hook 'before-save-hook 'crux-cleanup-buffer-or-region)))
+;; (use-package crux
+;;   :config (progn
+;; 	    (crux-with-region-or-buffer indent-region)
+;; 	    (crux-with-region-or-buffer untabify)
+;; 	    (add-hook 'before-save-hook 'crux-cleanup-buffer-or-region)))
 
 (use-package beacon
   :config (beacon-mode 1))
