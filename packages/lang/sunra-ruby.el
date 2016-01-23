@@ -12,6 +12,10 @@
 	      '(push 'company-robe company-backends))
 	    (add-hook 'robe-mode-hook 'ac-robe-setup)))
 
+(use-package rubocop
+  :config (progn
+	    (add-hook 'ruby-mode-hook #'rubocop-mode)))
+
 ;; (use-package ruby-block)
 ;; (use-package ruby-end)
 
