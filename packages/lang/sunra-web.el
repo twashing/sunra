@@ -1,4 +1,4 @@
-(use-package skewer-mode
-  :defer t)
+(use-package skewer-mode)
+(use-package haml-mode)
 
 (provide 'sunra-web)
