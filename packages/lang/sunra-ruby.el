@@ -6,6 +6,7 @@
 (use-package yari)
 
 (use-package robe
+  :bind (("C-c C-." . robe-bind))
   :config (progn
 	    (add-hook 'enh-ruby-mode-hook 'robe-mode)
 	    (eval-after-load 'company
