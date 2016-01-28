@@ -32,9 +32,9 @@
 ;; (setq make-backup-files nil)
 ;; (auto-save-mode)
 
-;; (custom-set-variables
-;;    '(auto-save-file-name-transforms '((".*" "~/.emacs.d/.autosaves/\\1" t)))
-;;    '(backup-directory-alist '((".*" . "~/.emacs.d/.backup/"))))
+(custom-set-variables
+   '(auto-save-file-name-transforms '((".*" "~/.emacs.d/.autosaves/\\1" t)))
+   '(backup-directory-alist '((".*" . "~/.emacs.d/.backup/"))))
 
 (delete-selection-mode t)
 

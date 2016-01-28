@@ -31,6 +31,7 @@
 
 (add-to-list 'load-path (concat emacs-dir "packages"))
 (add-to-list 'load-path (concat emacs-dir "packages/core"))
+(add-to-list 'load-path (concat emacs-dir "packages/core/baseline"))
 (add-to-list 'load-path (concat emacs-dir "packages/lang"))
 (add-to-list 'load-path (concat emacs-dir "packages/user"))
 
