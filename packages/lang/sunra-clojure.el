@@ -8,7 +8,8 @@
     (add-hook 'cider-mode-hook #'eldoc-mode)
     
     (setq nrepl-log-messages t)
-    (setq cider-show-error-buffer nil)
+    ;;(setq cider-show-error-buffer nil)
+    (setq cider-auto-select-error-buffer nil)
     (setq cider-prefer-local-resources t)
     (setq nrepl-buffer-name-separator "/")
     (setq nrepl-buffer-name-show-port t)
@@ -41,7 +42,6 @@
 (use-package cider-eval-sexp-fu)
 
 (use-package clj-refactor
-  :defer t
   :config (add-hook 'clojure-mode-hook (lambda ()
 					 (clj-refactor-mode 1)
 

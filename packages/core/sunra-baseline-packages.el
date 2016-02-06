@@ -43,8 +43,7 @@
   :config
   (add-hook 'after-init-hook 'global-company-mode))
 
-(use-package projectile
-  :defer t)
+(use-package projectile)
 
 (use-package helm-company)
 
@@ -107,7 +106,8 @@
 	    (global-set-key (kbd "C-c O") 'hydra-projectile-other-window/body)
 	    (global-set-key (kbd "C-c P") 'hydra-projectile/body)
 	    (global-set-key (kbd "C-c S") 'hydra-learn-sp/body)
-	    (global-set-key (kbd "C-c g") 'hydra-goto/body)))
+	    (global-set-key (kbd "C-c g") 'hydra-goto/body)
+	    (global-set-key (kbd "C-c i") 'hydra-ivy/body)))
 
 (require 'baseline-functions)
 

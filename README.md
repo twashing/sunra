@@ -48,6 +48,10 @@ Just git clone (or download) this repo, to your `~/.emacs.d` directory. With tha
 | scroll-other-window-down     | `C-M-[` |
 | scroll-other-window          | `C-M-]` |
 
+| Clojure      | Binding      |
+|--------------|--------------|
+| clj-refactor | `C-c C-b hh` |
+
 
 ## Todo
 
