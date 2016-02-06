@@ -48,7 +48,6 @@
 
 (use-package helm-company)
 
-(require 'baseline-functions)
 (require 'helm-config)
 (use-package helm
   :bind (("M-x" . helm-M-x)
@@ -76,6 +75,7 @@
 
 	    (when (package-installed-p 'hydra)
 	      (define-key helm-map (kbd "\\") 'hydra-helm/body))))
+
 
 (use-package swiper
   :config (progn
@@ -108,5 +108,8 @@
 	    (global-set-key (kbd "C-c P") 'hydra-projectile/body)
 	    (global-set-key (kbd "C-c S") 'hydra-learn-sp/body)
 	    (global-set-key (kbd "C-c g") 'hydra-goto/body)))
+
+(require 'baseline-functions)
+
 
 (provide 'sunra-baseline-packages)

@@ -8,6 +8,11 @@
   (just-one-space -1))
 
 
+
+;; (global-set-key (kbd "C-M-.") 'isearch-forward-symbol-at-point)
+(global-set-key (kbd "C-x M-x") 'isearch-forward-symbol-at-point)
+
+
 ;; Navigation
 (fset 'buf-move-up "\C-u10\C-p")
 (fset 'buf-move-down "\C-u10\C-n")
