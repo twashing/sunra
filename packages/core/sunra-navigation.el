@@ -9,8 +9,9 @@
 
 
 
-;; (global-set-key (kbd "C-M-.") 'isearch-forward-symbol-at-point)
 (global-set-key (kbd "C-x M-x") 'isearch-forward-symbol-at-point)
+(global-set-key (kbd "C-x C-g") 'magit-status)
+
 
 
 ;; Navigation

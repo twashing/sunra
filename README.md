@@ -36,21 +36,26 @@ Just git clone (or download) this repo, to your `~/.emacs.d` directory. With tha
 | Yasnippet       | `C-c Y`       |
 | Helm            | `\\` inlined  |
 
-| Navigation                   | Binding |
-|------------------------------|---------|
-| buf-move-up                  | `M-U`   |
-| buf-move-down                | `M-D`   |
-| sp-kill-sexp                 | `C-d`   |
-| copy-sexp-at-point           | `C-M-k` |
-| ace-window                   | `M-p`   |
-| browse-kill-ring             | `M-y`   |
-| delete-whitespace-except-one | `M-SPC` |
-| scroll-other-window-down     | `C-M-[` |
-| scroll-other-window          | `C-M-]` |
+
+| Navigation                   | Binding   |
+|------------------------------|-----------|
+| buf-move-up                  | `M-U`     |
+| buf-move-down                | `M-D`     |
+| sp-kill-sexp                 | `C-d`     |
+| copy-sexp-at-point           | `C-M-k`   |
+| search-symbol-at-point       | `C-x M-x` |
+| magit-status                 | `C-x C-g` |
+| ace-window                   | `M-p`     |
+| browse-kill-ring             | `M-y`     |
+| delete-whitespace-except-one | `M-SPC`   |
+| scroll-other-window-down     | `C-M-[`   |
+| scroll-other-window          | `C-M-]`   |
+
 
 | Clojure      | Binding      |
 |--------------|--------------|
 | clj-refactor | `C-c C-b hh` |
+
 
 
 ## Todo
