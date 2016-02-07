@@ -44,7 +44,8 @@ Just git clone (or download) this repo, to your `~/.emacs.d` directory. With tha
 | sp-kill-sexp                 | `C-d`     |
 | copy-sexp-at-point           | `C-M-k`   |
 | search-symbol-at-point       | `C-x M-x` |
-| magit-status                 | `C-x C-g` |
+| grep-find                    | `C-x C-g` |
+| magit-status                 | `C-x C-m` |
 | ace-window                   | `M-p`     |
 | browse-kill-ring             | `M-y`     |
 | delete-whitespace-except-one | `M-SPC`   |

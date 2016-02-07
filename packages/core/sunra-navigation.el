@@ -10,7 +10,8 @@
 
 
 (global-set-key (kbd "C-x M-x") 'isearch-forward-symbol-at-point)
-(global-set-key (kbd "C-x C-g") 'magit-status)
+(global-set-key (kbd "C-x C-g") 'grep-find)
+(global-set-key (kbd "C-x C-m") 'magit-status)
 
 
 
