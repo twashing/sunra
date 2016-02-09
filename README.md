@@ -41,6 +41,8 @@ Just git clone (or download) this repo, to your `~/.emacs.d` directory. With tha
 |------------------------------|-----------|
 | buf-move-up                  | `M-U`     |
 | buf-move-down                | `M-D`     |
+| crux-smart-open-line-above   | `C-x M-o` |
+| crux-smart-open-line         | `C-x o`   |
 | sp-kill-sexp                 | `C-d`     |
 | copy-sexp-at-point           | `C-M-k`   |
 | search-symbol-at-point       | `C-x M-x` |
