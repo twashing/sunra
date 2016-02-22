@@ -12,7 +12,7 @@
 (global-set-key (kbd "C-x C-g") 'grep-find)
 (global-set-key (kbd "C-x C-m") 'magit-status)
 (global-set-key (kbd "C-x M-o") 'crux-smart-open-line-above)
-(global-set-key (kbd "C-x o") 'crux-smart-open-line)
+(global-set-key (kbd "C-x C-o") 'crux-smart-open-line)
 
 
 ;; Navigation
