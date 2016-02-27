@@ -26,7 +26,9 @@
   :config (progn
 	    (crux-with-region-or-buffer indent-region)
 	    (crux-with-region-or-buffer untabify)
-	    (add-hook 'before-save-hook 'crux-cleanup-buffer-or-region)))
+	    ;; (add-hook 'before-save-hook 'crux-cleanup-buffer-or-region)
+	    ;; (remove-hook 'before-save-hook 'crux-cleanup-buffer-or-region)
+	    ))
 
 (use-package beacon
   :config (beacon-mode 1))
