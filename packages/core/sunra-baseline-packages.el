@@ -10,36 +10,44 @@
 		  nyan-wavy-trail t)))
 
 (use-package which-func
-  :defer t
   :config (which-func-mode 1))
 
-(use-package browse-kill-ring :defer t)
-(use-package rainbow-delimiters :defer t)
-(use-package erc :defer t)
-(use-package groovy-mode :defer t)
+(use-package browse-kill-ring)
+(use-package rainbow-delimiters)
+(use-package erc)
+(use-package groovy-mode)
 
 (use-package super-save
   :config (progn
-	    (super-save-mode +1)))
+	    (super-save-mode +1)
+	    (setq super-save-auto-save-when-idle t)))
 
 (use-package crux
   :config (progn
-	    (crux-with-region-or-buffer indent-region)
-	    (crux-with-region-or-buffer untabify)
+	    ;; (crux-with-region-or-buffer indent-region)
+	    ;; (crux-with-region-or-buffer untabify)
 	    ;; (add-hook 'before-save-hook 'crux-cleanup-buffer-or-region)
 	    ;; (remove-hook 'before-save-hook 'crux-cleanup-buffer-or-region)
 	    ))
+
+(use-package which-key
+  :config (which-key-mode))
+
+(use-package anzu
+  :config (progn
+	    (global-anzu-mode +1)
+	    (anzu-mode +1)))
 
 (use-package beacon
   :config (beacon-mode 1))
 
 (use-package smart-mode-line
   :init (setq sml/no-confirm-load-theme t)
-  :defer 0
   :config
   (progn
     (sml/setup)
     (sml/apply-theme 'smart-mode-line-dark)))
+
 
 (use-package company
   :config

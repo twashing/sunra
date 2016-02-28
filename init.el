@@ -23,7 +23,10 @@
 (defmacro use-packages (&rest args)
   (cons 'progn
 	(mapcar (lambda (pkg)
-		  `(use-package ,pkg :ensure nil ,@(rest args)))
+		  `(use-package ,pkg
+		     :ensure nil
+		     :defer 0
+		     ,@(rest args)))
 		(first args))))
 
 (setq emacs-dir (file-name-directory
@@ -35,8 +38,9 @@
 (add-to-list 'load-path (concat emacs-dir "packages/lang"))
 (add-to-list 'load-path (concat emacs-dir "packages/user"))
 
-(use-packages (sunra-baseline
-	       sunra-baseline-packages
+(use-packages (
+	       sunra-baseline
+ 	       sunra-baseline-packages
 	       sunra-ido  ;; remove
 	       sunra-git
 	       sunra-markdown
@@ -51,11 +55,9 @@
 	       sunra-purescript
 	       sunra-scala
 	       sunra-web
-	       sunra-theme))
+	       sunra-theme
+	       sunra-navigation))
 
-(use-package sunra-navigation
-  :defer 0
-  :ensure nil)
 
 ;; Add: Frege, Ruby
 
