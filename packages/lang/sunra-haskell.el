@@ -1,5 +1,4 @@
-(use-package haskell-mode  
-  :defer t
+(use-package haskell-mode
   :config
   (progn
     (require 'haskell-interactive-mode)
@@ -9,8 +8,7 @@
 
     (autoload 'ghc-init "ghc" nil t)
     (autoload 'ghc-debug "ghc" nil t)
-    (add-hook 'haskell-mode-hook (lambda () (ghc-init)))
-    ))
+    (add-hook 'haskell-mode-hook (lambda () (ghc-init)))))
 
 (provide 'sunra-haskell)
 

@@ -1,5 +1,4 @@
 (use-package multiple-cursors
-  ;; :defer t
   :config (global-set-key (kbd "C-c M")
 			  (defhydra multiple-cursors-hydra (:hint nil)
 			    "

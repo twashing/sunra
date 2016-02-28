@@ -57,8 +57,7 @@
   (hs-minor-mode)
   (diminish 'hs-minor-mode))
 
-(use-package midje-mode 
-  :defer t
+(use-package midje-mode
   :diminish midje-mode
   :config (progn
 	    (add-hook 'clojure-mode-hook 'midje-mode)

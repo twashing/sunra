@@ -1,16 +1,13 @@
 (use-package ido
-  :defer t
   :config
   (progn
     (setq ido-enable-flex-matching t)
     (setq ido-everywhere t)
     (ido-mode 1)))
 
-(use-package ido-ubiquitous
-  :defer t)
+(use-package ido-ubiquitous)
 
-(use-package flx-ido
-  :defer t)
+(use-package flx-ido)
 
 (use-package smex 
   :bind ("C-M-x" . smex)
@@ -27,7 +24,6 @@
       
 (use-package recentf
   :ensure t
-  :defer 2
   :config
   (progn
     (require 'recentf)

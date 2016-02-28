@@ -1,8 +1,6 @@
-(use-package scala-mode2
-  :defer t)
+(use-package scala-mode2)
 
-(use-package ensime  
-  :defer t
+(use-package ensime
   :config
   (progn
     (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)))

@@ -1,6 +1,5 @@
 
 (use-package enh-ruby-mode
-  ;;:defer t
   :mode ("\\.rake$" "Rakefile$" "\\.gemspec$" "\\.ru$" "Gemfile$" "Guardfile$"))
 
 (use-package yari)

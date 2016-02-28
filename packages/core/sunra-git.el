@@ -1,8 +1,6 @@
-(use-package magit 
-  :defer t)
+(use-package magit)
 
 (use-package git-gutter
-  :defer t
   :config (global-set-key (kbd "C-c g")
 			  (defhydra hydra-git-gutter (:body-pre (git-gutter-mode 1)
 								:hint nil)
@@ -33,8 +31,7 @@ Git gutter:
 			              :color blue))))
 
 
-(use-package diff-hl  
-  :defer t
+(use-package diff-hl
   :config (global-diff-hl-mode))
 
 (provide 'sunra-git)

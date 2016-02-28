@@ -5,3 +5,7 @@
 smex-items
 /custom
 /eshell
+.backup/
+projectile-bookmarks.eld
+tmux-*
+url/
