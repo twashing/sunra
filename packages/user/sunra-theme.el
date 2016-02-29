@@ -6,6 +6,8 @@
 ;;(load-theme 'solarized-dark t)
 ;;(set-face-foreground 'linum "steel blue")
 
-(use-package cyberpunk-theme)
+(use-package cyberpunk-theme
+  :ensure nil
+  :defer 0)
 
 (provide 'sunra-theme)

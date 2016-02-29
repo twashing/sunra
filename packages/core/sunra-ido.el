@@ -1,15 +1,22 @@
 (use-package ido
+  :ensure nil
+  :defer 0
   :config
   (progn
     (setq ido-enable-flex-matching t)
     (setq ido-everywhere t)
     (ido-mode 1)))
 
-(use-package ido-ubiquitous)
+(use-package ido-ubiquitous
+  :ensure nil
+  :defer 0)
 
-(use-package flx-ido)
+(use-package flx-ido
+  :ensure nil
+  :defer 0)
 
 (use-package smex 
+  :ensure nil
   :bind ("C-M-x" . smex)
   :config
   (progn
@@ -24,10 +31,10 @@
       
 (use-package recentf
   :ensure t
+  :bind ("C-c f" . recentf-ido-find-file)
   :config
   (progn
     (require 'recentf)
-    (global-set-key (kbd "C-c f") 'recentf-ido-find-file)
     (setq recentf-max-saved-items 200
           recentf-max-menu-items 15)
     (recentf-mode +1)))

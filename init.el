@@ -23,10 +23,7 @@
 (defmacro use-packages (&rest args)
   (cons 'progn
 	(mapcar (lambda (pkg)
-		  `(use-package ,pkg
-		     :ensure nil
-		     :defer 0
-		     ,@(rest args)))
+		  `(require ,pkg ,@(rest args)))
 		(first args))))
 
 (setq emacs-dir (file-name-directory
@@ -38,24 +35,24 @@
 (add-to-list 'load-path (concat emacs-dir "packages/lang"))
 (add-to-list 'load-path (concat emacs-dir "packages/user"))
 
-(use-packages (sunra-baseline
-               sunra-baseline-packages
-               sunra-theme
-               sunra-navigation
-               sunra-ido  ;; remove
-               sunra-git
-               sunra-markdown
-               sunra-multiplecursors
-               sunra-yasnippet
-               sunra-clojure
-               sunra-elisp
-               sunra-hy
-               sunra-ruby
-               sunra-yaml
-               sunra-haskell
-               sunra-purescript
-               sunra-scala
-               sunra-web))
+(use-packages ('sunra-baseline
+	       'sunra-theme
+	       'sunra-navigation
+	       'sunra-baseline-packages
+	       'sunra-ido  ;; remove
+               'sunra-git
+               'sunra-markdown
+               'sunra-multiplecursors
+               'sunra-yasnippet
+               'sunra-clojure
+               'sunra-elisp
+               'sunra-hy
+               'sunra-ruby
+               'sunra-yaml
+               'sunra-haskell
+               'sunra-purescript
+               'sunra-scala
+               'sunra-web))
 
 
 ;; Add: Frege, Ruby

@@ -1,6 +1,4 @@
-(use-package multiple-cursors
-  :config (global-set-key (kbd "C-c M")
-			  (defhydra multiple-cursors-hydra (:hint nil)
+(defhydra multiple-cursors-hydra (:hint nil)
 			    "
      ^Up^            ^Down^        ^Other^
 ----------------------------------------------
@@ -18,6 +16,10 @@
   ("P" mc/skip-to-previous-like-this)
   ("M-p" mc/unmark-previous-like-this)
   ("r" mc/mark-all-in-region-regexp :exit t)
-  ("q" nil))))
+  ("q" nil))
+
+(use-package multiple-cursors
+  :ensure nil
+  :bind ("C-c M" . multiple-cursors-hydra/body))
 
 (provide 'sunra-multiplecursors)

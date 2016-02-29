@@ -1,4 +1,6 @@
 (use-package haskell-mode
+  :ensure nil
+  :defer 0
   :config
   (progn
     (require 'haskell-interactive-mode)

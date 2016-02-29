@@ -10,39 +10,61 @@
 		  nyan-wavy-trail t)))
 
 (use-package which-func
+  :ensure nil
+  :defer 0
   :config (which-func-mode 1))
 
-(use-package browse-kill-ring)
-(use-package rainbow-delimiters)
-(use-package erc)
-(use-package groovy-mode)
+(use-package browse-kill-ring
+    :ensure nil
+    :defer 0)
+(use-package rainbow-delimiters
+    :ensure nil
+    :defer 0)
+(use-package erc
+    :ensure nil
+    :defer 0)
+(use-package groovy-mode
+    :ensure nil
+    :defer 0)
 
 (use-package super-save
+  :ensure nil
+  :defer 0
   :config (progn
 	    (super-save-mode +1)
 	    (setq super-save-auto-save-when-idle t)))
 
 (use-package crux
+  :ensure nil
+  :defer 0
   :config (progn
-	    ;; (crux-with-region-or-buffer indent-region)
-	    ;; (crux-with-region-or-buffer untabify)
+	    (crux-with-region-or-buffer indent-region)
+	    (crux-with-region-or-buffer untabify)
 	    ;; (add-hook 'before-save-hook 'crux-cleanup-buffer-or-region)
 	    ;; (remove-hook 'before-save-hook 'crux-cleanup-buffer-or-region)
 	    ))
 
 (use-package which-key
+  :ensure nil
+  :defer 0
   :config (which-key-mode))
 
 (use-package anzu
+  :ensure nil
+  :defer 0
   :config (progn
 	    (global-anzu-mode +1)
 	    (anzu-mode +1)))
 
 (use-package beacon
+  :ensure nil
+  :defer 0
   :config (beacon-mode 1))
 
 (use-package smart-mode-line
   :init (setq sml/no-confirm-load-theme t)
+  :ensure nil
+  :defer 0
   :config
   (progn
     (sml/setup)
@@ -50,15 +72,22 @@
 
 
 (use-package company
+  :ensure nil
+  :defer 0
   :config
   (add-hook 'after-init-hook 'global-company-mode))
 
-(use-package projectile)
+(use-package projectile
+    :ensure nil
+    :defer 0)
 
-(use-package helm-company)
+(use-package helm-company
+    :ensure nil
+    :defer 0)
 
 (require 'helm-config)
 (use-package helm
+  :ensure nil
   :bind (("M-x" . helm-M-x)
 	 ("C-x b" . helm-buffers-list)
 	 ("C-x C-b" . helm-buffers-list)
@@ -87,18 +116,26 @@
 
 
 (use-package swiper
-  :config (progn
-	    (global-set-key (kbd "M-s") 'swiper)))
+  :ensure nil
+  :bind ("M-s" . swiper))
 
-(use-package swiper-helm)
+(use-package swiper-helm
+  :ensure nil
+  :defer 0)
 
 (use-package avy
+  :ensure nil
+  :defer 0
   :config (progn
 	    (avy-setup-default)))
 
-(use-package ace-window)
+(use-package ace-window
+  :ensure nil
+  :defer 0)
 
 (use-package smartparens
+  :ensure nil
+  :defer 0
   :diminish smartparens-mode
   :config (progn
 	    (require 'smartparens-config)
@@ -109,17 +146,16 @@
 
 
 (use-package hydra
-  :config (progn
-	    (global-set-key (kbd "C-c m") 'hydra-move/body)
-	    (global-set-key (kbd "C-c t r") 'hydra-transpose/body)
-	    (global-set-key (kbd "C-c w") 'hydra-window/body)
-	    (global-set-key (kbd "C-c O") 'hydra-projectile-other-window/body)
-	    (global-set-key (kbd "C-c P") 'hydra-projectile/body)
-	    (global-set-key (kbd "C-c S") 'hydra-learn-sp/body)
-	    (global-set-key (kbd "C-c g") 'hydra-goto/body)
-	    (global-set-key (kbd "C-c i") 'hydra-ivy/body)))
+  :ensure nil
+  :defer 0
+  :bind (("C-c m" . hydra-move/body)
+	 ("C-c t r" . hydra-transpose/body)
+	 ("C-c w" . hydra-window/body)
+	 ("C-c O" . hydra-projectile-other-window/body)
+	 ("C-c P" . hydra-projectile/body)
+	 ("C-c S" . hydra-learn-sp/body)
+	 ("C-c g" . hydra-goto/body)
+	 ("C-c i" . hydra-ivy/body)))
 
 (require 'baseline-functions)
-
-
 (provide 'sunra-baseline-packages)

@@ -1,14 +1,4 @@
-(use-package yasnippet
-  :init (progn
-	  (if (not (file-exists-p "~/.emacs.d/snippets"))
-	      (make-directory "~/.emacs.d/snippets")))
-  :config (progn
-	    (yas-global-mode 1)
-	    (add-to-list 'yas-snippet-dirs "~/.emacs.d/snippets")
-	    (yas-load-directory "~/.emacs.d/snippets")
-
-	    (global-set-key (kbd "C-c Y")
-			    (defhydra hydra-yasnippet (:color blue :hint nil)
+(defhydra hydra-yasnippet (:color blue :hint nil)
 			        "
               ^YASnippets^
 --------------------------------------------
@@ -28,6 +18,17 @@
 				("l" yas-describe-tables)
 				("g" yas/global-mode)
 				("m" yas/minor-mode)
-				  ("a" yas-reload-all)))))
+				("a" yas-reload-all))
+
+(use-package yasnippet
+  :ensure nil
+  :bind ("C-c Y" . hydra-yasnippet/body)
+  :init (progn
+	  (if (not (file-exists-p "~/.emacs.d/snippets"))
+	      (make-directory "~/.emacs.d/snippets")))
+  :config (progn
+	    (yas-global-mode 1)
+	    (add-to-list 'yas-snippet-dirs "~/.emacs.d/snippets")
+	    (yas-load-directory "~/.emacs.d/snippets")))
 
 (provide 'sunra-yasnippet)

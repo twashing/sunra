@@ -1,4 +1,5 @@
 (use-package cider
+  :ensure nil
   :bind (("M-d" . sp-kill-sexp)
 	 ("M-r" . sp-raise-sexp)
 	 ("C-M-b" . sp-previous-sexp)
@@ -24,6 +25,7 @@
     (add-hook 'cider-mode-hook #'company-mode)))
 
 (use-package clojure-mode
+  :ensure nil
   :bind (("M-d" . sp-kill-sexp)
 	 ("M-r" . sp-raise-sexp)
 	 ("C-M-b" . sp-previous-sexp)
@@ -34,14 +36,24 @@
     (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
     (add-hook 'clojure-mode-hook #'company-mode)))
 
-(use-package ac-cider)
-(use-package clojure-snippets)
+(use-package ac-cider
+  :ensure nil
+  :defer 0)
+(use-package clojure-snippets
+  :ensure nil
+  :defer 0)
 
 
-(use-package eval-sexp-fu)
-(use-package cider-eval-sexp-fu)
+(use-package eval-sexp-fu
+  :ensure nil
+  :defer 0)
+(use-package cider-eval-sexp-fu
+  :ensure nil
+  :defer 0)
 
 (use-package clj-refactor
+  :ensure nil
+  :defer 0
   :config (add-hook 'clojure-mode-hook (lambda ()
 					 (clj-refactor-mode 1)
 
@@ -58,6 +70,8 @@
   (diminish 'hs-minor-mode))
 
 (use-package midje-mode
+  :ensure nil
+  :defer 0
   :diminish midje-mode
   :config (progn
 	    (add-hook 'clojure-mode-hook 'midje-mode)

@@ -1,8 +1,6 @@
 (use-package magit)
 
-(use-package git-gutter
-  :config (global-set-key (kbd "C-c g")
-			  (defhydra hydra-git-gutter (:body-pre (git-gutter-mode 1)
+(defhydra hydra-git-gutter (:body-pre (git-gutter-mode 1)
 								:hint nil)
 			      "
 Git gutter:
@@ -28,10 +26,17 @@ Git gutter:
 					  ;; clear the markup right away
 					  (sit-for 0.1)
 					  (git-gutter:clear))
-			              :color blue))))
+			       :color blue))
+
+(use-package git-gutter
+  :ensure nil
+  :defer 0
+  :bind ("C-c g" . hydra-git-gutter/body))
 
 
 (use-package diff-hl
+  :ensure nil
+  :defer 0
   :config (global-diff-hl-mode))
 
 (provide 'sunra-git)
