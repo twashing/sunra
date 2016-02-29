@@ -36,7 +36,6 @@
 (add-to-list 'load-path (concat emacs-dir "packages/user"))
 
 (use-packages ('sunra-baseline
-	       'sunra-theme
 	       'sunra-navigation
 	       'sunra-baseline-packages
 	       'sunra-ido  ;; remove
@@ -52,7 +51,8 @@
                'sunra-haskell
                'sunra-purescript
                'sunra-scala
-               'sunra-web))
+               'sunra-web
+	       'sunra-theme))
 
 
 ;; Add: Frege, Ruby

@@ -1,13 +1,15 @@
-;;(use-package solarized-theme
-  ;;:ensure t
-  ;;:defer t
-  ;;)
-
-;;(load-theme 'solarized-dark t)
-;;(set-face-foreground 'linum "steel blue")
+;; (set-face-foreground 'linum "steel blue")
 
 (use-package cyberpunk-theme
-  :ensure nil
-  :defer 0)
+  :ensure nil)
+
+;; (use-package darcula-theme)
+;; (use-package flatland-theme)
+;; (use-package monokai-theme)
+;; (use-package spacemacs-theme)
+;; (use-package atom-one-dark-theme
+;;   :config (load-theme 'atom-one-dark t))
+
+
 
 (provide 'sunra-theme)
