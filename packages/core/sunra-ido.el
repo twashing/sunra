@@ -1,5 +1,4 @@
 (use-package ido
-  :ensure nil
   :defer 0
   :config
   (progn
@@ -8,15 +7,12 @@
     (ido-mode 1)))
 
 (use-package ido-ubiquitous
-  :ensure nil
   :defer 0)
 
 (use-package flx-ido
-  :ensure nil
   :defer 0)
 
 (use-package smex 
-  :ensure nil
   :bind ("C-M-x" . smex)
   :config
   (progn
@@ -30,7 +26,6 @@
       (find-file file))))
       
 (use-package recentf
-  :ensure t
   :bind ("C-c f" . recentf-ido-find-file)
   :config
   (progn

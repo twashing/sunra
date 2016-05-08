@@ -1,5 +1,4 @@
 (use-package hy-mode
-  :ensure nil
   :defer 0
   :mode "\\.hy\\'"
   :config (progn

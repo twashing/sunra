@@ -21,7 +21,6 @@
 				("a" yas-reload-all))
 
 (use-package yasnippet
-  :ensure nil
   :bind ("C-c Y" . hydra-yasnippet/body)
   :init (progn
 	  (if (not (file-exists-p "~/.emacs.d/snippets"))

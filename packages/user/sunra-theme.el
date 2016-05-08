@@ -1,15 +1,15 @@
 ;; (set-face-foreground 'linum "steel blue")
 
-(use-package cyberpunk-theme
-  :ensure nil)
+;; (use-package cyberpunk-theme)
 
 ;; (use-package darcula-theme)
-;; (use-package flatland-theme)
 ;; (use-package monokai-theme)
 ;; (use-package spacemacs-theme)
-;; (use-package atom-one-dark-theme
-;;   :config (load-theme 'atom-one-dark t))
-
+;; (load-theme spacemacs-dark)
+;; (use-package ample-zen-theme)
+;; (use-package colorsarenice-theme)
+;; (use-package flatland-black-theme)
+(use-package firebelly-theme)
 
 
 (provide 'sunra-theme)

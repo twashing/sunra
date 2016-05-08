@@ -7,7 +7,6 @@
   (just-one-space -1))
 
 
-
 (global-set-key (kbd "C-x M-x") 'isearch-forward-symbol-at-point)
 (global-set-key (kbd "C-x C-g") 'grep-find)
 (global-set-key (kbd "C-x C-m") 'magit-status)
@@ -31,16 +30,17 @@
 
 
 ;; Smart Parens Navigation
-(global-set-key (kbd "C-M-u") 'sp-up-sexp)
-(global-set-key (kbd "C-M-d") 'sp-down-sexp)
+(global-set-key (kbd "C-x M-s u") 'sp-up-sexp)
+(global-set-key (kbd "C-x M-s U") 'sp-backward-up-sexp)
+(global-set-key (kbd "C-x M-s d") 'sp-down-sexp)
+(global-set-key (kbd "C-x M-s D") 'sp-backward-down-sexp)
 
 (global-set-key (kbd "C-M-n") 'sp-next-sexp)
-(global-set-key (kbd "C-M-b") 'sp-beginning-of-sexp)
 
-(global-set-key (kbd "C-M-j") 'sp-forward-slurp-sexp)
-(global-set-key (kbd "C-M-y") 'sp-forward-barf-sexp)
-(global-set-key (kbd "C-M-s") 'sp-backward-slurp-sexp)
-(global-set-key (kbd "C-M-e") 'sp-backward-barf-sexp)
+(global-set-key (kbd "C-x M-s s") 'sp-forward-slurp-sexp)
+(global-set-key (kbd "C-x M-s b") 'sp-forward-barf-sexp)
+(global-set-key (kbd "C-x M-s S") 'sp-backward-slurp-sexp)
+(global-set-key (kbd "C-x M-s B") 'sp-backward-barf-sexp)
 
 
 (use-package smooth-scrolling)

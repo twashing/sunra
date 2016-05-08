@@ -1,7 +1,6 @@
 (use-package scala-mode2)
 
 (use-package ensime
-  :ensure nil
   :defer 0
   :config
   (progn

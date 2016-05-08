@@ -19,7 +19,6 @@
   ("q" nil))
 
 (use-package multiple-cursors
-  :ensure nil
   :bind ("C-c M" . multiple-cursors-hydra/body))
 
 (provide 'sunra-multiplecursors)

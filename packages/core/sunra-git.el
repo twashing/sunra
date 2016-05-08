@@ -29,13 +29,11 @@ Git gutter:
 			       :color blue))
 
 (use-package git-gutter
-  :ensure nil
   :defer 0
   :bind ("C-c g" . hydra-git-gutter/body))
 
 
 (use-package diff-hl
-  :ensure nil
   :defer 0
   :config (global-diff-hl-mode))
 
