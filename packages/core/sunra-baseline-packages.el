@@ -1,3 +1,4 @@
+
 (font-lock-add-keywords
  nil '(("\\<\\(\\(FIX\\(ME\\)?\\|TODO\\|OPTIMIZE\\|HACK\\|REFACTOR\\):\\)"
 	1 font-lock-warning-face t)))
@@ -78,6 +79,21 @@
 	 ("C-c g" . hydra-goto/body)
 	 ("C-c i" . hydra-ivy/body)))
 
+;; taken from here:
+;; http://emacs.stackexchange.com/questions/3798/how-do-i-make-pressing-ret-in-helm-find-files-open-the-directory
+(defun fu/helm-find-files-navigate-forward (orig-fun &rest args)
+  (if (file-directory-p (helm-get-selection))
+      (apply orig-fun args)
+    (helm-maybe-exit-minibuffer)))
+
+(defun fu/helm-find-files-navigate-back (orig-fun &rest args)
+  (if (= (length helm-pattern) (length (helm-find-files-initial-input)))
+      (helm-find-files-up-one-level 1)
+    (apply orig-fun args)))
+
+(defun fu/make-return-key-search ()
+  (define-key helm-find-files-map (kbd "RET") 'helm-execute-persistent-action))
+
 (use-package helm-company
     :defer 0)
 
@@ -87,7 +103,7 @@
 	 ("C-x C-b" . helm-buffers-list)
 	 ("M-y" . helm-show-kill-ring)
 	 ("C-x C-f" . helm-find-files))
-
+  
   ;; stolen from ohai emacs - Make Helm look nice
   :config (progn
 
@@ -99,9 +115,15 @@
 			  helm-M-x-fuzzy-match t
 			  helm-buffers-fuzzy-matching t
 			  helm-recentf-fuzzy-match t
-			  helm-apropos-fuzzy-match t)
+			  helm-apropos-fuzzy-match t
+			  helm-boring-file-regexp-list '("^\\." "\\.\\.$"))
 
-	    (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
+	    (advice-add 'helm-execute-persistent-action :around #'fu/helm-find-files-navigate-forward)
+	    (advice-add 'helm-ff-delete-char-backward :around #'fu/helm-find-files-navigate-back)
+            
+	    ;; rebind return to run persistent action
+	    (add-hook 'helm-after-initialize-hook 'fu/make-return-key-search)
+	    
 	    (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
 	    (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
 
@@ -109,6 +131,7 @@
 	      (define-key helm-map (kbd "\\") 'hydra-helm/body))))
 
 ;; (require 'helm-config)
+
 
 (use-package swiper
   :bind ("M-s" . swiper))
@@ -134,6 +157,6 @@
   :init
   (setq sp-highlight-pair-overlay nil))
 
-;; (use-package baseline-functions)
+(require 'baseline-functions)
 
 (provide 'sunra-baseline-packages)

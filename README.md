@@ -32,6 +32,10 @@ Just git clone (or download) this repo, to your `~/.emacs.d` directory. With tha
 | Projectile      | `C-c P` main  |
 |                 | `C-c O` other |
 | Smartparens     | `C-c S`       |
+|                 | `C-c S / a`   |  *sp-splice-sexp*
+|                 | `C-c S / da`  |  *sp-splice-sexp-killing-around*
+|                 | `C-c S / df`  |  *sp-splice-sexp-killing-forward*
+|                 | `C-c S / db`  |  *sp-splice-sexp-killing-backward*
 | Multiplecursors | `C-c M`       |
 | Yasnippet       | `C-c Y`       |
 | Helm            | `\\` inlined  |
@@ -48,7 +52,8 @@ Just git clone (or download) this repo, to your `~/.emacs.d` directory. With tha
 | search-symbol-at-point       | `C-x M-x` |
 | grep-find                    | `C-x C-g` |
 | magit-status                 | `C-x C-m` |
-| ace-window                   | `M-p`     |
+| ace-select-window            | `M-p`     |
+| ace-delete-window            | `C-x M-p` |
 | browse-kill-ring             | `M-y`     |
 | delete-whitespace-except-one | `M-SPC`   |
 | scroll-other-window-down     | `C-M-[`   |

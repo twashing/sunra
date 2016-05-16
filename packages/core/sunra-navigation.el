@@ -22,7 +22,8 @@
 (global-set-key (kbd "M-D") 'buf-move-down)
 (global-set-key (kbd "C-d") 'sp-kill-sexp)
 (global-set-key (kbd "C-M-k") 'copy-sexp-at-point)
-(global-set-key (kbd "M-p") 'ace-window)
+(global-set-key (kbd "M-p") 'ace-select-window)
+(global-set-key (kbd "C-x M-p") 'ace-delete-window)
 (global-set-key (kbd "M-y") 'browse-kill-ring)
 (global-set-key (kbd "M-SPC") 'delete-whitespace-except-one)
 (global-set-key (kbd "C-M-[") 'scroll-other-window-down)
@@ -30,18 +31,17 @@
 
 
 ;; Smart Parens Navigation
-(global-set-key (kbd "C-x M-s u") 'sp-up-sexp)
-(global-set-key (kbd "C-x M-s U") 'sp-backward-up-sexp)
-(global-set-key (kbd "C-x M-s d") 'sp-down-sexp)
-(global-set-key (kbd "C-x M-s D") 'sp-backward-down-sexp)
+(global-set-key (kbd "C-M-u") 'sp-up-sexp)
+(global-set-key (kbd "C-x C-M-u") 'sp-backward-up-sexp)
+(global-set-key (kbd "C-M-d") 'sp-down-sexp)
+(global-set-key (kbd "C-x C-M-d") 'sp-backward-down-sexp)
 
 (global-set-key (kbd "C-M-n") 'sp-next-sexp)
 
-(global-set-key (kbd "C-x M-s s") 'sp-forward-slurp-sexp)
-(global-set-key (kbd "C-x M-s b") 'sp-forward-barf-sexp)
-(global-set-key (kbd "C-x M-s S") 'sp-backward-slurp-sexp)
-(global-set-key (kbd "C-x M-s B") 'sp-backward-barf-sexp)
-
+(global-set-key (kbd "C-M-j") 'sp-forward-slurp-sexp)
+(global-set-key (kbd "C-x C-M-j") 'sp-forward-barf-sexp)
+(global-set-key (kbd "C-M-y") 'sp-backward-slurp-sexp)
+(global-set-key (kbd "C-x C-M-y") 'sp-backward-barf-sexp)
 
 (use-package smooth-scrolling)
 
