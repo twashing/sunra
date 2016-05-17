@@ -21,6 +21,7 @@
     (setq cider-prompt-for-symbol nil)
     (setq nrepl-hide-special-buffers t)
     (setq cider-prompt-save-file-on-load 'always-save)
+    (setq cljr-suppress-middleware-warnings t)
     
     (add-hook 'cider-repl-mode-hook #'smartparens-strict-mode)
     (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
