@@ -27,7 +27,8 @@
   :defer 0
   :config (progn
 	    (super-save-mode +1)
-	    (setq super-save-auto-save-when-idle t)))
+	    ;;(setq super-save-auto-save-when-idle t)
+	    ))
 
 (use-package crux
   :defer 0
