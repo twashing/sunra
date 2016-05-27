@@ -50,7 +50,7 @@
                'sunra-yaml
                'sunra-haskell
                'sunra-purescript
-               'sunra-scala
+               ;; 'sunra-scala
                'sunra-web
 	       'sunra-theme))
 

@@ -27,17 +27,15 @@
   :defer 0
   :config (progn
 	    (super-save-mode +1)
-	    ;;(setq super-save-auto-save-when-idle t)
-	    ))
+	    (setq auto-save-default nil)))
 
 (use-package crux
   :defer 0
   :config (progn
 	    (crux-with-region-or-buffer indent-region)
 	    (crux-with-region-or-buffer untabify)
-	    ;; (add-hook 'before-save-hook 'crux-cleanup-buffer-or-region)
-	    ;; (remove-hook 'before-save-hook 'crux-cleanup-buffer-or-region)
-	    ))
+	    (add-hook 'before-save-hook 'crux-cleanup-buffer-or-region)
+	    (remove-hook 'before-save-hook 'crux-cleanup-buffer-or-region)))
 
 (use-package which-key
   :defer 0
@@ -49,9 +47,9 @@
 	    (global-anzu-mode +1)
 	    (anzu-mode +1)))
 
-(use-package beacon
-  :defer 0
-  :config (beacon-mode 1))
+;; (use-package beacon
+;;   :defer 0
+;;   :config (beacon-mode 1))
 
 (use-package smart-mode-line
   :init (setq sml/no-confirm-load-theme t)
@@ -59,7 +57,24 @@
   :config
   (progn
     (sml/setup)
-    (sml/apply-theme 'smart-mode-line-dark)))
+    (sml/apply-theme 'smart-mode-line-dark)
+
+    ;; custom colour theme for my setup
+    (custom-theme-set-faces
+     'smart-mode-line-dark
+     '(mode-line-buffer-id ((t :inherit sml/filename :foreground nil :background nil))) 
+     '(mode-line-inactive ((t :foreground "gray60" :background "#222222" :inverse-video nil)))
+     '(mode-line     ((t :foreground "gray60" :background "#222222" :inverse-video nil)))
+     '(sml/global    ((t :foreground "gray50" :inverse-video nil)))
+     '(sml/modes     ((t :inherit sml/global :foreground "White")))
+     '(sml/filename  ((t :inherit sml/global :foreground "#eab700" :weight bold)))
+     '(sml/prefix    ((t :inherit sml/global :foreground "#bf6000")))
+     '(sml/read-only ((t :inherit sml/not-modified :foreground "DeepSkyBlue")))
+     '(persp-selected-face ((t :foreground "ForestGreen" :inherit sml/filename)))
+     '(helm-candidate-number ((t :foreground nil :background nil :inherit sml/filename))))
+
+    ;; TODO - fix this hack, as the abouve mode-line-inactive invocation isn't working
+    (set-face-background 'modeline-inactive "#222222")))
 
 (use-package company
   :defer 0
