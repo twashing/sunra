@@ -93,7 +93,7 @@
 	 ("C-c O" . hydra-projectile-other-window/body)
 	 ("C-c P" . hydra-projectile/body)
 	 ("C-c S" . hydra-learn-sp/body)
-	 ("C-c g" . hydra-goto/body)
+	 ("C-c G" . hydra-goto/body)
 	 ("C-c i" . hydra-ivy/body)))
 
 ;; taken from here:

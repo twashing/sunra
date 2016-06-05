@@ -27,7 +27,7 @@ Just git clone (or download) this repo, to your `~/.emacs.d` directory. With tha
 |-----------------|---------------|
 | Move            | `C-c m`       |
 | Transpose       | `C-c t r`     |
-| Goto            | `C-c g`       |
+| Goto            | `C-c G`       |
 | Window          | `C-c w`       |
 | Projectile      | `C-c P` main  |
 |                 | `C-c O` other |
