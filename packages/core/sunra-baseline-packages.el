@@ -82,7 +82,8 @@
   (add-hook 'after-init-hook 'global-company-mode))
 
 (use-package projectile
-    :defer 0)
+  :init (progn
+	  (setq projectile-completion-system 'ivy)))
 
 (use-package hydra
   :defer 0
@@ -172,6 +173,13 @@
 	    (show-paren-mode 1))
   :init
   (setq sp-highlight-pair-overlay nil))
+
+(use-package expand-region
+  :bind (("M-h" . er/expand-region)
+	 ("C-M-h" . er/contract-region)))
+
+(use-package iedit
+  :bind ("C-c ;" . iedit-mode))
 
 (require 'baseline-functions)
 

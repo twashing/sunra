@@ -37,8 +37,10 @@ Just git clone (or download) this repo, to your `~/.emacs.d` directory. With tha
 |                 | `C-c S / df`  |  *sp-splice-sexp-killing-forward*
 |                 | `C-c S / db`  |  *sp-splice-sexp-killing-backward*
 | Multiplecursors | `C-c M`       |
+| Iedit           | `C-c ;`       |
 | Yasnippet       | `C-c Y`       |
 | Helm            | `\\` inlined  |
+| Ivy             | `C-c i`       |
 
 
 | Navigation                   | Binding   |
@@ -58,6 +60,8 @@ Just git clone (or download) this repo, to your `~/.emacs.d` directory. With tha
 | delete-whitespace-except-one | `M-SPC`   |
 | scroll-other-window-down     | `C-M-[`   |
 | scroll-other-window          | `C-M-]`   |
+| expand-region                | `M-h`     |
+| contract-region              | `C-M-h`   |
 
 
 | Clojure      | Binding      |

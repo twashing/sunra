@@ -1,4 +1,6 @@
-(use-package magit)
+(use-package magit
+  :config (progn
+	    (setq magit-completing-read-function 'ivy-completing-read)))
 
 (defhydra hydra-git-gutter (:body-pre (git-gutter-mode 1)
 								:hint nil)
