@@ -52,6 +52,7 @@ Just git clone (or download) this repo, to your `~/.emacs.d` directory. With tha
 | sp-kill-sexp                 | `C-d`     |
 | copy-sexp-at-point           | `C-M-k`   |
 | search-symbol-at-point       | `C-x M-x` |
+| search project (helm-ag)     | `C-/`     |
 | grep-find                    | `C-x C-g` |
 | magit-status                 | `C-x C-m` |
 | ace-select-window            | `M-p`     |

@@ -181,6 +181,9 @@
 (use-package iedit
   :bind ("C-c ;" . iedit-mode))
 
+(use-package helm-ag
+  :bind ("C-/" . helm-ag-project-root))
+
 (require 'baseline-functions)
 
 (provide 'sunra-baseline-packages)
