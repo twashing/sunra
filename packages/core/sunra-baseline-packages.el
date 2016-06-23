@@ -182,7 +182,9 @@
   :bind ("C-c ;" . iedit-mode))
 
 (use-package helm-ag
-  :bind ("C-/" . helm-ag-project-root))
+  :bind ("M-/" . helm-ag-project-root)
+  :config (progn
+	    (setq helm-ag-insert-at-point 'symbol)))
 
 (require 'baseline-functions)
 

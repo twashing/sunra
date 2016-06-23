@@ -97,7 +97,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/.autosaves/\\1" t))))
+ ;; '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/.autosaves/\\1" t))))
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/.backup/"))))
  '(cider-cljs-lein-repl
    "(do (require 'weasel.repl.websocket) (cemerick.piggieback/cljs-repl (weasel.repl.websocket/repl-env :ip \"127.0.0.1\" :port 9001)))")
