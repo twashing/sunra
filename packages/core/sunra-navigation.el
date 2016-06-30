@@ -28,13 +28,14 @@
 (global-set-key (kbd "M-SPC") 'delete-whitespace-except-one)
 (global-set-key (kbd "C-M-[") 'scroll-other-window-down)
 (global-set-key (kbd "C-M-]") 'scroll-other-window)
+(global-set-key (kbd "C-M-s") 'sp-splice-sexp)
 
 
 ;; Smart Parens Navigation
 (global-set-key (kbd "C-M-u") 'sp-up-sexp)
-(global-set-key (kbd "C-x C-M-u") 'sp-backward-up-sexp)
+(global-set-key (kbd "M-u") 'sp-backward-up-sexp)
 (global-set-key (kbd "C-M-d") 'sp-down-sexp)
-(global-set-key (kbd "C-x C-M-d") 'sp-backward-down-sexp)
+(global-set-key (kbd "M-d") 'sp-backward-down-sexp)
 
 (global-set-key (kbd "C-M-n") 'sp-next-sexp)
 

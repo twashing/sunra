@@ -8,9 +8,10 @@
     (add-hook 'cider-mode-hook #'eldoc-mode)
     
     (setq nrepl-log-messages t)
-    ;;(setq cider-show-error-buffer nil)
+    (setq cider-show-error-buffer nil)
     (setq cider-auto-select-error-buffer nil)
-    (setq cider-auto-select-test-report-buffer nil)
+    
+    (setq cider-stacktrace-fill-column 1000)
     (setq cider-repl-pop-to-buffer-on-connect nil)
     (setq cider-prefer-local-resources t)
     (setq nrepl-buffer-name-separator "/")
