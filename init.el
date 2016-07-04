@@ -100,6 +100,7 @@
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/.backup/"))))
  '(cider-cljs-lein-repl
    "(do (require 'weasel.repl.websocket) (cemerick.piggieback/cljs-repl (weasel.repl.websocket/repl-env :ip \"127.0.0.1\" :port 9001)))")
+ '(cider-test-show-report-on-success nil)
  '(custom-safe-themes
    (quote
     ("561ba4316ba42fe75bc07a907647caa55fc883749ee4f8f280a29516525fc9e8" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))

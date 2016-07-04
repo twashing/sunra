@@ -7,22 +7,24 @@
   (progn
     (add-hook 'cider-mode-hook #'eldoc-mode)
     
-    (setq nrepl-log-messages t)
-    (setq cider-show-error-buffer nil)
-    (setq cider-auto-select-error-buffer nil)
-    
-    (setq cider-stacktrace-fill-column 1000)
-    (setq cider-repl-pop-to-buffer-on-connect nil)
-    (setq cider-prefer-local-resources t)
-    (setq nrepl-buffer-name-separator "/")
-    (setq nrepl-buffer-name-show-port t)
-    (setq cider-repl-use-clojure-font-lock t)
-    (setq cider-overlays-use-font-lock t)
-    (setq cider-font-lock-dynamically '(macro core function var))
-    (setq cider-prompt-for-symbol nil)
-    (setq nrepl-hide-special-buffers t)
-    (setq cider-prompt-save-file-on-load 'always-save)
-    (setq cljr-suppress-middleware-warnings t)
+    (setq nrepl-log-messages t
+	  
+	  cider-show-error-buffer nil
+	  cider-auto-select-error-buffer nil
+	  ;; cider-test-show-report-on-success nil
+	  
+	  cider-stacktrace-fill-column 1000
+	  cider-repl-pop-to-buffer-on-connect nil
+	  cider-prefer-local-resources t
+	  nrepl-buffer-name-separator "/"
+	  nrepl-buffer-name-show-port t
+	  cider-repl-use-clojure-font-lock t
+	  cider-overlays-use-font-lock t
+	  cider-font-lock-dynamically '(macro core function var)
+	  cider-prompt-for-symbol nil
+	  nrepl-hide-special-buffers t
+	  cider-prompt-save-file-on-load 'always-save
+	  cljr-suppress-middleware-warnings t)
     
     (add-hook 'cider-repl-mode-hook #'smartparens-strict-mode)
     (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
