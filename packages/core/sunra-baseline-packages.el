@@ -10,9 +10,19 @@
 	    (setq nyan-bar-length 16
 		  nyan-wavy-trail t)))
 
+(use-package spaceline
+  :if window-system
+  :config (progn
+	    (require 'spaceline-config)
+	    (spaceline-spacemacs-theme)
+	    (setq ns-use-srgb-colorspace nil
+		  powerline-default-separator 'wave)
+	    (spaceline-compile)))
+
 (use-package which-func
   :defer 0
   :config (which-func-mode 1))
+
 
 (use-package browse-kill-ring
     :defer 0)
