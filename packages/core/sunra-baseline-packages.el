@@ -56,8 +56,10 @@
   :defer 0
   :config
   (progn
+    (setq sml/theme 'smart-mode-line-dark)
     (sml/setup)
-    (sml/apply-theme 'smart-mode-line-dark)
+    ;; (sml/apply-theme 'smart-mode-line-dark)
+    ;; (sml/apply-theme 'smart-mode-line-powerline)
 
     ;; custom colour theme for my setup
     (custom-theme-set-faces
