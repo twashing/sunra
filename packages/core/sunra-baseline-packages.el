@@ -10,6 +10,8 @@
 	    (setq nyan-bar-length 16
 		  nyan-wavy-trail t)))
 
+;; https://www.reddit.com/r/emacs/comments/3mq61l/spaceline_spacemacs_modeline_extracted_as_a/
+;; TODO - https://github.com/emacsfodder/emacs-mainline
 (use-package spaceline
   :if window-system
   :config (progn
@@ -56,10 +58,6 @@
   :config (progn
 	    (global-anzu-mode +1)
 	    (anzu-mode +1)))
-
-;; (use-package beacon
-;;   :defer 0
-;;   :config (beacon-mode 1))
 
 (use-package smart-mode-line
   :init (setq sml/no-confirm-load-theme t)

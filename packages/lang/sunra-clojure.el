@@ -6,7 +6,7 @@
   :config
   (progn
     (add-hook 'cider-mode-hook #'eldoc-mode)
-    
+    ;; (cider-enlighten-mode)
     (setq nrepl-log-messages t
 	  
 	  cider-show-error-buffer nil
