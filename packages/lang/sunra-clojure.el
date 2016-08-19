@@ -44,6 +44,12 @@
     (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
     (add-hook 'clojure-mode-hook #'company-mode)))
 
+(use-package clojure-cheatsheet
+  :defer 0
+  :config (eval-after-load 'clojure-mode
+	    '(progn
+	       (define-key clojure-mode-map (kbd "C-c C-h") #'clojure-cheatsheet))))
+
 (use-package ac-cider
   :defer 0)
 (use-package clojure-snippets
