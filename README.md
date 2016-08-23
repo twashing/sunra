@@ -68,7 +68,7 @@ Just git clone (or download) this repo, to your `~/.emacs.d` directory. With tha
 | Clojure      | Binding      |
 |--------------|--------------|
 | clj-refactor | `C-c C-b hh` |
-
+| cheatsheet   | `C-c C-h`    |
 
 
 ## Todo
