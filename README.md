@@ -55,7 +55,8 @@ Just git clone (or download) this repo, to your `~/.emacs.d` directory. With tha
 | search project (helm-ag)     | `C-/`     |
 | grep-find                    | `C-x C-g` |
 | magit-status                 | `C-x C-m` |
-| ace-select-window            | `M-p`     |
+| ace-select-window            | `M-[`     |
+| ace-swap-window              | `C-c M-p` |
 | ace-delete-window            | `C-x M-p` |
 | browse-kill-ring             | `M-y`     |
 | delete-whitespace-except-one | `M-SPC`   |

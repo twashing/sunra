@@ -5,14 +5,11 @@
 	 ("C-x M-e" . cider-eval-print-last-sexp))
   :config
   (progn
-    (add-hook 'cider-mode-hook #'eldoc-mode)
+    
     ;; (cider-enlighten-mode)
     (setq nrepl-log-messages t
-	  
 	  cider-show-error-buffer nil
 	  cider-auto-select-error-buffer nil
-	  ;; cider-test-show-report-on-success nil
-	  
 	  cider-stacktrace-fill-column 1000
 	  cider-repl-pop-to-buffer-on-connect nil
 	  cider-prefer-local-resources t
@@ -26,11 +23,12 @@
 	  cider-prompt-save-file-on-load 'always-save
 	  cljr-suppress-middleware-warnings t)
     
+    (add-hook 'cider-mode-hook #'eldoc-mode)
+    (add-hook 'cider-mode-hook #'company-mode)
     (add-hook 'cider-repl-mode-hook #'smartparens-strict-mode)
     (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
     (add-hook 'cider-repl-mode-hook #'subword-mode)
-    (add-hook 'cider-repl-mode-hook #'company-mode)
-    (add-hook 'cider-mode-hook #'company-mode)))
+    (add-hook 'cider-repl-mode-hook #'company-mode)))
 
 (use-package clojure-mode
   :bind (("M-d" . sp-kill-sexp)
@@ -54,7 +52,6 @@
   :defer 0)
 (use-package clojure-snippets
   :defer 0)
-
 
 (use-package eval-sexp-fu
   :defer 0)
