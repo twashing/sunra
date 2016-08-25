@@ -37,6 +37,7 @@
 	 ("C-x M-e" . cider-eval-print-last-sexp))
   :config
   (progn
+
     (setq clojure-indent-style :align-arguments)
     (add-hook 'clojure-mode-hook #'smartparens-strict-mode)
     (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
