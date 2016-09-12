@@ -19,6 +19,8 @@
       visible-bell nil)
 
 
+(set-face-attribute 'default nil :font "PragmataPro for Powerline")
+
 ;; Use UTF-8
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)

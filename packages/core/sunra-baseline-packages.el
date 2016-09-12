@@ -12,14 +12,14 @@
 
 ;; https://www.reddit.com/r/emacs/comments/3mq61l/spaceline_spacemacs_modeline_extracted_as_a/
 ;; TODO - https://github.com/emacsfodder/emacs-mainline
-(use-package spaceline
-  :if window-system
-  :config (progn
-	    (require 'spaceline-config)
-	    (spaceline-spacemacs-theme)
-	    (setq ns-use-srgb-colorspace nil
-		  powerline-default-separator 'wave)
-	    (spaceline-compile)))
+;; (use-package spaceline
+;;   :if window-system
+;;   :config (progn
+;; 	    (require 'spaceline-config)
+;; 	    (spaceline-spacemacs-theme)
+;; 	    (setq ns-use-srgb-colorspace nil
+;; 		  powerline-default-separator 'wave)
+;; 	    (spaceline-compile)))
 
 (use-package which-func
   :defer 0
