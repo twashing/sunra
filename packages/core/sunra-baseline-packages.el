@@ -7,8 +7,10 @@
   :if window-system
   :config (progn
 	    (nyan-mode 1)
-	    (setq nyan-bar-length 16
-		  nyan-wavy-trail t)))
+	    (setq nyan-animate-nyancat t
+		  nyan-bar-length 16
+		  nyan-wavy-trail nil)
+	    (nyan-start-animation)))
 
 ;; https://www.reddit.com/r/emacs/comments/3mq61l/spaceline_spacemacs_modeline_extracted_as_a/
 ;; TODO - https://github.com/emacsfodder/emacs-mainline

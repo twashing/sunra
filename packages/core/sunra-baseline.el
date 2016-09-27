@@ -1,4 +1,4 @@
-;; Add /usr/local/bin to PATH variable
+ ;; Add /usr/local/bin to PATH variable
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
 (setq exec-path (cons "/usr/local/bin" exec-path))
 
