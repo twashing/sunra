@@ -24,7 +24,7 @@
 (global-set-key (kbd "C-M-k") 'copy-sexp-at-point)
 (global-set-key (kbd "M-[") 'ace-select-window)
 (global-set-key (kbd "C-c M-[") 'ace-swap-window)
-(global-set-key (kbd "C-x M-p") 'ace-delete-window)
+(global-set-key (kbd "C-x M-[") 'ace-delete-window)
 (global-set-key (kbd "M-y") 'browse-kill-ring)
 (global-set-key (kbd "C-M-SPC") 'delete-whitespace-except-one)
 (global-set-key (kbd "C-M-[") 'scroll-other-window-down)
