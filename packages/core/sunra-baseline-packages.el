@@ -62,6 +62,10 @@
 	    (global-anzu-mode +1)
 	    (anzu-mode +1)))
 
+(use-package centered-cursor-mode
+  :config (progn
+	    (global-centered-cursor-mode)))
+
 (use-package smart-mode-line
   :init (setq sml/no-confirm-load-theme t)
   :defer 0
