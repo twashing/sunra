@@ -1,6 +1,9 @@
  ;; Add /usr/local/bin to PATH variable
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
-(setq exec-path (cons "/usr/local/bin" exec-path))
+
+;; (setq exec-path (cons "/usr/local/bin" exec-path))
+(add-to-list 'exec-path "/usr/local/bin")
+(add-to-list 'exec-path "~/bin")
 
 ;; Skip the default splash screen.
 (setq inhibit-startup-message t)
