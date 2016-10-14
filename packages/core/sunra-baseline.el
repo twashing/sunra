@@ -24,7 +24,7 @@
 
 (set-face-attribute 'default nil :font "PragmataPro for Powerline")
 
-
+(global-auto-revert-mode)
 (global-auto-complete-mode t)  ;; really useful in ansi-term
 
 
