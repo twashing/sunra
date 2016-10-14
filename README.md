@@ -45,6 +45,7 @@ Just git clone (or download) this repo, to your `~/.emacs.d` directory. With tha
 
 | Navigation                   | Binding   |
 |------------------------------|-----------|
+| crux-move-beginning-of-line  | `C-a`     |
 | buf-move-up                  | `M-U`     |
 | buf-move-down                | `M-D`     |
 | crux-smart-open-line-above   | `C-x M-o` |
@@ -66,10 +67,13 @@ Just git clone (or download) this repo, to your `~/.emacs.d` directory. With tha
 | contract-region              | `C-M-h`   |
 
 
-| Other                     | Binding |
-|---------------------------|---------|
-| projectile-replace        | `C-,`   |
-| projectile-replace-regexp | `C-M-,` |
+| Other                        | Binding      |
+|------------------------------|--------------|
+| projectile-replace           | `C-,`        |
+| projectile-replace-regexp    | `C-M-,`      |
+| crux-kill-other-buffers      | C-<backtick> | 
+| crux-rename-buffer-and-file  | `C-<`        |
+| crux-delete-buffer-and-file  | `C->`        |
 
 
 | Clojure      | Binding      |

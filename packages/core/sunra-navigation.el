@@ -31,6 +31,13 @@
 (global-set-key (kbd "C-M-]") 'scroll-other-window)
 (global-set-key (kbd "C-M-s") 'sp-splice-sexp)
 
+;; (global-set-key (kbd "C-M-s") 'crux-move-beginning-of-line)
+(global-set-key [remap move-beginning-of-line] 'crux-move-beginning-of-line)
+
+(global-set-key (kbd "C-`") 'crux-kill-other-buffers)
+(global-set-key (kbd "C-<") 'crux-rename-buffer-and-file)
+(global-set-key (kbd "C->") 'crux-delete-buffer-and-file)
+
 
 ;; Smart Parens Navigation
 (global-set-key (kbd "C-M-u") 'sp-up-sexp)
