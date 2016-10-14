@@ -40,6 +40,9 @@
 (global-set-key (kbd "C-?") 'mc/mark-next-lines)
 (global-set-key (kbd "C-M-?") 'mc/mark-all-in-region)
 
+(global-set-key (kbd "C-,") 'projectile-replace)
+(global-set-key (kbd "C-M-,") 'projectile-replace-regexp)
+
 
 ;; Smart Parens Navigation
 (global-set-key (kbd "C-M-u") 'sp-up-sexp)
