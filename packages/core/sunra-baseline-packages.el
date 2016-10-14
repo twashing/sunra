@@ -100,7 +100,9 @@
 
 (use-package projectile
   :init (progn
-	  (setq projectile-completion-system 'ivy)))
+	  (setq projectile-completion-system 'ivy))
+  :bind (("C-," . projectile-replace)
+	 ("C-M-," . projectile-replace-regexp)))
 
 (use-package hydra
   :defer 0

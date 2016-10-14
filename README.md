@@ -66,6 +66,12 @@ Just git clone (or download) this repo, to your `~/.emacs.d` directory. With tha
 | contract-region              | `C-M-h`   |
 
 
+| Other                     | Binding |
+|---------------------------|---------|
+| projectile-replace        | `C-,`   |
+| projectile-replace-regexp | `C-M-,` |
+
+
 | Clojure      | Binding      |
 |--------------|--------------|
 | clj-refactor | `C-c C-b hh` |

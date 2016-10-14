@@ -37,9 +37,7 @@
 (global-set-key (kbd "M-u") 'sp-backward-up-sexp)
 (global-set-key (kbd "C-M-d") 'sp-down-sexp)
 (global-set-key (kbd "M-d") 'sp-backward-down-sexp)
-
 (global-set-key (kbd "C-M-n") 'sp-next-sexp)
-
 (global-set-key (kbd "C-M-j") 'sp-forward-slurp-sexp)
 (global-set-key (kbd "C-x C-M-j") 'sp-forward-barf-sexp)
 (global-set-key (kbd "C-M-y") 'sp-backward-slurp-sexp)
