@@ -24,6 +24,10 @@
 
 (set-face-attribute 'default nil :font "PragmataPro for Powerline")
 
+
+(global-auto-complete-mode t)  ;; really useful in ansi-term
+
+
 ;; Use UTF-8
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
