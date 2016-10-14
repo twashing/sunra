@@ -37,6 +37,8 @@ Just git clone (or download) this repo, to your `~/.emacs.d` directory. With tha
 |                 | `C-c S / df`  |  *sp-splice-sexp-killing-forward*
 |                 | `C-c S / db`  |  *sp-splice-sexp-killing-backward*
 | Multiplecursors | `C-c M`       |
+|                 | `C-?`         |  *mc/mark-next-lines*
+|                 | `C-M-?`       |  *mc/mark-all-in-region*
 | Iedit           | `C-c ;`       |
 | Yasnippet       | `C-c Y`       |
 | Helm            | `\\` inlined  |
