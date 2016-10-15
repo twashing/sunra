@@ -50,12 +50,8 @@
                'sunra-yaml
                'sunra-haskell
                'sunra-purescript
-               ;; 'sunra-scala
-               'sunra-web
+	       'sunra-web
 	       'sunra-theme))
-
-
-;; Add: Frege, Ruby
 
 
 ;; User Localization
