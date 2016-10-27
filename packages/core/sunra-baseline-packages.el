@@ -66,6 +66,11 @@
   :config (progn
 	    (global-centered-cursor-mode)))
 
+
+(use-package auto-complete
+  :config (global-auto-complete-mode t)  ;; really useful in ansi-term
+  )
+
 (use-package smart-mode-line
   :init (setq sml/no-confirm-load-theme t)
   :defer 0

@@ -1,4 +1,5 @@
 (use-package cider
+  :ensure t
   :bind (("M-d" . sp-kill-sexp)
 	 ("M-r" . sp-raise-sexp)
 	 ("C-M-b" . sp-previous-sexp)

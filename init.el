@@ -5,7 +5,6 @@
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))) ;; For important compatibility libraries like cl-lib
 (package-initialize)
-(add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
 
 
 ;; use-package
