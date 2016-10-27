@@ -35,8 +35,8 @@
     :defer 0)
 (use-package erc
     :defer 0)
-(use-package groovy-mode
-    :defer 0)
+;; (use-package groovy-mode
+;;     :defer 0)
 
 (use-package super-save
   :defer 0

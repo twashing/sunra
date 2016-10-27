@@ -25,7 +25,11 @@
 (set-face-attribute 'default nil :font "PragmataPro for Powerline")
 
 (global-auto-revert-mode)
-(global-auto-complete-mode t)  ;; really useful in ansi-term
+;; (global-auto-complete-mode t)  ;; really useful in ansi-term
+
+;;  (defadvice ac-fallback-command (around no-yasnippet-fallback activate)
+;;         (let ((yas-fallback-behavior nil))
+;;         ad-do-it))
 
 
 ;; Use UTF-8
