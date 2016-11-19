@@ -4,4 +4,7 @@
 (use-package markdown-mode
   :defer 0)
 
+(use-package vmd-mode
+  :bind (("M-n p" . vmd-mode)))
+
 (provide 'sunra-markdown)

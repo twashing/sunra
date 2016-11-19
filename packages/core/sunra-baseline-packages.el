@@ -30,11 +30,17 @@
 ;; M-x describe-personal-keybindings ... to see the opposite (in https://github.com/jwiegley/use-package/blob/master/bind-key.el)
 (use-package free-keys)
 (use-package browse-kill-ring
-    :defer 0)
+  :defer 0)
 (use-package rainbow-delimiters
-    :defer 0)
+  :defer 0)
 (use-package erc
-    :defer 0)
+  :defer 0)
+
+(use-package aggressive-indent
+  :config (progn
+	    (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
+	    (add-hook 'css-mode-hook #'aggressive-indent-mode)
+	    (add-hook 'clojure-mode-hook #'aggressive-indent-mode)))
 
 (use-package super-save
   :defer 0
@@ -63,6 +69,11 @@
 (use-package centered-cursor-mode
   :config (progn
 	    (global-centered-cursor-mode)))
+
+
+(use-package auto-complete
+  :config (global-auto-complete-mode t)  ;; really useful in ansi-term
+  )
 
 (use-package smart-mode-line
   :init (setq sml/no-confirm-load-theme t)
