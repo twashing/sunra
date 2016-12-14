@@ -2,7 +2,7 @@
 
 Yet another .emacs.d
 
-![Sun Ra](http://www.sensitiveskinmagazine.com/wp-content/images/blog/sun-ra.jpg)
+![Sun Ra](http://media.npr.org/assets/img/2014/05/21/sun-ra-in-text1-cb4036fa5068a4f9afd4b56bf6c55bb176415eaf-s900-c85.jpg)
 
 > The Music is different here. The vibrations are different. Not like Planet Earth.
 
