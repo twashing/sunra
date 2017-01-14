@@ -101,7 +101,7 @@
     ("561ba4316ba42fe75bc07a907647caa55fc883749ee4f8f280a29516525fc9e8" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(package-selected-packages
    (quote
-    (aggressive-indent vmd-mode free-keys clojure-cheatsheet helm-ag solarized-theme robe yari enh-ruby-mode yaml-mode use-package swiper-helm super-save smooth-scrolling smex smartparens smart-mode-line skewer-mode rainbow-delimiters psci projectile nyan-mode midje-mode markdown-mode magit ido-ubiquitous hy-mode helm-company haskell-mode groovy-mode git-gutter flx-ido ensime diff-hl cyberpunk-theme crux clojure-snippets clj-refactor cider-eval-sexp-fu browse-kill-ring beacon ace-window ac-cider)))
+    (aggressive-indent vmd-mode dash-functional free-keys clojure-cheatsheet helm-ag solarized-theme robe yari enh-ruby-mode yaml-mode use-package swiper-helm super-save smooth-scrolling smex smartparens smart-mode-line skewer-mode rainbow-delimiters psci projectile nyan-mode midje-mode markdown-mode magit ido-ubiquitous hy-mode helm-company haskell-mode groovy-mode git-gutter flx-ido ensime diff-hl cyberpunk-theme crux clojure-snippets clj-refactor cider-eval-sexp-fu browse-kill-ring beacon ace-window ac-cider)))
  '(safe-local-variable-values
    (quote
     ((cider-cljs-lein-repl . "(boot (start))")

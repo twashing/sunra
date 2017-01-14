@@ -6,6 +6,9 @@
   (interactive)
   (just-one-space -1))
 
+(use-package dash)
+(use-package dash-functional)
+(use-package s)
 
 (global-set-key (kbd "C-x M-x") 'isearch-forward-symbol-at-point)
 (global-set-key (kbd "C-x C-g") 'grep-find)
