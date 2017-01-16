@@ -57,6 +57,10 @@
 ;;   '(auto-save-file-name-transforms '((".*" "~/.emacs.d/.autosaves/\\1" t)))
 ;;   '(backup-directory-alist '((".*" . "~/.emacs.d/.backup/"))))
 
+;; Save whatever’s in the current (system) clipboard before
+;; replacing it with the Emacs’ text.
+;; https://github.com/dakrone/eos/blob/master/eos.org
+(setq save-interprogram-paste-before-kill t)
 
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
