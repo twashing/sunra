@@ -1,4 +1,3 @@
-
 (font-lock-add-keywords
  nil '(("\\<\\(\\(FIX\\(ME\\)?\\|TODO\\|OPTIMIZE\\|HACK\\|REFACTOR\\):\\)"
 	1 font-lock-warning-face t)))
@@ -60,15 +59,20 @@
   :defer 0
   :config (which-key-mode))
 
+;; (use-package exec-path-from-shell
+;;   :defer 0
+;;   :config (when (memq window-system '(mac ns))
+;; 	    (exec-path-from-shell-initialize)))
+
 (use-package anzu
   :defer 0
   :config (progn
 	    (global-anzu-mode +1)
 	    (anzu-mode +1)))
 
-(use-package centered-cursor-mode
-  :config (progn
-	    (global-centered-cursor-mode)))
+;; (use-package centered-cursor-mode
+;;   :config (progn
+;; 	    (global-centered-cursor-mode)))
 
 
 (use-package auto-complete

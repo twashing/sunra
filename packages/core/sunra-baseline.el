@@ -42,6 +42,13 @@
 ;; Automatically save buffers before compiling
 (setq compilation-ask-about-save nil)
 
+(let ((path (shell-command-to-string ". ~/.bash_profile; echo -n $PATH")))
+  (setenv "PATH" path)
+  (setq exec-path 
+        (append
+         (split-string-and-unquote path ":")
+         exec-path)))
+
 ;; backup policy - http://stackoverflow.com/questions/151945/how-do-i-control-how-emacs-makes-backup-files
 ;; (setq make-backup-files nil)
 ;; (auto-save-mode)
@@ -67,4 +74,3 @@
 
 
 (provide 'sunra-baseline)
-
