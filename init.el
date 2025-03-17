@@ -42,8 +42,11 @@
 
 (setq debug-on-error t
 
-      ;; Disable backup files
-      make-backup-files nil)
+      make-backup-files nil   ;; Disable backup files
+
+      emacs-dir (file-name-directory
+		 (or (buffer-file-name)
+		     (file-chase-links load-file-name))))
 
 ;; Enable auto-save-visited-mode globally.
 (auto-save-visited-mode 1)
@@ -51,13 +54,13 @@
 
 
 (custom-set-variables
-
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(auto-save-file-name-transforms '((".*" "~/.emacs.d/.autosaves/\\1" t)))
-
- ;; Setting make-backup-files to nil prevents Emacs from creating backup files (files ending with ~),
- ;;   and the customizations for backup-directory-alist remain effective for any backup files that
- ;;   might still be created by other means (e.g. by external packages).
- '(backup-directory-alist '((".*" . "~/.emacs.d/.backup/"))))
+ '(backup-directory-alist '((".*" . "~/.emacs.d/.backup/")))
+ '(package-selected-packages '(gptel)))
 
 
 ;; Globally setting font
@@ -72,9 +75,42 @@
 
 ;; Set up a directory for saving desktop files.
 (let ((desktop-dir "~/.emacs.d/desktop/"))
+
   (unless (file-directory-p desktop-dir)
     (make-directory desktop-dir t))
+
   (setq desktop-dirname desktop-dir
         desktop-path (list desktop-dir)
         desktop-auto-save-timeout 300) ; auto-save every 5 minutes
+
   (desktop-save-mode 1))
+
+
+;;
+;; Load Packages
+
+(defun sunra/load! (file &optional noerror)
+  "Load the Emacs Lisp FILE relative to the file this function is called from.
+   Omit the file extension to allow Emacs to load the byte-compiled version if available.
+   For example, (load! \"+git\") loads the file \"+git.el\" in the same directory."
+  
+  (let ((target (expand-file-name file (file-name-directory (or load-file-name buffer-file-name)))))
+    (load target noerror)))
+
+(dolist (pkg '("packages"))
+  (add-to-list 'load-path (concat emacs-dir pkg)))
+
+(defmacro use-packages (&rest args)
+  (cons 'progn
+	(mapcar (lambda (pkg)
+		  `(require ,pkg ,@(rest args)))
+		(first args))))
+
+(use-packages ('sunra-llm))
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

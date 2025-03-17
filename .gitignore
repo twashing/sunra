@@ -11,3 +11,4 @@ tmux-*
 url/
 recentf
 desktop
+**/*-key.el
