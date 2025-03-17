@@ -1,116 +1,80 @@
-(require 'cl)
+
 (require 'package)
 
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(when (< emacs-major-version 24)
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))) ;; For important compatibility libraries like cl-lib
-(package-initialize)
+
+;; Disable the splash screen (startup screen)
+(setq inhibit-startup-screen t)
 
 
-;; use-package
-(setq package-enable-at-startup nil)
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-(setq use-package-always-ensure t)
-
-(eval-when-compile
-  (require 'use-package))
-(require 'diminish)                ;; if you use :diminish
-(require 'bind-key)                ;; if you use any :bind variant
-
-(defmacro use-packages (&rest args)
-  (cons 'progn
-	(mapcar (lambda (pkg)
-		  `(require ,pkg ,@(rest args)))
-		(first args))))
-
-(setq emacs-dir (file-name-directory
-		 (or (buffer-file-name) (file-chase-links load-file-name))))
-
-(add-to-list 'load-path (concat emacs-dir "packages"))
-(add-to-list 'load-path (concat emacs-dir "packages/core"))
-(add-to-list 'load-path (concat emacs-dir "packages/core/baseline"))
-(add-to-list 'load-path (concat emacs-dir "packages/lang"))
-(add-to-list 'load-path (concat emacs-dir  "packages/user"))
-
-(use-packages ('sunra-baseline
-	       'sunra-navigation
-	       'sunra-baseline-packages
-	       'sunra-ido  ;; remove
-               'sunra-git
-               'sunra-markdown
-               'sunra-multiplecursors
-               'sunra-yasnippet
-               'sunra-clojure
-               'sunra-elisp
-               'sunra-hy
-               'sunra-ruby
-               'sunra-yaml
-               'sunra-haskell
-               'sunra-purescript
-	       'sunra-web
-	       'sunra-theme))
+;; Remove menu, tool, and scrolls
+(dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
+  (when (fboundp mode) (funcall mode -1)))
 
 
-;; User Localization
-(defun create-nested-dirs (dirlist dirparent)
-  (let* ((top (car dirlist)))
-    (if top
-	(let* ((dircombined (concat (file-name-as-directory dirparent)
-				    (file-name-as-directory top))))
-	  (message (file-name-as-directory dirparent))
-	  (make-directory dircombined)
-	  (create-nested-dirs (cdr dirlist) dircombined)))))
-
-(defun create-user-dirs ()
-  (let* ((local-packagedirs '(".sunra.d" "packages" "user"))
-	 (local-sunradir "~"))
-
-    (create-nested-dirs local-packagedirs local-sunradir)))
+;; Add MELPA to package archives if it's not already there.
+;; Optionally, add nongnu as well.
+(dolist (archive '(("melpa" . "https://melpa.org/packages/")
+                   ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
+  (add-to-list 'package-archives archive t))
 
 
-(if (not (file-exists-p "~/.sunra.d"))
+;; No need to add GNU ELPA—it’s built-in.
+;; Package initialization is done automatically in Emacs 27+,
+;; but if you need to do it explicitly, you can:
+;; (package-initialize)
 
-    (progn
 
-      ;; ask user if they want this created
-      (create-user-dirs)
+;; In Emacs 30 you generally don’t have to force UTF‑8 the way older configurations did.
+;; Modern Emacs now defaults to UTF‑8 for file I/O and internal processing. In many cases all you need is:
+(set-default-coding-systems 'utf-8)
 
-      ;; Copy userinit
-      (copy-file "~/.emacs.d/packages/userinit.el"
-		 "~/.sunra.d/init.el")
+;; These are usually no longer necessary unless you have very specific requirements or are running Emacs in an unusual terminal environment.
+;; Also, since the ISO transliteration functions (for example those bound via C-x 8) are now autoloaded when needed, you typically don’t need to explicitly load "iso-transl".
+;; So in summary: For Emacs 30 most users can rely on its built‑in defaults (which are UTF‑8) without needing these extra lines in your init file.
+;; 
+;; (set-terminal-coding-system 'utf-8)
+;; (set-keyboard-coding-system'utf-8)
+;; (prefer-coding-system 'utf-8)
 
-      ;; Copy sunra-theme.el
-      (copy-file "~/.emacs.d/packages/user/sunra-theme.el"
-		 "~/.sunra.d/packages/user/")))
 
-;; Eval userinit
-(load "~/.sunra.d/init.el")
+
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+(setq debug-on-error t
+
+      ;; Disable backup files
+      make-backup-files nil)
+
+;; Enable auto-save-visited-mode globally.
+(auto-save-visited-mode 1)
+
+
+
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(backup-directory-alist (quote ((".*" . "~/.emacs.d/.backup/"))))
- '(cider-cljs-lein-repl
-   "(do (require 'figwheel-sidecar.repl-api) (figwheel-sidecar.repl-api/start-figwheel!) (figwheel-sidecar.repl-api/cljs-repl))")
- '(cider-test-show-report-on-success nil)
- '(custom-safe-themes
-   (quote
-    ("561ba4316ba42fe75bc07a907647caa55fc883749ee4f8f280a29516525fc9e8" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
- '(package-selected-packages
-   (quote
-    (aggressive-indent vmd-mode dash-functional free-keys clojure-cheatsheet helm-ag solarized-theme robe yari enh-ruby-mode yaml-mode use-package swiper-helm super-save smooth-scrolling smex smartparens smart-mode-line skewer-mode rainbow-delimiters psci projectile nyan-mode midje-mode markdown-mode magit ido-ubiquitous hy-mode helm-company haskell-mode groovy-mode git-gutter flx-ido ensime diff-hl cyberpunk-theme crux clojure-snippets clj-refactor cider-eval-sexp-fu browse-kill-ring beacon ace-window ac-cider)))
- '(safe-local-variable-values
-   (quote
-    ((cider-cljs-lein-repl . "(boot (start))")
-     (cider-boot-parameters . "repl -s wait")))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(helm-selection ((t (:background "#191919" :distant-foreground "black"))))
- '(which-func ((t (:foreground "#6a9fb5")))))
 
+ '(auto-save-file-name-transforms '((".*" "~/.emacs.d/.autosaves/\\1" t)))
+
+ ;; Setting make-backup-files to nil prevents Emacs from creating backup files (files ending with ~),
+ ;;   and the customizations for backup-directory-alist remain effective for any backup files that
+ ;;   might still be created by other means (e.g. by external packages).
+ '(backup-directory-alist '((".*" . "~/.emacs.d/.backup/"))))
+
+
+;; Globally setting font
+(set-face-attribute 'default nil
+                    :font (font-spec :family "PragmataPro Liga"
+                                     :size 16
+                                     :weight 'normal))
+
+
+;; Enable desktop-save-mode to restore previously open files
+(desktop-save-mode 1)
+
+;; Set up a directory for saving desktop files.
+(let ((desktop-dir "~/.emacs.d/desktop/"))
+  (unless (file-directory-p desktop-dir)
+    (make-directory desktop-dir t))
+  (setq desktop-dirname desktop-dir
+        desktop-path (list desktop-dir)
+        desktop-auto-save-timeout 300) ; auto-save every 5 minutes
+  (desktop-save-mode 1))
