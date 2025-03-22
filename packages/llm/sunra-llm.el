@@ -111,26 +111,32 @@
 (use-package gptel
 
   :ensure t
-  :bind ("C-M-'" . gptel-send)
-  :config
+  :vc (:url "https://github.com/karthink/gptel"
+       :branch "feature-tool-use")
 
+  :bind ("C-M-'" . gptel-send)
+
+  :init
+  
   (sunra/load! "openapi-key.el")
   (sunra/load! "gemini-key.el")
   (sunra/load! "anthropic-key.el")
   (sunra/load! "linkup-api-key.el")
 
-  (apply-templates (file-name-concat (dir!) "gptel/directives"))
-  (load-gptel-directives (file-name-concat (dir!) "gptel/directives"))
-  (load-all! (file-name-concat (dir!) "gptel/tools/"))
+  :config
 
-  (setq! gptel-api-key openapi-key
-         gptel-expert-commands t
-         gptel-prompt-prefix-alist '((markdown-mode . "*Prompt* ")
-                                     (org-mode . "*Prompt* ")
-                                     (text-mode . "*Prompt*  "))
-         gptel-response-prefix-alist '((markdown-mode . "*Response* ")
-                                       (org-mode . "*Response* ")
-                                       (text-mode . "*Response* ")))
+  (apply-templates (file-name-concat (sunra/dir!) "gptel/directives"))
+  (load-gptel-directives (file-name-concat (sunra/dir!) "gptel/directives"))
+  (load-all! (file-name-concat (sunra/dir!) "gptel/tools/"))
+
+  (sunra/setq! gptel-api-key openapi-key
+               gptel-expert-commands t
+               gptel-prompt-prefix-alist '((markdown-mode . "*Prompt* ")
+					   (org-mode . "*Prompt* ")
+					   (text-mode . "*Prompt*  "))
+               gptel-response-prefix-alist '((markdown-mode . "*Response* ")
+					     (org-mode . "*Response* ")
+					     (text-mode . "*Response* ")))
 
   ;; :key can be a function that returns the API key.
   ;; Any name you want
@@ -156,7 +162,12 @@
 
 (use-package gptel-quick
 
-  :bind (:map embark-general-map
-              ("?" . #'gptel-quick)))
+  :ensure t
+  :vc (:url "https://github.com/karthink/gptel-quick"
+       :branch "main")
+
+  ;; :bind (:map embark-general-map
+  ;;             ("?" . #'gptel-quick))
+  )
 
 (provide 'sunra-llm)

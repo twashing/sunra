@@ -1,4 +1,3 @@
-
 (require 'package)
 
 
@@ -60,7 +59,10 @@
  ;; If there is more than one, they won't work right.
  '(auto-save-file-name-transforms '((".*" "~/.emacs.d/.autosaves/\\1" t)))
  '(backup-directory-alist '((".*" . "~/.emacs.d/.backup/")))
- '(package-selected-packages '(gptel)))
+ '(package-selected-packages '(gptel gptel-quick))
+ '(package-vc-selected-packages
+   '((gptel-quick :url "https://github.com/karthink/gptel-quick" :branch
+		  "main"))))
 
 
 ;; Globally setting font
@@ -89,6 +91,29 @@
 ;;
 ;; Load Packages
 
+(defmacro sunra/setq! (&rest settings)
+  "A more sensible `setopt' for setting customizable variables.
+
+   This can be used as a drop-in replacement for `setq' and *should* be used
+   instead of `setopt'. Unlike `setq', this triggers custom setters on variables.
+   Unlike `setopt', this won't needlessly pull in dependencies."
+  
+  (macroexp-progn
+   (cl-loop for (var val) on settings by 'cddr
+            collect `(funcall (or (get ',var 'custom-set) #'set-default-toplevel-value)
+                              ',var ,val))))
+
+(defmacro sunra/dir! (&optional path)
+  "Return the directory of the file in which this macro is expanded.
+   If PATH is non-nil, return its full path relative to that directory.
+   For example, (dir! \"+git\") returns the full path to \"+git.el\" in the current file's directory."
+  
+  (let ((current-file (or load-file-name buffer-file-name)))
+    (if current-file
+        `(file-name-as-directory
+          (expand-file-name ,(or path "") (file-name-directory ,current-file)))
+      (error "Cannot determine directory: no load-file-name or buffer-file-name"))))
+
 (defun sunra/load! (file &optional noerror)
   "Load the Emacs Lisp FILE relative to the file this function is called from.
    Omit the file extension to allow Emacs to load the byte-compiled version if available.
@@ -97,16 +122,23 @@
   (let ((target (expand-file-name file (file-name-directory (or load-file-name buffer-file-name)))))
     (load target noerror)))
 
-(dolist (pkg '("packages"))
+(dolist (pkg '("packages" "packages/llm"))
   (add-to-list 'load-path (concat emacs-dir pkg)))
 
+;; (defmacro use-packages (&rest args)
+;;   (cons 'progn
+;; 	(mapcar (lambda (pkg)
+;; 		  `(require ,pkg ,@(rest args)))
+;; 		(first args))))
 (defmacro use-packages (&rest args)
-  (cons 'progn
-	(mapcar (lambda (pkg)
-		  `(require ,pkg ,@(rest args)))
-		(first args))))
+  `(progn
+     ,@(mapcar (lambda (pkg)
+                 `(require ,pkg ,@(cdr args)))
+               (car args))))
+
 
 (use-packages ('sunra-llm))
+
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
