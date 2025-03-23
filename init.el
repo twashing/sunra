@@ -19,8 +19,7 @@
 	       'sunra-core
 	       'sunra-keybinds
 	       'sunra-navigation
-	       'sunra-llm
-	       ))
+	       'sunra-llm))
 
 ;; (let ((autosaves-dir "~/.emacs.d/.autosaves/\\1")
 ;;       (backup-dir "~/.emacs.d/.backup/"))

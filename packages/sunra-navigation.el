@@ -44,7 +44,9 @@
 (fset 'buf-move-down "\C-u10\C-n")
 
 ;; Define a globalized minor mode for hs-minor-mode
-(hs-minor-mode 1)
+(dolist (hook '(prog-mode-hook org-mode-hook markdown-mode-hook latex-mode-hook))
+  (add-hook hook #'hs-minor-mode))
+
 
 (map! :map global-map
       "C-x M-x" #'isearch-forward-symbol-at-point
