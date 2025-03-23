@@ -22,8 +22,6 @@
 	       'sunra-llm
 	       ))
 
-
-
 ;; (let ((autosaves-dir "~/.emacs.d/.autosaves/\\1")
 ;;       (backup-dir "~/.emacs.d/.backup/"))
 ;;
