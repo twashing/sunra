@@ -52,9 +52,11 @@
       "C-M-l" #'transpose-lines
       "C-/" #'org-cycle-global)
 
+
 ;; EVALUATION
 (map! :map global-map
       "C-c C-k" #'eval-buffer)
+
 
 ;; EDITING
 (defun delete-whitespace-except-one ()
@@ -90,11 +92,13 @@
 
 (map! "C-c k" #'copy-line
       "C-c K" #'avy-copy-line)
+
 (map! :map global-map
 
       "M-<backspace>" #'sp-backward-kill-word
       "C-c M-c" #'upcase-word
       "M-W" #'delete-trailing-whitespace
+      "M-_" #'undo-redo
 
       ;; "M-m s o" #'consult-outline
       "C-c l e m" #'pp-macro-expand-last-expression
@@ -118,7 +122,7 @@
       )
 
 
-;; ;; WINDOWS
+;; WINDOWS
 (map! ;; TODO Avy
       "M-[" #'ace-select-window
 
@@ -131,11 +135,13 @@
       "C-M-s" #'sp-splice-sexp
       "C-M-l" #'transpose-lines)
 
+
 ;; ;; VERSION CONTROL
 ;; ;; TODO magit
 ;; (map! :map global-map
 ;;
 ;;       "C-x RET" #'magit-status)
+
 
 ;; ;; PROJECTS
 ;; TODO projectile
@@ -145,5 +151,6 @@
 ;;       "M-m p r" #'projectile-replace
 ;;       "M-m p R" #'projectile-replace-regexp
 ;;       "M-m p S" #'projectile-save-project-buffers)
+
 
 (provide 'sunra-navigation)
