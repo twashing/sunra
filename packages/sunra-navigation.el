@@ -39,10 +39,12 @@
   (sp-pair "[" nil :unless '(:rem sp-point-before-word-p)))
 
 
-
 ;; NAVIGATION
 (fset 'buf-move-up "\C-u10\C-p")
 (fset 'buf-move-down "\C-u10\C-n")
+
+;; Define a globalized minor mode for hs-minor-mode
+(hs-minor-mode 1)
 
 (map! :map global-map
       "C-x M-x" #'isearch-forward-symbol-at-point
@@ -51,6 +53,14 @@
       "C-d" #'sp-kill-sexp
       "C-M-l" #'transpose-lines
       "C-/" #'org-cycle-global)
+
+(map! "C-o" #'hs-toggle-hiding
+      "C-c @ C-M-h" #'hs-hide-all
+      "C-c @ C-M-s" #'hs-show-all
+      "C-c @ C-M-l" #'hs-hide-level
+      "C-M-," #'hs-hide-all
+      "C-M-." #'hs-show-all
+      "C-M-/" #'hs-hide-level)
 
 
 ;; EVALUATION
