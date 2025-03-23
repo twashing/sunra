@@ -166,6 +166,7 @@
   :vc (:url "https://github.com/karthink/gptel-quick"
        :branch "main")
 
+  ;; TODO
   ;; :bind (:map embark-general-map
   ;;             ("?" . #'gptel-quick))
   )
