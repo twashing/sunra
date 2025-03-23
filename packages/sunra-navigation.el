@@ -134,7 +134,7 @@
       )
 
 
-;; WINDOWS
+;; WINDOWS & FRAMES
 (map! ;; TODO Avy
       "M-[" #'ace-select-window
 
@@ -144,8 +144,7 @@
       ;; "M-y" #'browse-kill-ring
       "C-M-[" #'scroll-other-window-down
       "C-M-]" #'scroll-other-window
-      "C-M-s" #'sp-splice-sexp
-      "C-M-l" #'transpose-lines)
+      "C-c o f" #'make-frame)
 
 
 ;; ;; VERSION CONTROL
