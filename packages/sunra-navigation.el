@@ -34,7 +34,6 @@
 ;;
 ;; This configuration provides a practical approach for lazily loading smartparens, boosting Emacs startup performance by only loading the package on first use.
 
-
 (use-package smartparens
 
   :ensure t
@@ -64,7 +63,7 @@
   (require 'smartparens-config)
 
   ;; ;; Additional customization can be added here.
-  ;; (setq sp-base-key-bindings 'paredit) ; Use keybindings similar to paredit
+  (setq sp-base-key-bindings 'paredit) ; Use keybindings similar to paredit
   ;; (setq sp-autoskip-closing-pair 'always)
 
 
