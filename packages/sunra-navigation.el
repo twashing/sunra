@@ -2,10 +2,7 @@
 (use-package smartparens
 
   :ensure t
-
   :init (smartparens-global-mode 1)
-
-  ;; :bind automatically defers loading until first use
   :bind (:map global-map
 	      ("C-M-k" . sp-copy-sexp)
 	      ("C-M-u" . sp-up-sexp)
@@ -22,7 +19,6 @@
 
 	      ("DEL" . sp-backward-delete-char)
 	      ("C-K" . sp-kill-hybrid-sexp))
-
   :config
 
   ;; Load the default smartparens configuration.
@@ -37,6 +33,32 @@
   (sp-pair "(" nil :unless '(:rem sp-point-before-word-p))
   (sp-pair "{" nil :unless '(:rem sp-point-before-word-p))
   (sp-pair "[" nil :unless '(:rem sp-point-before-word-p)))
+
+(use-package ace-window
+
+  :ensure t
+  :bind (("M-[" . ace-select-window)
+	 ("C-c M-[" . ace-swap-window)
+	 ("C-x M-[" . ace-delete-window))
+  :config
+
+  ;; Switch window letter SIZE
+  (custom-set-faces
+   '(aw-leading-char-face
+     ((t (:inherit ace-jump-face-foreground :height 6.0)))))
+
+  ;; Ensure ace-window works across frames.
+  (setq aw-scope 'global
+	aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
+
+(use-package free-keys
+  :ensure t)
+
+(use-package browse-kill-ring
+  :ensure t)
+
+(use-package rainbow-delimiters
+  :ensure t)
 
 
 ;; NAVIGATION
@@ -135,13 +157,7 @@
 
 
 ;; WINDOWS & FRAMES
-(map! ;; TODO Avy
-      "M-[" #'ace-select-window
-
-      ;; TODO Ace Window
-      "C-c M-[" #'ace-swap-window
-      "C-x M-[" #'ace-delete-window
-      ;; "M-y" #'browse-kill-ring
+(map! "M-y" #'browse-kill-ring
       "C-M-[" #'scroll-other-window-down
       "C-M-]" #'scroll-other-window
       "C-c o f" #'make-frame)
