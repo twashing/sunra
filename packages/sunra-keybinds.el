@@ -57,4 +57,9 @@
                        `(global-set-key (kbd ,key) ,cmd))))
                  (nreverse bindings)))))
 
+(use-package which-key
+
+  :ensure t
+  :config (which-key-mode))
+
 (provide 'sunra-keybinds)

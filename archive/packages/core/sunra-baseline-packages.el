@@ -28,7 +28,7 @@
 
 ;; M-x describe-personal-keybindings ... to see the opposite (in https://github.com/jwiegley/use-package/blob/master/bind-key.el)
 (use-package free-keys)
-2(use-package browse-kill-ring
+(use-package browse-kill-ring
   :defer 0)
 (use-package rainbow-delimiters
   :defer 0)
