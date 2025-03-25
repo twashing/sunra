@@ -61,9 +61,6 @@
       ;; numbers are disabled. For relative line numbers, set this to `relative'.
       display-line-numbers-type t
 
-      ;; Start from 1 when inserting numbers
-      mc/insert-numbers-default 1
-
       ;; When minibuffer offers tab completion, make that case-insensitive
       ;; https://emacs.stackexchange.com/a/32408/10528
       completion-ignore-case t)

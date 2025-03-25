@@ -49,7 +49,11 @@
 
   ;; Ensure ace-window works across frames.
   (setq aw-scope 'global
-	aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
+	aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
+
+	;; TODO set ace-jump-face-color
+	aw-background nil
+	))
 
 (use-package free-keys
   :ensure t)
@@ -60,6 +64,11 @@
 (use-package rainbow-delimiters
   :ensure t)
 
+(use-package expand-region
+
+  :ensure t
+  :bind (("C-=" . er/expand-region)
+	 ("C-M-=" . er/contract-region)))
 
 ;; NAVIGATION
 (fset 'buf-move-up "\C-u10\C-p")
