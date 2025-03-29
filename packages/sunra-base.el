@@ -35,8 +35,34 @@
 
 
 
+;; Problem
+;; 
+;; I was initially confused that something was spuriously adding the `custom-set-faces` and `custom-set-variables` forms in my `init.el`.
+;; The mechanism adding those `custom-set-variables` and `custom-set-faces` forms to my init.el is the built-in Emacs customization system.
+;; When you use the customize interface (M-x customize) or when packages automatically set customization variables, Emacs writes these settings to your init file by default.
+;; 
+;; Custom File Mechanism
+;; 
+;; `custom-file` is the variable that determines where Emacs stores customization information.
+;; By default, when this variable is nil, Emacs adds customizations to your init file (usually `~/.emacs.d/init.el` or `~/.emacs`).
+;; This solution redirects these customizations to a separate file... custom.el.
+
+;; Store customizations in a separate file
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+
+;; Create the custom file if it doesn't exist
+(unless (file-exists-p custom-file)
+  (write-region "" nil custom-file))
+
+;; Load the custom file
+(load custom-file)
+
+
+
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+
+;; Set dirs for autosave, backup and org
 (let ((org-dir "~/.emacs.d/.org/")
       (autosaves-dir "~/.emacs.d/.autosaves/\\1")
       (backup-dir "~/.emacs.d/.backup/"))
@@ -49,6 +75,7 @@
 
   (unless (file-directory-p backup-dir)
     (make-directory backup-dir t)))
+
 
 (setq debug-on-error t
 
