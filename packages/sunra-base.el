@@ -58,7 +58,6 @@
 (load custom-file)
 
 
-
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 
@@ -99,7 +98,6 @@
       ;; When minibuffer offers tab completion, make that case-insensitive
       ;; https://emacs.stackexchange.com/a/32408/10528
       completion-ignore-case t)
-
 
 
 ;; Enable auto-save-visited-mode globally.
