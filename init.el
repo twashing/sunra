@@ -21,17 +21,6 @@
 	       'sunra-navigation
 	       'sunra-llm))
 
-;; (let ((autosaves-dir "~/.emacs.d/.autosaves/\\1")
-;;       (backup-dir "~/.emacs.d/.backup/"))
-;;
-;;   (unless (file-directory-p autosaves-dir)
-;;     (make-directory autosaves-dir t))
-;;
-;;   (unless (file-directory-p backup-dir)
-;;     (make-directory backup-dir t))
-;;
-;;   )
-
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

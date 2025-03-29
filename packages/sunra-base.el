@@ -37,10 +37,18 @@
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-(let ((org-dir "~/.emacs.d/.org/"))
+(let ((org-dir "~/.emacs.d/.org/")
+      (autosaves-dir "~/.emacs.d/.autosaves/\\1")
+      (backup-dir "~/.emacs.d/.backup/"))
 
   (unless (file-directory-p org-dir)
-    (make-directory org-dir t)))
+    (make-directory org-dir t))
+
+  (unless (file-directory-p autosaves-dir)
+    (make-directory autosaves-dir t))
+
+  (unless (file-directory-p backup-dir)
+    (make-directory backup-dir t)))
 
 (setq debug-on-error t
 
