@@ -6,9 +6,9 @@
  '(auto-save-file-name-transforms '((".*" "~/.emacs.d/.autosaves/\\1" t)))
  '(backup-directory-alist '((".*" . "~/.emacs.d/.backup/")))
  '(package-selected-packages
-   '(ace-window browse-kill-ring expand-region free-keys gptel
-		gptel-quick multiple-cursors rainbow-delimiters
-		smartparens))
+   '(ace-window browse-kill-ring exec-path-from-shell expand-region
+		free-keys gptel gptel-quick multiple-cursors
+		rainbow-delimiters smartparens))
  '(package-vc-selected-packages
    '((gptel-quick :url "https://github.com/karthink/gptel-quick" :branch
 		  "main"))))

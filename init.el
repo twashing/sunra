@@ -14,9 +14,12 @@
                  `(require ,pkg ,@(cdr args)))
                (car args))))
 
-
 (use-packages ('sunra-base
 	       'sunra-core
+	       'sunra-desktop
 	       'sunra-keybinds
 	       'sunra-navigation
-	       'sunra-llm))
+	       'sunra-llm
+	       'sunra-multiple-cursors
+	       'sunra-speech
+	       'sunra-windows))

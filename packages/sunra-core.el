@@ -1,3 +1,14 @@
+
+(defun sunra/goto-emacs-dir ()
+  "Open the ~/.emacs.d directory."
+  (interactive)
+  (dired (expand-file-name "~/.emacs.d/")))
+
+(defun sunra/goto-init-el ()
+  "Open the ~/.emacs.d/init.el file."
+  (interactive)
+  (find-file (expand-file-name "~/.emacs.d/init.el")))
+
 (defun sunra/new-buffer ()
   (interactive)
   (let ((buffer (generate-new-buffer "*new*")))

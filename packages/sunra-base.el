@@ -8,10 +8,12 @@
   (when (fboundp mode) (funcall mode -1)))
 
 
-;; Add MELPA to package archives if it's not already there.
-;; Optionally, add nongnu as well.
-(dolist (archive '(("melpa" . "https://melpa.org/packages/")
-                   ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
+;; gnu and non-gnu should already be present in 'package-archives
+;; Listing here for documentation purposes
+(dolist (archive '(("gnu" . "http://elpa.gnu.org/packages/")
+		   ("nongnu" . "https://elpa.nongnu.org/nongnu/")
+		   ("elpa" . "https://elpa.gnu.org/packages/")
+                   ("melpa" . "https://melpa.org/packages/")))
   (add-to-list 'package-archives archive t))
 
 
@@ -125,6 +127,19 @@
         desktop-auto-save-timeout 300) ; auto-save every 5 minutes
 
   (desktop-save-mode 1))
+
+;; Configuring Steve Purcell's exec-path-from-shell package to
+;; make Emacs use the $PATH set up by the user's shell
+(use-package exec-path-from-shell
+  :ensure t
+  :if (memq system-type '(darwin gnu/linux))
+  :config
+  (let ((platform-bin (if (eq system-type 'darwin)
+                          "/opt/homebrew/bin"
+                        "/usr/local/bin")))
+    (setenv "PATH" (concat platform-bin ":" (getenv "PATH")))
+    (add-to-list 'exec-path platform-bin))
+  (exec-path-from-shell-initialize))
 
 
 (provide 'sunra-base)

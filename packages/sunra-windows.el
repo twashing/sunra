@@ -47,23 +47,24 @@
 
 
 ;; Close *Warnings* and *Backtrace* windows with C-g
-(defun my/close-error-windows ()
-  "Close *Warnings* and *Backtrace* windows if they exist."
+(defun my/close-other-windows ()
+  "Close auxiliary windows: *Warnings*, *Backtrace*, *Help*,
+and any window whose buffer name matches \"-compilation\"."
   (interactive)
-  (let ((warning-window (get-buffer-window "*Warnings*"))
-        (backtrace-window (get-buffer-window "*Backtrace*")))
-    (when warning-window
-      (quit-window nil warning-window))
-    (when backtrace-window
-      (quit-window nil backtrace-window))))
+  (dolist (win (window-list))
+    (let* ((buf (window-buffer win))
+           (name (buffer-name buf)))
+      (when (or (member name '("*Warnings*" "*Backtrace*" "*Help*"))
+                (string-match-p "-compilation" name))
+        (quit-window nil win)))))
 
-(defun my/keyboard-quit-with-error-window-handling ()
-  "Call `keyboard-quit' and close error windows."
+(defun my/keyboard-quit-with-other-window-handling ()
+  "Call `keyboard-quit' and close other windows."
   (interactive)
-  (my/close-error-windows)
+  (my/close-other-windows)
   (keyboard-quit))
 
-(global-set-key (kbd "C-g") 'my/keyboard-quit-with-error-window-handling)
+(global-set-key (kbd "C-g") 'my/keyboard-quit-with-other-window-handling)
 
 
 (provide 'sunra-windows)
