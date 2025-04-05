@@ -12,3 +12,6 @@ url/
 recentf
 desktop
 **/*-key.el
+.cache/
+lisp/
+	
