@@ -1,4 +1,15 @@
 
+
+;; TODO - Experimental
+;; Need to add functionality to detect (or prompt user) for active camera and microphone
+;; Listing A/V devices shows what's available on the system
+;; ffmpeg -f avfoundation -list_devices true -i ""
+
+;; ffmpeg needs permission to record on a MacOS
+;; Recording audio works manually
+;; ffmpeg -f avfoundation -i :1 -t 5 -ar 16000 -ac 1 -y test.wav
+
+
 ;; Whisper.el for Speech-to-Text
 ;; 1. Clone the repository
 ;; In terminal:
@@ -33,6 +44,5 @@
   
   ;; Also check immediately in case whisper.cpp is already installed
   (whisper-maybe-add-to-load-path))
-
 
 (provide 'sunra-speech)

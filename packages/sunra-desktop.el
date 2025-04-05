@@ -1,5 +1,16 @@
 (require 'cl-lib)
 
+
+;; TODO - Experimental
+;; Need to add functionality to detect (or prompt user) for active camera and microphone
+;; Listing A/V devices shows what's available on the system
+;; ffmpeg -f avfoundation -list_devices true -i ""
+
+;; ffmpeg needs permission to record on a MacOS
+;; Recording audio works manually
+;; ffmpeg -f avfoundation -i :1 -t 5 -ar 16000 -ac 1 -y test.wav
+
+
 (defun screenshot (&optional emacs-frame-only)
   "Take a screenshot and save it to a file.
 With prefix argument ARG, capture the current active Emacs frame only.
@@ -32,7 +43,6 @@ Otherwise, capture the entire screen."
           (when (y-or-n-p "Open screenshot? ")
             (find-file full-path)))
       (error "Failed to take screenshot"))))
-
 
 ;; `screenshot` is an Emacs lisp function that can
 ;; i. take a shot of desktop screen or ii. shot of an active Emacs window
