@@ -142,5 +142,11 @@
   (exec-path-from-shell-initialize))
 
 
-(provide 'sunra-base)
+;; Disable audible bell and use visible bell
+(setq visible-bell t)
+(setq ring-bell-function (lambda ()
+  (invert-face 'mode-line)
+  (run-with-timer 0.1 nil #'invert-face 'mode-line)))
 
+
+(provide 'sunra-base)
