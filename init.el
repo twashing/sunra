@@ -22,4 +22,5 @@
 	       'sunra-llm
 	       'sunra-multiple-cursors
 	       'sunra-speech
-	       'sunra-windows))
+	       'sunra-windows
+	       'sunra-markdown))

@@ -108,16 +108,45 @@
   (dolist (file (directory-files dir t "\\.el$"))
     (sunra/load! file)))
 
+;; NOTE - For Emacs 29
+;; Bootstrap straight.el
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 6))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
+;; Configure straight.el to use use-package
+(straight-use-package 'use-package)
+(setq straight-use-package-by-default t)
+
+;; Now you can use straight.el with use-package
+
 (use-package gptel
 
   :ensure t
-  :vc (:url "https://github.com/karthink/gptel"
-       :branch "feature-tool-use")
+
+  ;; ;; Emacs 30
+  ;; :vc (:url "https://github.com/karthink/gptel"
+  ;; 	    :branch "feature-tool-use")
+
+  ;; Emacs 29
+  :straight (gptel :type git
+                   :host github
+                   :repo "karthink/gptel"
+                   :branch "feature-tool-use")
 
   :bind ("C-M-'" . gptel-send)
 
   :init
-  
+
   (sunra/load! "openapi-key.el")
   (sunra/load! "gemini-key.el")
   (sunra/load! "anthropic-key.el")
@@ -142,11 +171,11 @@
   ;; Any name you want
   ;; Streaming responses
   (gptel-make-gemini "Gemini"
-    :key gemini-key
-    :stream t)
+		     :key gemini-key
+		     :stream t)
   (gptel-make-anthropic "Claude"
-    :key anthropic-key
-    :stream t)
+			:key anthropic-key
+			:stream t)
 
   ;; NOTE keep this until moving back to `main' branch
   (setq gptel--anthropic-models
@@ -160,11 +189,27 @@
                 :cutoff-date "2025-02")
               gptel--anthropic-models)))
 
+;; ;; Make sure Git is found
+;; (setq straight-vc-git-executable (executable-find "git"))
+;; 
+;; ;; Show more debugging info
+;; (setq straight-verbose t)
+
 (use-package gptel-quick
 
   :ensure t
-  :vc (:url "https://github.com/karthink/gptel-quick"
-       :branch "main")
+
+  ;; ;; Emacs 30
+  ;; :vc (:url "https://github.com/karthink/gptel-quick"
+  ;;      :branch "main")
+
+  ;; Emacs 29
+  :straight (gptel-quick :type git
+			 :host github
+			 :repo "karthink/gptel-quick"
+			 ;; :branch "main"
+			 ;; :fork nil
+			 )
 
   ;; TODO
   ;; :bind (:map embark-general-map
