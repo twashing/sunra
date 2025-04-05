@@ -149,4 +149,46 @@
   (run-with-timer 0.1 nil #'invert-face 'mode-line)))
 
 
+;; NOTE - Emacs 30
+;;
+;; Problem
+;; A. MacOS dictation doesn't work in Emacs 30 out of the box.
+;; 
+;; B. None of these functions seem to exist in Emacs 30.
+;; (mac-auto-operator-composing-mode 1)
+;; (mac-auto-operator-composition-mode 1)
+;; (mac-auto-operator-composition-mode)
+;; 
+;; But mac-auto-operator-composition-mode has certainly existed in the past, as shown by this configuration.
+;; https://github.com/howardabrams/dot-files/blob/master/emacs-mac.org
+;; 
+;; C. And setting this to nil still doesn't let MacOS dictation to input to an Emacs 30 buffer.
+;; (when (eq system-type 'darwin)
+;;   (setq default-input-method nil))
+;;
+;; Solution
+;; It turns out that MacOS dictation not working in Emacs 30 is a known issue (bug#76765). This is a build-time toolchain issue rather than a configuration problem, which explains why the mac-auto-operator-composition-mode functions you mentioned don't exist in Emacs 30.
+
+;; NOTE - Emacs 29
+;; Bootstrap straight.el
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 6))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
+;; Configure straight.el to use use-package
+(straight-use-package 'use-package)
+(setq straight-use-package-by-default t)
+
+;; Now you can use straight.el with use-package
+
+
 (provide 'sunra-base)
