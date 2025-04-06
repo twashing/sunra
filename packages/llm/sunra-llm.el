@@ -62,7 +62,6 @@
          :headers headers
          :as #'json-read)))
 
-
 (defun apply-template (template-file output-file &optional context)
   "Apply a template file TEMPLATE-FILE and write the result to OUTPUT-FILE.
    Replaces placeholders of the form:

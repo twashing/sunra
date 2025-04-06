@@ -47,7 +47,7 @@
 
 
 ;; Close *Warnings* and *Backtrace* windows with C-g
-(defun my/close-other-windows ()
+(defun sunra/close-other-windows ()
   "Close auxiliary windows: *Warnings*, *Backtrace*, *Help*,
 and any window whose buffer name matches \"-compilation\"."
   (interactive)
@@ -58,13 +58,13 @@ and any window whose buffer name matches \"-compilation\"."
                 (string-match-p "-compilation" name))
         (quit-window nil win)))))
 
-(defun my/keyboard-quit-with-other-window-handling ()
+(defun sunra/keyboard-quit-with-other-window-handling ()
   "Call `keyboard-quit' and close other windows."
   (interactive)
-  (my/close-other-windows)
+  (sunra/close-other-windows)
   (keyboard-quit))
 
-(global-set-key (kbd "C-g") 'my/keyboard-quit-with-other-window-handling)
+(global-set-key (kbd "C-g") 'sunra/keyboard-quit-with-other-window-handling)
 
 
 (provide 'sunra-windows)

@@ -8,8 +8,8 @@
                              (message "%s" text)
                              (format "Message sent: %s" text))
                  :args (list '(:name "text"
-                               :type "string"
-                               :description "The text to send to the messages buffer"))
+				     :type "string"
+				     :description "The text to send to the messages buffer"))
                  :category "emacs")
 
 (gptel-make-tool :name "read_url"
@@ -144,15 +144,15 @@
                  :description "Search the web using Linkup API."
 
                  :function #'search-web
-                 :args (list (:name "query"
-				    :type "string"
-				    :description "Parameter for query")
-                             (:name "depth"
-				    :type "string"
-				    :description "Parameter for depth")
-                             (:name "linkup-key"
-				    :type "string"
-				    :description "Parameter for linkup-key"))
+                 :args (list '(:name "query"
+			       :type "string"
+			       :description "Parameter for query")
+                             '(:name "depth"
+				     :type "string"
+				     :description "Parameter for depth")
+                             '(:name "linkup-key"
+				     :type "string"
+				     :description "Parameter for linkup-key"))
                  :category "web")
 
 

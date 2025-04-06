@@ -102,6 +102,15 @@
       completion-ignore-case t)
 
 
+;; Use spaces instead of tabs for indentation
+;; By default, Emacs indent behavior varies by major mode, and some modes use tabs by default.
+;; The key setting here is `(setq-default indent-tabs-mode nil)`, which disables tab indentation for all buffers by default.
+;; The other settings control the display width of tabs when they do appear and improve tab behavior for completion.
+(setq-default indent-tabs-mode nil)   ; Use spaces instead of tabs
+(setq-default tab-width 2)            ; Set width for tabs that must be used
+(setq-default tab-always-indent 'complete) ; Make tab complete if point is after a word prefix
+
+
 ;; Enable auto-save-visited-mode globally.
 (auto-save-visited-mode 1)
 

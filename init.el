@@ -23,4 +23,5 @@
 	       'sunra-multiple-cursors
 	       'sunra-speech
 	       'sunra-windows
-	       'sunra-markdown))
+	       'sunra-markdown
+	       'sunra-vc))
