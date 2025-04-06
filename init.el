@@ -24,7 +24,8 @@
 	             'sunra-speech
 	             'sunra-windows
 	             'sunra-markdown
-	             'sunra-vc))
+	             'sunra-vc
+               'sunra-projects))
 
 
 ;; TODO - Problem
@@ -134,4 +135,3 @@
 ;; 2. Improve property list indentation by recognizing keywords starting with `:` and indenting them properly
 ;; 
 ;; This should ensure that your property lists inside `:args` are properly aligned vertically as in your desired example.
-pS

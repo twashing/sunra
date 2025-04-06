@@ -5,7 +5,7 @@
   :straight (magit :type git
                    :host github
                    :repo "magit/magit"
-		   :branch "main")
+		               :branch "main")
   :commands (magit-status magit-file-dispatch)
   :bind (("C-x RET" . magit-status)))
 
