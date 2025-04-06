@@ -8,8 +8,8 @@
                              (message "%s" text)
                              (format "Message sent: %s" text))
                  :args (list '(:name "text"
-				     :type "string"
-				     :description "The text to send to the messages buffer"))
+				                             :type "string"
+				                              :description "The text to send to the messages buffer"))
                  :category "emacs")
 
 (gptel-make-tool :name "read_url"
@@ -24,8 +24,8 @@
                                    (shr-insert-document dom)
                                    (buffer-substring-no-properties (point-min) (point-max))))))
                  :args (list '(:name "url"
-                               :type "string"
-                               :description "The URL to read"))
+                                     :type "string"
+                                     :description "The URL to read"))
                  :category "web")
 
 (gptel-make-tool :name "read_buffer"
@@ -37,8 +37,8 @@
                              (with-current-buffer  buffer
                                (buffer-substring-no-properties (point-min) (point-max))))
                  :args (list '(:name "buffer"
-                               :type "string"
-                               :description "The name of the buffer whose contents are to be retrieved"))
+                                     :type "string"
+                                     :description "The name of the buffer whose contents are to be retrieved"))
                  :category "emacs")
 
 (gptel-make-tool :name "append_to_buffer"
@@ -51,23 +51,23 @@
                                  (insert text)))
                              (format "Appended text to buffer %s" buffer))
                  :args (list '(:name "buffer"
-                               :type "string"
-                               :description "The name of the buffer to append text to.")
+                                     :type "string"
+                                     :description "The name of the buffer to append text to.")
                              '(:name "text"
-                               :type "string"
-                               :description "The text to append to the buffer."))
+                                     :type "string"
+                                     :description "The text to append to the buffer."))
                  :category "emacs")
 
 (gptel-make-tool :name "list_directory"
                  :description "List the contents of a given directory"
 
                  :function (lambda (directory)
-	                     (mapconcat #'identity
+	                           (mapconcat #'identity
                                         (directory-files directory)
                                         "\n"))
                  :args (list '(:name "directory"
-	                       :type "string"
-	                       :description "The path to the directory to list"))
+	                                   :type "string"
+	                                   :description "The path to the directory to list"))
                  :category "filesystem")
 
 (gptel-make-tool :name "make_directory"
@@ -80,11 +80,11 @@
                                    (format "Directory %s created/verified in %s" name parent))
                                (error (format "Error creating directory %s in %s" name parent))))
                  :args (list '(:name "parent"
-	                       :type "string"
-	                       :description "The parent directory where the new directory should be created, e.g. /tmp")
+	                                   :type "string"
+	                                   :description "The parent directory where the new directory should be created, e.g. /tmp")
                              '(:name "name"
-	                       :type "string"
-	                       :description "The name of the new directory to create, e.g. testdir"))
+	                                   :type "string"
+	                                   :description "The name of the new directory to create, e.g. testdir"))
                  :category "filesystem")
 
 (gptel-make-tool :name "create_file"
@@ -97,26 +97,26 @@
                                  (write-file full-path))
                                (format "Created file %s in %s" filename path)))
                  :args (list '(:name "path"
-	                       :type "string"
-	                       :description "The directory where to create the file")
+	                                   :type "string"
+	                                   :description "The directory where to create the file")
                              '(:name "filename"
-	                       :type "string"
-	                       :description "The name of the file to create")
+	                                   :type "string"
+	                                   :description "The name of the file to create")
                              '(:name "content"
-	                       :type "string"
-	                       :description "The content to write to the file"))
+	                                   :type "string"
+	                                   :description "The content to write to the file"))
                  :category "filesystem")
 
 (gptel-make-tool :name "read_file"
                  :description "Read and display the contents of a file"
 
                  :function (lambda (filepath)
-	                     (with-temp-buffer
-	                       (insert-file-contents (expand-file-name filepath))
-	                       (buffer-string)))
+	                           (with-temp-buffer
+	                             (insert-file-contents (expand-file-name filepath))
+	                             (buffer-string)))
                  :args (list '(:name "filepath"
-	                       :type "string"
-	                       :description "Path to the file to read.  Supports relative paths and ~."))
+	                                   :type "string"
+	                                   :description "Path to the file to read.  Supports relative paths and ~."))
                  :category "filesystem")
 
 (gptel-make-tool :name "screenshot"
@@ -124,8 +124,8 @@
 
                  :function #'screenshot
                  :args (list '(:name "emacs-frame-only"
-                               :type "string"
-                               :description "Parameter for emacs-frame-only"))
+                                     :type "string"
+                                     :description "Parameter for emacs-frame-only"))
                  :category "desktop")
 
 (gptel-make-tool :name "screencapture"
@@ -133,11 +133,11 @@
 
                  :function #'screencapture
                  :args (list '(:name "screen-id"
-                               :type "string"
-                               :description "Parameter for screen-id")
+                                     :type "string"
+                                     :description "Parameter for screen-id")
                              '(:name "duration"
-                               :type "string"
-                               :description "Parameter for duration"))
+                                     :type "string"
+                                     :description "Parameter for duration"))
                  :category "desktop")
 
 (gptel-make-tool :name "search-web"
@@ -145,14 +145,14 @@
 
                  :function #'search-web
                  :args (list '(:name "query"
-			       :type "string"
-			       :description "Parameter for query")
+			                               :type "string"
+			                               :description "Parameter for query")
                              '(:name "depth"
-				     :type "string"
-				     :description "Parameter for depth")
+				                             :type "string"
+				                             :description "Parameter for depth")
                              '(:name "linkup-key"
-				     :type "string"
-				     :description "Parameter for linkup-key"))
+				                             :type "string"
+				                             :description "Parameter for linkup-key"))
                  :category "web")
 
 
@@ -200,14 +200,14 @@
     (or error-msg result)))
 
 (gptel-make-tool :name "generate_llm_tool"
- :description "Generate a gptel-make-tool definition from an existing Elisp function. This examines the function's signature, arguments, and docstring to create a tool that can be used by LLMs."
+                 :description "Generate a gptel-make-tool definition from an existing Elisp function. This examines the function's signature, arguments, and docstring to create a tool that can be used by LLMs."
 
- :function #'generate_llm_tool
+                 :function #'generate_llm_tool
 
- :args (list '(:name "function-name"
-               :type "string"
-               :description "Name of the Elisp function to convert into a gptel tool")
-             '(:name "category"
-               :type "string"
-               :description "Category for the generated tool (e.g., 'emacs', 'filesystem', etc.)"))
- :category "development")
+                 :args (list '(:name "function-name"
+                                     :type "string"
+                                     :description "Name of the Elisp function to convert into a gptel tool")
+                             '(:name "category"
+                                     :type "string"
+                                     :description "Category for the generated tool (e.g., 'emacs', 'filesystem', etc.)"))
+                 :category "development")

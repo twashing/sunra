@@ -55,7 +55,8 @@ and any window whose buffer name matches \"-compilation\"."
     (let* ((buf (window-buffer win))
            (name (buffer-name buf)))
       (when (or (member name '("*Warnings*" "*Backtrace*" "*Help*"))
-                (string-match-p "-compilation" name))
+                (string-match-p "-compilation" name)
+                (string-match-p "magit: " name))
         (quit-window nil win)))))
 
 (defun sunra/keyboard-quit-with-other-window-handling ()
