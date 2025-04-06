@@ -140,6 +140,22 @@
                                :description "Parameter for duration"))
                  :category "desktop")
 
+(gptel-make-tool :name "search-web"
+                 :description "Search the web using Linkup API."
+
+                 :function #'search-web
+                 :args (list (:name "query"
+				    :type "string"
+				    :description "Parameter for query")
+                             (:name "depth"
+				    :type "string"
+				    :description "Parameter for depth")
+                             (:name "linkup-key"
+				    :type "string"
+				    :description "Parameter for linkup-key"))
+                 :category "web")
+
+
 (defun generate_llm_tool (function-name category)
 
   (let* ((func-symbol (intern-soft function-name))

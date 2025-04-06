@@ -1,4 +1,68 @@
 
+(use-package plz
+  :ensure t
+  :straight (plz :type git
+                 :host github
+                 :repo "alphapapa/plz.el"))
+
+
+
+(require 'url-util)
+
+(unless (boundp 'linkup-api-key)
+  (sunra/load! "linkup-api-key.el"))
+
+
+;; Linkup is "World’s best search for AI Apps"
+;; https://www.linkup.so
+;; https://docs.linkup.so/pages/documentation/get-started/quickstart
+;; https://docs.linkup.so/pages/documentation/get-started/concepts
+;; https://www.axc.vc/blog-posts/linkup-raises-eu3-million-to-revolutionise-web-access-for-ai-applications
+;; 
+;; /search query format is here
+;; HTTP POST https://docs.linkup.so/pages/documentation/api-reference/endpoint/post-search
+;; HTTP GET (deprecated in favor of the POST /search) https://docs.linkup.so/pages/documentation/api-reference/endpoint/get-search
+;; 
+;; This is a sample curl call.
+;; curl "https://api.linkup.so/v1/search" \
+;;     -G \
+;;     -H "Authorization: Bearer $LINKUP_API_KEY" \
+;;     --data-urlencode "q=What is Microsoft's 2024 revenue?" \
+;;     --data-urlencode "depth=deep" \
+;;     --data-urlencode "outputType=sourcedAnswer"
+;; 
+;; `search-web` is an Emacs function that performs web searches using Linkup.so.
+;; The intention is to use Linkup.so as part of a suite of LLM tools.
+;; REST calls to Linkup use the https://github.com/alphapapa/plz.el library.
+;; Using 'get method with alphapapa/plz.el to mimic the -G flag passed to curl.
+;; The successful curl command uses the –G flag, which causes curl to send a GET request with parameters in the URL
+;;
+;; Usage Example
+;; (search-web "What is Microsoft's 2024 revenue?")
+
+(defun search-web (query &optional depth linkup-key)
+  "Search the web using Linkup API.
+
+   QUERY is the search query string.
+   DEPTH is the search depth, either \"deep\" or \"shallow\" (defaults to \"deep\").
+   LINKUP-API-KEY is the API key for Linkup (defaults to linkup-api-key if defined)."
+  (let* ((api-key (or linkup-key
+                      (when (boundp 'linkup-api-key) linkup-api-key)
+                      (error "No Linkup API key provided")))
+         (search-depth (or depth "deep"))
+         ;; Build a list-of-lists of parameters.
+         (params `(("q" ,query)
+                   ("depth" ,search-depth)
+                   ("outputType" "sourcedAnswer")))
+         (query-string (url-build-query-string params))
+         (url (concat "https://api.linkup.so/v1/search?" query-string))
+         (headers `(("Authorization" . ,(format "Bearer %s" api-key)))))
+
+    (plz 'get url
+         :headers headers
+         :as #'json-read)))
+
+
 (defun apply-template (template-file output-file &optional context)
   "Apply a template file TEMPLATE-FILE and write the result to OUTPUT-FILE.
    Replaces placeholders of the form:
@@ -170,7 +234,7 @@
 
 ;; ;; Make sure Git is found
 ;; (setq straight-vc-git-executable (executable-find "git"))
-;; 
+;;
 ;; ;; Show more debugging info
 ;; (setq straight-verbose t)
 
