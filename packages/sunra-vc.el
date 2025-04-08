@@ -1,5 +1,4 @@
 
-
 (use-package magit
   :ensure t
   :straight (magit :type git
