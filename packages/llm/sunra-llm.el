@@ -208,11 +208,13 @@
   (sunra/setq! gptel-api-key openapi-key
                gptel-expert-commands t
                gptel-prompt-prefix-alist '((markdown-mode . "*Prompt* ")
-					   (org-mode . "*Prompt* ")
-					   (text-mode . "*Prompt*  "))
+					                                 (org-mode . "*Prompt* ")
+					                                 (text-mode . "*Prompt*  "))
                gptel-response-prefix-alist '((markdown-mode . "*Response* ")
-					     (org-mode . "*Response* ")
-					     (text-mode . "*Response* "))
+					                                   (org-mode . "*Response* ")
+					                                   (text-mode . "*Response* "))
+
+               ;; Persist gptel configuration selections across sessions
                gptel-save-state-style '(buffer buffer-name model)
                gptel-state-file (expand-file-name "gptel-state" user-emacs-directory))
 
