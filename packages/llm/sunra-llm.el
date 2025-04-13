@@ -171,8 +171,13 @@
   (dolist (file (directory-files dir t "\\.el$"))
     (sunra/load! file)))
 
-(use-package gptel
+;; NOTE
+;;
+;; You can add a directory of files (or project) in GPTel, by trying to add a file (-f), and selecting an entire directory
+;; https://github.com/karthink/gptel/issues/513#issuecomment-2558919227
+;; https://github.com/karthink/gptel/pull/438
 
+(use-package gptel
   :ensure t
 
   ;; ;; Emacs 30
@@ -185,7 +190,7 @@
                    :repo "karthink/gptel"
                    :branch "feature-tool-use")
 
-  :bind ("C-M-'" . gptel-send)
+  :bind (("C-M-'" . gptel-send))
 
   :init
 
@@ -207,7 +212,9 @@
 					   (text-mode . "*Prompt*  "))
                gptel-response-prefix-alist '((markdown-mode . "*Response* ")
 					     (org-mode . "*Response* ")
-					     (text-mode . "*Response* ")))
+					     (text-mode . "*Response* "))
+               gptel-save-state-style '(buffer buffer-name model)
+               gptel-state-file (expand-file-name "gptel-state" user-emacs-directory))
 
   ;; :key can be a function that returns the API key.
   ;; Any name you want
@@ -247,15 +254,16 @@
 
   ;; Emacs 29
   :straight (gptel-quick :type git
-			 :host github
-			 :repo "karthink/gptel-quick"
-			 ;; :branch "main"
-			 ;; :fork nil
-			 )
+			                   :host github
+			                   :repo "karthink/gptel-quick"
+			                   ;; :branch "main"
+			                   ;; :fork nil
+			                   )
 
   ;; TODO
   ;; :bind (:map embark-general-map
   ;;             ("?" . #'gptel-quick))
   )
+
 
 (provide 'sunra-llm)
