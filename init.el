@@ -24,5 +24,6 @@
 	             'sunra-speech
 	             'sunra-windows
 	             'sunra-markdown
+               'sunra-org
 	             'sunra-vc
                'sunra-projects))

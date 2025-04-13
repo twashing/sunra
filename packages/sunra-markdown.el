@@ -33,8 +33,7 @@
   :defer t
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
-         ("\\.markdown\\'" . markdown-mode)
-         ("\\.notes\\'" . markdown-mode))
+         ("\\.markdown\\'" . markdown-mode))
   :init
   ;; Check for pandoc when markdown-mode is loaded
   (add-hook 'markdown-mode-hook #'sunra-ensure-pandoc-installed)
