@@ -1,10 +1,4 @@
-;;; sunra-completion.el --- Completion setup using Vertico -*- lexical-binding: t; -*-
 
-;;; Commentary:
-
-;; Provides minibuffer completion using Vertico.
-
-;;; Code:
 
 (use-package vertico
 
@@ -50,7 +44,6 @@
           ;; ("^consult-.*" buffer)
           ;; ("^embark-.*" reverse)
           )))
-
 
 (use-package marginalia
 

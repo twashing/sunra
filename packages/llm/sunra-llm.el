@@ -188,7 +188,7 @@
   :straight (gptel :type git
                    :host github
                    :repo "karthink/gptel"
-                   :branch "feature-tool-use")
+                   :branch "master")
 
   :bind (("C-M-'" . gptel-send))
 
@@ -226,45 +226,7 @@
 		     :stream t)
   (gptel-make-anthropic "Claude"
 			:key anthropic-key
-			:stream t)
-
-  ;; NOTE keep this until moving back to `main' branch
-  (setq gptel--anthropic-models
-        (cons '(claude-3-7-sonnet-20250219
-                :description "Hybrid model capable of standard thinking and extended thinking modes"
-                :capabilities (media tool-use cache)
-                :mime-types ("image/jpeg" "image/png" "image/gif" "image/webp" "application/pdf")
-                :context-window 200
-                :input-cost 3
-                :output-cost 15
-                :cutoff-date "2025-02")
-              gptel--anthropic-models))
-
-  (setq gptel--openai-models
-        (append '((o3
-                   :description "Well-rounded and powerful model across domains"
-                   :capabilities (reasoning media tool-use json url)
-                   :mime-types ("image/jpeg" "image/png" "image/gif" "image/webp")
-                   :context-window 200
-                   :input-cost 10
-                   :output-cost 40
-                   :cutoff-date "2024-05")
-                  (o3-mini
-                   :description "High intelligence at the same cost and latency targets of o1-mini"
-                   :context-window 200
-                   :input-cost 1.10
-                   :output-cost 4.40
-                   :cutoff-date "2023-10"
-                   :capabilities (reasoning tool-use json))
-                  (o4-mini
-                   :description "Fast, effective reasoning with efficient performance in coding and visual tasks"
-                   :capabilities (reasoning media tool-use json url)
-                   :mime-types ("image/jpeg" "image/png" "image/gif" "image/webp")
-                   :context-window 200
-                   :input-cost 1.10
-                   :output-cost 4.40
-                   :cutoff-date "2024-05"))
-                gptel--openai-models)))
+			:stream t))
 
 ;; ;; Make sure Git is found
 ;; (setq straight-vc-git-executable (executable-find "git"))
