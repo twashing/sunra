@@ -15,8 +15,7 @@
                      ;; :files (:defaults "extensions/*.el")
                      )
 
-  :init (vertico-mode)(progn
-
+  :init (progn
           (vertico-mode)
           (require 'vertico-buffer)
           (require 'vertico-reverse)
@@ -49,8 +48,7 @@
           ;; (execute-extended-command unobtrusive)
           ;; ("^consult-.*" buffer)
           ;; ("^embark-.*" reverse)
-          ))
-  )
+          )))
 
 
 (provide 'sunra-completion)
