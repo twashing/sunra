@@ -64,6 +64,13 @@
 
   :init (marginalia-mode))
 
+(use-package orderless
+
+  :ensure t
+  :custom
+  (completion-styles '(orderless partial flex))
+  (completion-category-overrides '((file (styles basic partial-completion)))))
+
 
 (provide 'sunra-completion)
 ;;; sunra-completion.el ends here
