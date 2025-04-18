@@ -26,4 +26,5 @@
 	             'sunra-markdown
                'sunra-org
 	             'sunra-vc
-               'sunra-projects))
+               'sunra-projects
+               'sunra-completion))

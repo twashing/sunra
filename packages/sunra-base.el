@@ -200,4 +200,21 @@
 ;; Now you can use straight.el with use-package
 
 
+;; Emacs "recursive editing" and "Recursive Minibuffer"
+;;
+;; How can I open multiple minibuffers in emacs?
+;; https://stackoverflow.com/questions/16986762/how-can-i-open-multiple-minibuffers-in-emacs
+;; 
+;; Recursive Editing
+;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Recursive-Editing.html
+;; 
+;; Recursive Minibuffers
+;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Recursive-Mini.html
+;; 
+;; Emacs - Recursive Edit
+;; https://www.youtube.com/watch?v=KJysP2WrwCw
+(setq enable-recursive-minibuffers t)
+(minibuffer-depth-indicate-mode 1)
+
+
 (provide 'sunra-base)

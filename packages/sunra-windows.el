@@ -58,7 +58,8 @@ and any window whose buffer name matches \"-compilation\"."
                 (string-match-p "-compilation" name)
                 (string-match-p "magit: " name)
                 (string-match-p "magit-diff:" name)
-                (string-match-p "Free keys" name))
+                (string-match-p "Free keys" name)
+                (string-match-p "Apropos" name))
         (quit-window nil win)))))
 
 (defun sunra/keyboard-quit-with-other-window-handling ()

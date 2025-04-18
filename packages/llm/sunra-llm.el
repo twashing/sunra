@@ -238,7 +238,33 @@
                 :input-cost 3
                 :output-cost 15
                 :cutoff-date "2025-02")
-              gptel--anthropic-models)))
+              gptel--anthropic-models))
+
+  (setq gptel--openai-models
+        (append '((o3
+                   :description "Well-rounded and powerful model across domains"
+                   :capabilities (reasoning media tool-use json url)
+                   :mime-types ("image/jpeg" "image/png" "image/gif" "image/webp")
+                   :context-window 200
+                   :input-cost 10
+                   :output-cost 40
+                   :cutoff-date "2024-05")
+                  (o3-mini
+                   :description "High intelligence at the same cost and latency targets of o1-mini"
+                   :context-window 200
+                   :input-cost 1.10
+                   :output-cost 4.40
+                   :cutoff-date "2023-10"
+                   :capabilities (reasoning tool-use json))
+                  (o4-mini
+                   :description "Fast, effective reasoning with efficient performance in coding and visual tasks"
+                   :capabilities (reasoning media tool-use json url)
+                   :mime-types ("image/jpeg" "image/png" "image/gif" "image/webp")
+                   :context-window 200
+                   :input-cost 1.10
+                   :output-cost 4.40
+                   :cutoff-date "2024-05"))
+                gptel--openai-models)))
 
 ;; ;; Make sure Git is found
 ;; (setq straight-vc-git-executable (executable-find "git"))
