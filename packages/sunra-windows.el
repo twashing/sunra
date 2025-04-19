@@ -49,7 +49,7 @@
 ;; Close *Warnings* and *Backtrace* windows with C-g
 (defun sunra/close-other-windows ()
   "Close auxiliary windows: *Warnings*, *Backtrace*, *Help*,
-and any window whose buffer name matches \"-compilation\"."
+   and any window whose buffer name matches \"-compilation\"."
   (interactive)
   (dolist (win (window-list))
     (let* ((buf (window-buffer win))
@@ -58,6 +58,7 @@ and any window whose buffer name matches \"-compilation\"."
                 (string-match-p "-compilation" name)
                 (string-match-p "magit: " name)
                 (string-match-p "magit-diff:" name)
+                (string-match-p "magit-log" name)
                 (string-match-p "Free keys" name)
                 (string-match-p "Apropos" name)
                 (string-match-p "*Diff*" name))
