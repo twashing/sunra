@@ -72,7 +72,7 @@
 (setq repeat-delay 2)
 (repeat-mode 1)
 
-(defmacro define-repeat-keymap (name prefix &rest bindings)
+(defmacro sunra/define-repeat-keymap (name prefix &rest bindings)
   "Define NAME repeatable keymap on PREFIX.
    BINDINGS is a flat list of KEY CMD pairs."
   (declare (indent 2))

@@ -13,19 +13,19 @@
   :ensure t
 
   :config
-  (define-repeat-keymap mc/next-repeat-map "C-c m n"
+  (sunra/define-repeat-keymap mc/next-repeat-map "C-c m n"
     "l" mc/mark-next-lines
     "t" mc/mark-next-like-this
     "w" mc/mark-next-like-this-word
     "W" mc/mark-next-word-like-this
     "s" mc/mark-next-like-this-symbol
     "S" mc/mark-next-symbol-like-this)
-  (define-repeat-keymap mc/prev-repeat-map "C-c m p"
+  (sunra/define-repeat-keymap mc/prev-repeat-map "C-c m p"
     "l" mc/mark-previous-lines)
-  (define-repeat-keymap mc/skip-repeat-map "C-c s"
+  (sunra/define-repeat-keymap mc/skip-repeat-map "C-c s"
     "n" mc/skip-to-next-like-this
     "p" mc/skip-to-previous-like-this)
-  (define-repeat-keymap mc/all-repeat-map "C-c m a"
+  (sunra/define-repeat-keymap mc/all-repeat-map "C-c m a"
     "t" mc/mark-all-like-this
     "w" mc/mark-all-words-like-this
     "s" mc/mark-all-symbols-like-this
@@ -33,7 +33,7 @@
     "x" mc/mark-all-in-region-regexp
     "d" mc/mark-all-like-this-dwim
     "D" mc/mark-all-dwim)
-  (define-repeat-keymap mc/edit-repeat-map "C-c m e"
+  (sunra/define-repeat-keymap mc/edit-repeat-map "C-c m e"
     "l" mc/edit-lines
     "b" mc/edit-beginnings-of-lines
     "e" mc/edit-ends-of-lines)
