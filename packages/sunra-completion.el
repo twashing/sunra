@@ -82,6 +82,19 @@
 
   :ensure t
   :bind
+
+  ;; NOTE
+  ;; This makes all minibuffers (including Magit’s) treat RET as “embark” rather than “submit.”
+  ;;
+  ;; :bind
+  ;; (:map minibuffer-local-map
+  ;;       (("C-m" . embark-dwim)
+  ;;        …))
+  ;;
+  ;; Use "minibuffer-local-completion-map" not "minibuffer-local-map"
+  ;; minibuffer-local-completion-map is only active when you’ve triggered minibuffer completion (e.g. M-x, git push prompt, etc.).
+  ;; minibuffer-local-map is active in every minibuffer, even those that don’t do completion.
+  
   (:map completion-in-region-mode-map
         (("C-." . embark-export)
          ("C-," . embark-collect)
@@ -90,7 +103,7 @@
          ("C-n" . embark-act)
          ("C-n" . embark-become)))
 
-  (:map minibuffer-local-map
+  (:map minibuffer-local-completion-map
         (("C-." . embark-export)
          ("C-," . embark-collect)
          ("C-;" . embark-select)
@@ -109,7 +122,7 @@
   ;;              '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
   ;;                nil
   ;;                (window-parameters (mode-line-format . none))))
-)
+  )
 
 
 (use-package embark-consult
