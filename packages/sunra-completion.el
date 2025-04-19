@@ -57,12 +57,26 @@
 
   :init (marginalia-mode))
 
+
 (use-package orderless
 
   :ensure t
   :custom
-  (completion-styles '(orderless partial flex))
-  (completion-category-overrides '((file (styles basic partial-completion)))))
+  ;; 1. Include both 'orderless' and 'partial-completion' in the global styles.
+  ;;    'orderless' goes first for general matching and robustness.
+  ;;    'partial-completion' enables the specific file path expansion.
+  ;;    'flex' is often a good addition for flexible matching.
+  (completion-styles '(orderless partial-completion flex))
+
+  ;; 2. Configure orderless itself for robust handling, including empty input.
+  ;;    'orderless-literal' ensures empty or exact matches work.
+  ;;    'orderless-regexp' handles the component-wise regex matching.
+  (orderless-matching-styles '(orderless-literal orderless-regexp))
+
+  ;; 3. IMPORTANT: Do NOT add a completion-category-overrides for 'file'
+  ;;    that excludes 'orderless'. Let 'file' completion use the global
+  ;;    'completion-styles' defined above.
+  )
 
 
 (provide 'sunra-completion)
