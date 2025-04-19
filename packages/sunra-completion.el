@@ -38,12 +38,13 @@
           (t reverse mouse)))
 
   ;; Configure multiform per command
-  (setq vertico-multiform-commands
-        '(("^describe-*" unobtrusive)
-          ;; (execute-extended-command unobtrusive)
-          ;; ("^consult-.*" buffer)
-          ;; ("^embark-.*" reverse)
-          )))
+  ;; (setq vertico-multiform-commands
+  ;;       '(;; ("^describe-*" unobtrusive)
+  ;;         ;; (execute-extended-command unobtrusive)
+  ;;         ;; ("^consult-.*" buffer)
+  ;;         ;; ("^embark-.*" reverse)
+  ;;         ))
+  )
 
 (use-package marginalia
 

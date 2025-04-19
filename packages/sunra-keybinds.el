@@ -57,6 +57,38 @@
                        `(global-set-key (kbd ,key) ,cmd))))
                  (nreverse bindings)))))
 
+;; These resources describe Emacs' "repeat-mode"
+
+;; Repeating a Command
+;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Repeating.html
+
+;; It Bears Repeating: Emacs 28 & Repeat Mode
+;; https://karthinks.com/software/it-bears-repeating/
+
+;; Emacs 29 introduces defvar-keymap, making it easier to define keymaps with the repeat-map property attached
+;; This leverages =defvar-keymap=’s automatic =repeat-map= property and keeps your mc bindings DRY.
+
+;; Enable repeat-mode with a 2‑second window
+(setq repeat-delay 2)
+(repeat-mode 1)
+
+(defmacro define-repeat-keymap (name prefix &rest bindings)
+  "Define NAME repeatable keymap on PREFIX.
+   BINDINGS is a flat list of KEY CMD pairs."
+  (declare (indent 2))
+  `(progn
+     (defvar-keymap ,name
+       :doc ,(format "Repeatable keymap %s." name)
+       :repeat ,name
+       ;; loop over bindings by two, collecting KEY and 'CMD
+       ,@(cl-loop for binding on bindings by #'cddr
+                  for key = (car binding)
+                  for cmd = (cadr binding)
+                  collect key
+                  collect `(quote ,cmd)))
+     (global-set-key (kbd ,prefix) ,name)))
+
+
 (use-package which-key
 
   :ensure t

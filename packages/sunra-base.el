@@ -217,4 +217,12 @@
 (minibuffer-depth-indicate-mode 1)
 
 
+;; Needed for
+;; sunra-desktop
+;; sunra-multiple-cursors
+(require 'cl-lib)
+
+
+
+
 (provide 'sunra-base)
