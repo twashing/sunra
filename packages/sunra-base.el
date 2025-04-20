@@ -60,6 +60,10 @@
 (load custom-file)
 
 
+;; Ensure *scratch* buffer has no preamble text.
+(setq initial-scratch-message "")
+
+
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 
@@ -221,8 +225,6 @@
 ;; sunra-desktop
 ;; sunra-multiple-cursors
 (require 'cl-lib)
-
-
 
 
 (provide 'sunra-base)

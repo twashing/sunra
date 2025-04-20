@@ -30,14 +30,29 @@
 
   :config
 
-  ;; TODO - After consult, embark
   ;; Configure multiform per category
   (setq vertico-multiform-categories
         '((imenu buffer mouse)
           ;; (consult-imenu buffer mouse)
           (t reverse mouse)))
 
+  ;; TODO - After consult, embark
+  ;; projectile minibuffer pop-ups
+
+
+  ;; NOTE
+  ;;
   ;; Configure multiform per command
+  ;; https://github.com/minad/vertico?tab=readme-ov-file#configure-vertico-per-command-or-completion-category
+  ;;
+  ;; Toggle Display Modes
+  ;; M-B	vertico-multiform-buffer
+  ;; M-F	vertico-multiform-flat
+  ;; M-G	vertico-multiform-grid
+  ;; M-R	vertico-multiform-reverse
+  ;; M-U	vertico-multiform-unobtrusive
+  ;; M-V	vertico-multiform-vertical
+
   ;; (setq vertico-multiform-commands
   ;;       '(;; ("^describe-*" unobtrusive)
   ;;         ;; (execute-extended-command unobtrusive)
@@ -57,6 +72,19 @@
          ("M-A" . marginalia-cycle))
 
   :init (marginalia-mode))
+
+;; NOTE
+;;
+;; Orderless selection, howto specify literal pattern is specified by its "Style dispatchers"
+;; https://github.com/oantolin/orderless?tab=readme-ov-file#style-dispatchers
+;;
+;; ! modifies the component with orderless-not. Both !bad and bad! will match strings that do not contain the pattern bad.
+;; & modifies the component with orderless-annotation. The pattern will match against the candidate’s annotation (cheesy mnemonic: andnotation!).
+;; , uses orderless-initialism.
+;; = uses orderless-literal.
+;; ^ uses orderless-literal-prefix.
+;; ~ uses orderless-flex.
+;; % makes the string match ignoring diacritics and similar inflections on characters (it uses the function char-fold-to-regexp to do this).
 
 (use-package orderless
 
@@ -126,8 +154,10 @@
          ("C-{" . embark-become))
 
   ;; TODO
-  ;; file selection
-  ;; buffer selection
+  ;; completions (file, )
+  ;; file
+  ;; region
+  ;; symbol
 
 
   :init
