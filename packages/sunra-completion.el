@@ -78,38 +78,57 @@
   ;;    'completion-styles' defined above.
   )
 
+;; NOTE
+;;
+;; # Main Commands
+;;
+;; embark-act
+;; embark-dwim
+;; embark-collect
+;; embark-export
+;; embark-select
+;; embark-become
+;;
+;;
+;; # embark-collect vs embark-export
+;;
+;; Working with sets of possible targets
+;; https://github.com/oantolin/embark?tab=readme-ov-file#working-with-sets-of-possible-targets
+;;
+;; "The embark-collect command produces a buffer listing all the current candidates, for you to peruse and run actions on at your leisure. The candidates are displayed as a list showing additional annotations. If any of the candidates contain newlines, then horizontal lines are used to separate candidates. ...
+;; The embark-export command tries to open a buffer in an appropriate major mode for the set of candidates. If the candidates are files export produces a Dired buffer; if they are buffers, you get an Ibuffer buffer; and if they are packages you get a buffer in package menu mode.
+;;
+;; When in doubt choosing between exporting and collecting, a good rule of thumb is to always prefer embark-export since when an exporter to a special major mode is available for a given type of target, it will be more featureful than an Embark collect buffer, and if no such exporter is configured the embark-export command falls back to the generic embark-collect."
+;;
+;;
+;; # Go "Back" from embark-collect or embark-export
+;;
+;; "In Embark Collect or Embark Export buffers that were obtained by running embark-collect or embark-export from within a minibuffer completion session,
+;; "g" is bound to a command that restarts the completion session..."
+;;
+;;
+;; # Explore
+;;
+;; act on file (incl. insert file path into buffer (from find file))
+;; act on directory
+;; act on variable
+;; "C-u embark-act" (will keep the selection buffer open) ... (emark-act-noexit (no longer exists))
+;; embark-become lets you switch the target action, using the same (already entered input) input. In essence to go back to the embark-act menu, or reverse from an embark-act
+
 (use-package embark
 
   :ensure t
-  :bind
+  :bind (("C->" . embark-export)
+         ("C-<" . embark-collect)
+         ("C-:" . embark-select)
+         ("C-M-\"" . embark-dwim)
+         ("C-\"" . embark-act)
+         ("C-{" . embark-become))
 
-  ;; NOTE
-  ;; This makes all minibuffers (including Magit’s) treat RET as “embark” rather than “submit.”
-  ;;
-  ;; :bind
-  ;; (:map minibuffer-local-map
-  ;;       (("C-m" . embark-dwim)
-  ;;        …))
-  ;;
-  ;; Use "minibuffer-local-completion-map" not "minibuffer-local-map"
-  ;; minibuffer-local-completion-map is only active when you’ve triggered minibuffer completion (e.g. M-x, git push prompt, etc.).
-  ;; minibuffer-local-map is active in every minibuffer, even those that don’t do completion.
-  
-  (:map completion-in-region-mode-map
-        (("C-." . embark-export)
-         ("C-," . embark-collect)
-         ("C-;" . embark-select)
-         ("C-m" . embark-dwim)
-         ("C-n" . embark-act)
-         ("C-n" . embark-become)))
+  ;; TODO
+  ;; file selection
+  ;; buffer selection
 
-  (:map minibuffer-local-completion-map
-        (("C-." . embark-export)
-         ("C-," . embark-collect)
-         ("C-;" . embark-select)
-         ("C-m" . embark-dwim)
-         ("C-n" . embark-act)
-         ("C-n" . embark-become)))
 
   :init
 
@@ -122,7 +141,7 @@
   ;; Next I can (for example) type po ma to search for commands under C-x that have po and ma in their name in any order.
   (setq prefix-help-command #'embark-prefix-help-command)
 
-  
+
   ;; (add-hook 'eldoc-documentation-functions #'embark-eldoc-first-target)
   ;; (setq eldoc-documentation-strategy #'eldoc-documentation-compose-eagerly)
 
@@ -132,7 +151,6 @@
   ;;                nil
   ;;                (window-parameters (mode-line-format . none))))
   )
-
 
 (use-package embark-consult
 
