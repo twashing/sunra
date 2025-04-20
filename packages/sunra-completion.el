@@ -112,8 +112,17 @@
          ("C-n" . embark-become)))
 
   :init
+
+  ;; NOTE
+  ;;
+  ;; Is there a way to add search to which-key instead of paging and hunting for a command?
+  ;; https://www.reddit.com/r/emacs/comments/otjn19/comment/h6vyx9q/
+  ;;
+  ;; In searching the C-x prefix. First I typed C-x, then C-h to bring up the embark-prefix-help-command prompt.
+  ;; Next I can (for example) type po ma to search for commands under C-x that have po and ma in their name in any order.
   (setq prefix-help-command #'embark-prefix-help-command)
 
+  
   ;; (add-hook 'eldoc-documentation-functions #'embark-eldoc-first-target)
   ;; (setq eldoc-documentation-strategy #'eldoc-documentation-compose-eagerly)
 
