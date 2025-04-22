@@ -9,8 +9,8 @@
                      :branch "main")
 
   :custom
-  (vertico-cycle t)  ;; Enable cycling for `vertico-next/previous'
-  
+  (vertico-cycle t)  ;; Enable cycling for `vertico-next/previous`
+
   :init (progn
           (vertico-mode)
           (require 'vertico-buffer)
@@ -31,6 +31,18 @@
   ;; Tidy shadowed file names
   ;; :hook (rfn-eshadow-update-overlay . vertico-directory-tidy)
 
+  :hook (after-init . (lambda ()
+
+                        ;; `vertico-multiform-mode` is activated in the `after-init` hook
+                        ;; instead of within the `init` block, preventing its toggling from a recursive minibuffer.
+
+                        (vertico-multiform-mode)
+                        (setq vertico-multiform-categories
+                              '((imenu buffer mouse)
+                                (consult-imenu buffer mouse)
+                                (file buffer mouse)
+                                (vertico-buffer buffer mouse) ;; Update to show switch-to-buffer in vertico-buffer-mode
+                                (t reverse mouse)))))
   :config
 
   ;; Configure multiform per category
@@ -38,7 +50,7 @@
         '((imenu buffer mouse)
           (consult-imenu buffer mouse)
           (file buffer mouse)
-          (buffer buffer mouse)
+          (vertico-buffer buffer mouse)
           (t reverse mouse)))
 
   ;; TODO - After consult, embark
@@ -195,6 +207,7 @@
 
 ;; Example configuration for Consult
 (use-package consult
+
   ;; Replace bindings. Lazily loaded by `use-package'.
   :bind (;; C-c bindings in `mode-specific-map'
          ("C-c M-x" . consult-mode-command)
