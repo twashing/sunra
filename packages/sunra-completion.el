@@ -9,10 +9,20 @@
                      :branch "main")
 
   :custom
-  (vertico-cycle t)  ;; Enable cycling for `vertico-next/previous`
-  (vertico-buffer-display-action . (display-buffer-in-direction
-                                    (direction . right)
-                                    (window-width . 0.5)))
+
+  ;; Enable cycling for `vertico-next/previous`
+  (vertico-cycle t)
+
+  ;; Defining multiform categories up front
+  (vertico-multiform-categories
+   '((imenu         buffer mouse)
+     (consult-imenu buffer mouse)
+     (file          buffer mouse)
+     (buffer        buffer mouse)
+     (kill-ring     buffer mouse)
+     (outline       buffer mouse)
+     (mark          buffer mouse)
+     (t             reverse mouse)))
 
   :init (progn
           (vertico-mode)
@@ -21,9 +31,7 @@
           (require 'vertico-unobtrusive)
           (require 'vertico-mouse)
           (require 'vertico-multiform)
-          (require 'vertico-directory)
-
-          (vertico-multiform-mode))
+          (require 'vertico-directory))
 
   :bind (:map vertico-map
               ("RET" . vertico-directory-enter)
@@ -34,21 +42,10 @@
   ;; Tidy shadowed file names
   ;; :hook (rfn-eshadow-update-overlay . vertico-directory-tidy)
 
-  :hook (after-init . (lambda ()
+  :hook
 
-                        ;; `vertico-multiform-mode` is activated in the `after-init` hook
-                        ;; instead of within the `init` block, preventing its toggling from a recursive minibuffer.
-
-                        (vertico-multiform-mode)
-                        (setq vertico-multiform-categories
-                              '((imenu buffer mouse)
-                                (consult-imenu buffer mouse)
-                                (file buffer mouse)
-                                (buffer buffer mouse)
-                                (kill-ring buffer mouse)
-                                (outline buffer mouse)
-                                (mark buffer mouse)
-                                (t reverse mouse)))))
+  ;; Turn on multiform *once* when vertico itself is enabled
+  (vertico-mode . vertico-multiform-mode)
 
   :config
 
