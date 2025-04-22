@@ -8,6 +8,9 @@
 ;; typing "C-c m n l" invokes "mc/mark-next-lines".
 ;; Then repeated typing "l" (within a 2 second threshold) will repeat the most recent command.
 
+(define-prefix-command 'sunra-C-c-m-map)
+(global-set-key (kbd "C-c m") 'sunra-C-c-m-map)
+
 (use-package multiple-cursors
 
   :ensure t

@@ -15,8 +15,9 @@
 	      ("C-x C-M-y" . sp-backward-barf-sexp)
 	      ("C-M-n" . sp-next-sexp)
 	      ("M-r" . sp-raise-sexp)
-              ("C-M-s" . sp-splice-sexp)
-
+        ("C-M-s" . sp-splice-sexp)
+        ("C-M-t" . sp-transpose-sexp)
+        
 	      ("DEL" . sp-backward-delete-char)
 	      ("C-K" . sp-kill-hybrid-sexp))
   :config
@@ -78,7 +79,6 @@
 (dolist (hook '(prog-mode-hook org-mode-hook markdown-mode-hook latex-mode-hook))
   (add-hook hook #'hs-minor-mode))
 
-
 (map! :map global-map
       "C-x M-x" #'isearch-forward-symbol-at-point
       "M-U" #'buf-move-up
@@ -123,6 +123,11 @@
       "C-," #'sunra/newline-above
       "C-." #'sunra/newline-below)
 
+(use-package crux
+
+  :ensure t
+  :init (global-set-key [remap move-beginning-of-line] #'crux-move-beginning-of-line))
+
 (defun copy-line (&optional arg)
   "Do a kill-line but copy rather than kill.  This function directly calls
   kill-line, so see documentation of kill-line for how to use it including prefix
@@ -148,8 +153,7 @@
       "C-c l e D" #'eval-defun-at-point
 
       "C-x <up>" #'pop-global-mark
-      ;; TODO consult
-      ;; "C-x <down>" #'consult-global-mark
+      "C-x <down>" #'consult-global-mark
       "C-M-<" #'append-to-buffer
 
       ;; TODO avy

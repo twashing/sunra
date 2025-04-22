@@ -10,6 +10,9 @@
 
   :custom
   (vertico-cycle t)  ;; Enable cycling for `vertico-next/previous`
+  (vertico-buffer-display-action . (display-buffer-in-direction
+                                    (direction . right)
+                                    (window-width . 0.5)))
 
   :init (progn
           (vertico-mode)
@@ -43,8 +46,8 @@
                                 (file buffer mouse)
                                 (buffer buffer mouse)
                                 (kill-ring buffer mouse)
-                                ;; outline
-                                ;; mark
+                                (outline buffer mouse)
+                                (mark buffer mouse)
                                 (t reverse mouse)))))
 
   :config
@@ -200,8 +203,8 @@
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 
-(define-prefix-command 'sunra-m-map)
-(global-set-key (kbd "M-m") 'sunra-m-map)
+(define-prefix-command 'sunra-M-m-map)
+(global-set-key (kbd "M-m") 'sunra-M-m-map)
 
 (use-package consult
 
@@ -210,7 +213,7 @@
          ("C-c M-x" . consult-mode-command)
          ("C-c h" . consult-history)
          ;; ("C-c k" . consult-kmacro)
-         ("C-c m" . consult-man)
+         ;; ("C-c m" . consult-man)
          ("C-c i" . consult-info)
          ([remap Info-search] . consult-info)
 
@@ -231,7 +234,7 @@
          ;; Other custom bindings
          ;; ("M-y" . consult-yank-pop)                ;; orig. yank-pop
          ("M-y" . consult-yank-from-kill-ring)
-         
+
          ;; M-g bindings in `goto-map'
          ("M-g e" . consult-compile-error)
          ("M-g f" . consult-flymake)               ;; Alternative: consult-flycheck
