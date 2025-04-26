@@ -122,7 +122,7 @@
 ;; Globally setting font
 (set-face-attribute 'default nil
                     :font (font-spec :family "PragmataPro Liga"
-                                     :size 16
+                                     :size 18
                                      :weight 'normal))
 
 

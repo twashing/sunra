@@ -1,4 +1,5 @@
 
+
 (use-package smartparens
 
   :ensure t
@@ -19,7 +20,6 @@
 	            ("M-r" . sp-raise-sexp)
               ("C-M-s" . sp-splice-sexp)
               ("C-M-t" . sp-transpose-sexp)
-
 
 
               ;; NOTE use case
@@ -44,7 +44,6 @@
   (sp-pair "(" nil :unless '(:rem sp-point-before-word-p))
   (sp-pair "{" nil :unless '(:rem sp-point-before-word-p))
   (sp-pair "[" nil :unless '(:rem sp-point-before-word-p)))
-
 
 (use-package ace-window
 

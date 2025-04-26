@@ -12,7 +12,7 @@
 		 (or (buffer-file-name)
 		     (file-chase-links load-file-name))))
 
-(dolist (pkg '("packages" "packages/llm"))
+(dolist (pkg '("packages" "packages/llm" "packages/navigation"))
   (add-to-list 'load-path (concat emacs-dir pkg)))
 
 (defmacro use-packages (&rest args)
@@ -34,4 +34,6 @@
                'sunra-org
 	             'sunra-vc
                'sunra-projects
-               'sunra-completion))
+               'sunra-completion
+               'sunra-themes
+               'sunra-dired))
