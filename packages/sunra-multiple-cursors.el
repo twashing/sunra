@@ -13,7 +13,7 @@
 
 (use-package multiple-cursors
 
-  :defer t
+  :ensure t
 
   :config
   (sunra/define-repeat-keymap mc/next-repeat-map "C-c m n"

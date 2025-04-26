@@ -63,7 +63,8 @@
                 (string-match-p "Apropos" name)
                 (string-match-p "*Diff*" name)
                 (string-match-p "*projectile-" name)
-                (string-match-p "*grep" name))
+                (string-match-p "*grep" name)
+                (string-match-p "*Embark Collect:" name))
         (quit-window nil win)))))
 
 (defun sunra/keyboard-quit-with-other-window-handling ()
