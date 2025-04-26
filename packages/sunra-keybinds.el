@@ -88,10 +88,10 @@
                   collect `(quote ,cmd)))
      (global-set-key (kbd ,prefix) ,name)))
 
-
 (use-package which-key
 
   :ensure t
+  :defer t
   :config (which-key-mode))
 
 (provide 'sunra-keybinds)

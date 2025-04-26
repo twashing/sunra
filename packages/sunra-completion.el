@@ -1,6 +1,6 @@
 
 
-(use-package vertico
+(use-package verticoS
 
   :ensure t
   :straight (vertico :type git

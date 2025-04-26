@@ -4,22 +4,22 @@
   :ensure t
   :init (smartparens-global-mode 1)
   :bind (:map global-map
-	      ("C-M-k" . sp-copy-sexp)
-	      ("C-M-u" . sp-up-sexp)
-	      ("M-u" . sp-backward-up-sexp)
-	      ("C-M-d" . sp-down-sexp)
-	      ("M-d" . sp-backward-down-sexp)
-	      ("C-M-j" . sp-forward-slurp-sexp)
-	      ("C-x C-M-j" . sp-forward-barf-sexp)
-	      ("C-M-y" . sp-backward-slurp-sexp)
-	      ("C-x C-M-y" . sp-backward-barf-sexp)
-	      ("C-M-n" . sp-next-sexp)
-	      ("M-r" . sp-raise-sexp)
-        ("C-M-s" . sp-splice-sexp)
-        ("C-M-t" . sp-transpose-sexp)
-        
-	      ("DEL" . sp-backward-delete-char)
-	      ("C-K" . sp-kill-hybrid-sexp))
+	            ("C-M-k" . sp-copy-sexp)
+	            ("C-M-u" . sp-up-sexp)
+	            ("M-u" . sp-backward-up-sexp)
+	            ("C-M-d" . sp-down-sexp)
+	            ("M-d" . sp-backward-down-sexp)
+	            ("C-M-j" . sp-forward-slurp-sexp)
+	            ("C-x C-M-j" . sp-forward-barf-sexp)
+	            ("C-M-y" . sp-backward-slurp-sexp)
+	            ("C-x C-M-y" . sp-backward-barf-sexp)
+	            ("C-M-n" . sp-next-sexp)
+	            ("M-r" . sp-raise-sexp)
+              ("C-M-s" . sp-splice-sexp)
+              ("C-M-t" . sp-transpose-sexp)
+              
+	            ("DEL" . sp-backward-delete-char)
+	            ("C-K" . sp-kill-hybrid-sexp))
   :config
 
   ;; Load the default smartparens configuration.
@@ -37,10 +37,12 @@
 
 (use-package ace-window
 
-  :ensure t
+  :defer t
+
   :bind (("M-[" . ace-select-window)
-	 ("C-c M-[" . ace-swap-window)
-	 ("C-x M-[" . ace-delete-window))
+         ("C-c M-[" . ace-swap-window)
+         ("C-x M-[" . ace-delete-window))
+
   :config
 
   ;; Switch window letter SIZE
@@ -50,26 +52,25 @@
 
   ;; Ensure ace-window works across frames.
   (setq aw-scope 'global
-	aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
+        aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
 
-	;; TODO set ace-jump-face-color
-	aw-background nil
-	))
+        ;; TODO set ace-jump-face-color
+        aw-background nil))
 
 (use-package free-keys
-  :ensure t)
+  :defer t)
 
 (use-package browse-kill-ring
-  :ensure t)
+  :defer t)
 
 (use-package rainbow-delimiters
-  :ensure t)
+  :defer t)
 
 (use-package expand-region
 
-  :ensure t
+  :defer t
   :bind (("C-=" . er/expand-region)
-	 ("C-M-=" . er/contract-region)))
+	       ("C-M-=" . er/contract-region)))
 
 
 ;; NAVIGATION
@@ -111,8 +112,8 @@
   "Insert an indented new line before the current one."
   (interactive)
   (beginning-of-line)
-    (save-excursion (newline))
-    (indent-according-to-mode))
+  (save-excursion (newline))
+  (indent-according-to-mode))
 
 (defun sunra/newline-below ()
   "Insert an indented new line after the current one."
@@ -126,7 +127,7 @@
 
 (use-package crux
 
-  :ensure t
+  :defer t
   :init (global-set-key [remap move-beginning-of-line] #'crux-move-beginning-of-line))
 
 (defun copy-line (&optional arg)

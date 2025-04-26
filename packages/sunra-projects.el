@@ -1,6 +1,7 @@
 
 (use-package projectile
-  :ensure t
+
+  :defer t
   :straight (projectile :type git
                         :host github
                         :repo "bbatsov/projectile"

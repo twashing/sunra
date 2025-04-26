@@ -29,6 +29,7 @@
       (message "Please install pandoc manually from https://pandoc.org/installing.html")))))
 
 (use-package markdown-mode
+
   :ensure t
   :defer t
   :mode (("README\\.md\\'" . gfm-mode)

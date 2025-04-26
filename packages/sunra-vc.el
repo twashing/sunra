@@ -1,6 +1,7 @@
 
 (use-package magit
-  :ensure t
+
+  :defer t
   :straight (magit :type git
                    :host github
                    :repo "magit/magit"

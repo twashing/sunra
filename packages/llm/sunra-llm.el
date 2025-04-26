@@ -1,11 +1,10 @@
 
+
 (use-package plz
-  :ensure t
+  :defer t
   :straight (plz :type git
-                 :host github
-                 :repo "alphapapa/plz.el"))
-
-
+              :host github
+              :repo "alphapapa/plz.el"))
 
 (require 'url-util)
 
@@ -59,8 +58,8 @@
          (headers `(("Authorization" . ,(format "Bearer %s" api-key)))))
 
     (plz 'get url
-         :headers headers
-         :as #'json-read)))
+      :headers headers
+      :as #'json-read)))
 
 (defun apply-template (template-file output-file &optional context)
   "Apply a template file TEMPLATE-FILE and write the result to OUTPUT-FILE.
@@ -178,7 +177,7 @@
 ;; https://github.com/karthink/gptel/pull/438
 
 (use-package gptel
-  :ensure t
+  :defer t
 
   ;; ;; Emacs 30
   ;; :vc (:url "https://github.com/karthink/gptel"
@@ -222,11 +221,11 @@
   ;; Any name you want
   ;; Streaming responses
   (gptel-make-gemini "Gemini"
-		     :key gemini-key
-		     :stream t)
+		:key gemini-key
+		:stream t)
   (gptel-make-anthropic "Claude"
-			:key anthropic-key
-			:stream t))
+		:key anthropic-key
+		:stream t))
 
 ;; ;; Make sure Git is found
 ;; (setq straight-vc-git-executable (executable-find "git"))
@@ -236,7 +235,7 @@
 
 (use-package gptel-quick
 
-  :ensure t
+  :defer t
 
   ;; ;; Emacs 30
   ;; :vc (:url "https://github.com/karthink/gptel-quick"
