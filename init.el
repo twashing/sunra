@@ -35,5 +35,5 @@
 	             'sunra-vc
                'sunra-projects
                'sunra-completion
-               'sunra-themes
+               'sunra-theme
                'sunra-dired))
