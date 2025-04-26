@@ -71,6 +71,7 @@
   :bind (("C-=" . er/expand-region)
 	 ("C-M-=" . er/contract-region)))
 
+
 ;; NAVIGATION
 (fset 'buf-move-up "\C-u10\C-p")
 (fset 'buf-move-down "\C-u10\C-n")

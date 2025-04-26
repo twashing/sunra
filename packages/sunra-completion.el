@@ -203,8 +203,20 @@
 (define-prefix-command 'sunra-M-m-map)
 (global-set-key (kbd "M-m") 'sunra-M-m-map)
 
+
 (use-package consult
 
+  :ensure t
+
+  ;; :straight t
+  ;; :straight (consult :type git
+  ;;                    :host github
+  ;;                    :repo "minad/consult"
+  ;;                    :branch "main"
+  ;;                    ;; :branch "v1.4"
+  ;;                    ;; :fork (:branch "v1.4")
+  ;;                    )
+  
   ;; Replace bindings. Lazily loaded by `use-package'.
   :bind (;; C-c bindings in `mode-specific-map'
          ("C-c M-x" . consult-mode-command)
@@ -318,5 +330,74 @@
   ;; (keymap-set consult-narrow-map (concat consult-narrow-key " ?") #'consult-narrow-help)
 )
 
+;; (with-eval-after-load 'consult
+;;   (unless (fboundp 'consult--async-split-style)
+;;     (defun consult--async-split-style ()
+;;       "Compatibility function for older consult versions."
+;;       (cons 'perl "\\s-+"))))
+;; 
+;; (use-package consult-dir
+;; 
+;;   :ensure t
+;;   :straight (consult-dir :type git
+;;                          :host github
+;;                          :repo "karthink/consult-dir"
+;;                          :branch "master")
+;; 
+;;   ;; :after consult
+;;   
+;;   :bind (("C-x C-d" . consult-dir)
+;;          :map vertico-map
+;;          ("C-x C-d" . consult-dir)
+;;          ("C-x C-j" . consult-dir-jump-file)))
+
+;; Statement:  
+;; Your error is due to a Consult/Consult-Dir and Consult version mismatch.
+;; 
+;; #### Origin of the failure: missing =consult--async-split-style=
+;; 
+;; - Your stacktrace shows =(void-function consult--async-split-style)=.
+;; - This function was added in Consult *v0.34* (Aug 2023) and is required by recent =consult-dir= releases.
+;; - If you have =consult-dir= from MELPA or a new commit, but an older =consult= (pre-0.34), any async source (e.g., =consult-dir=, =consult-locate=, =consult-find=) will trigger this error on startup or first use.
+;; - The presence of this error, especially on a timer, means that =consult-dir= is calling into =consult--async-split-style= at load/init time or when a candidate source is built (it uses =consult--async-command= which requires =consult--async-split-style= for file processing).
+;; 
+;; #### Solution options
+;; 
+;; You must *upgrade* =consult= so it provides =consult--async-split-style=.  
+;; Alternatively, you could *downgrade* =consult-dir= to a version compatible with your older consult, but you will lose fixes and features in =consult-dir=.
+;; 
+;; ##### How to upgrade consult (recommended)
+;; 
+;; If using =straight.el= (as your config suggests), edit your =straight/recipes= lockfile or run:
+;; 
+;; #+begin_src emacs-lisp
+;; (straight-use-package 'consult)  ;; Or M-x straight-pull-package RET consult
+;; #+end_src
+;; 
+;; Then kill all leftover =consult.elc= files and reload.
+;; 
+;; If using =package.el= (MELPA), simply =M-x package-upgrade consult=.
+;; 
+;; ##### How to confirm
+;; 
+;; After upgrade, =M-x find-function RET consult--async-split-style= should find the function (not error “void function”).
+;; 
+;; ##### Alternate workarounds
+;; 
+;; - Temporarily uninstall =consult-dir= if you can't upgrade =consult=.
+;; - Do not attempt to patch =consult-dir= to avoid the call—many sources now require this helper for async completion output processing.
+;; 
+;; #### Summary
+;; 
+;; - The =consult-dir= package version you are using now *requires* consult >= 0.34.
+;; - Your current =consult= is too old and missing required internal helpers, producing the void function error.
+;; - Upgrade consult, or downgrade consult-dir.
+;; 
+;; Refer to:  
+;; [[https://github.com/minad/consult/blob/main/CHANGELOG.org#v0340-2023-08-03][consult v0.34 changelog : see entry for “Add consult--async-split-style function”]]  
+;; [[https://github.com/karthink/consult-dir/issues/75][consult-dir issue 75]]  
+;; [[https://github.com/minad/consult/issues/989][consult issue 989 (explains the same error origin)]]
+;; 
+;; No further user configuration change is needed—just ensure Consult is new enough.
 
 (provide 'sunra-completion)
