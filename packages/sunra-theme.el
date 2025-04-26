@@ -86,5 +86,5 @@
   :ensure t
   :init (doom-modeline-mode 1))
 
-
+ 
 (provide 'sunra-theme)
