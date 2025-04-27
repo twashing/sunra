@@ -4,9 +4,11 @@
 (add-to-list 'auto-mode-alist '("\\.notes\\'" . org-mode))
 
 
+;; Automatically wrap lines in org mode
+;; https://superuser.com/questions/299886/linewrap-in-org-mode-of-emacs
 (setq org-startup-truncated nil
       truncate-lines nil)
-(setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
+;; (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
 (setq org-ellipsis "…")
 (setq org-hide-leading-stars t)
 (setq org-agenda-files '("~/.emacs.d/.org"))
