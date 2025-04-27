@@ -102,4 +102,14 @@ On non-macOS systems, this function currently signals an error."
 ;; [AVFoundation indev @ 0x12a804080] [1] MacBook Pro Microphone
 ;; [AVFoundation indev @ 0x12a804080] [2] Bose QC45
 
+
+;; Remove frame internal border padding
+(add-to-list 'default-frame-alist '(internal-border-width . 0))
+(set-frame-parameter nil 'internal-border-width 0)
+
+;; Apply to all existing frames
+(dolist (frame (frame-list))
+  (set-frame-parameter frame 'internal-border-width 0))
+
+
 (provide 'sunra-desktop)

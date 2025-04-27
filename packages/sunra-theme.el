@@ -104,7 +104,7 @@
   (doom-themes-org-config)
   
   ;; Customize window dividers
-  (setq window-divider-default-right-width 1
+  (setq window-divider-default-right-width 1)
   (setq window-divider-default-places 'right-only)
   (window-divider-mode 1)
   
