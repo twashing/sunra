@@ -4,6 +4,17 @@
 (add-to-list 'auto-mode-alist '("\\.notes\\'" . org-mode))
 
 
+(setq org-startup-truncated nil
+      truncate-lines nil)
+(setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
+(setq org-ellipsis "…")
+(setq org-hide-leading-stars t)
+(setq org-agenda-files '("~/.emacs.d/.org"))
+(add-hook 'org-mode-hook 'org-indent-mode)
+(setq org-indent-mode-turns-on-hiding-stars t)
+(setq org-agenda-span 'day)
+
+
 ;; Auto-indentation in org-mode only when a key prefix is supplied to <enter>.
 ;; This involves modifying the keymap to bind the auto-indentation function in conjunction with a prefix key.
 ;;
@@ -29,21 +40,21 @@
 ;; TODO - fix
 ;;
 ;; (use-package org-modern
-;; 
+;;
 ;;   :ensure t
-;; 
+;;
 ;;   ;; :init
 ;;   ;; (with-eval-after-load 'org (global-org-modern-mode))
-;; 
+;;
 ;;   :config
-;; 
+;;
 ;;   ;; (set-face-attribute 'default nil :family "Iosevka")
 ;;   ;; (set-face-attribute 'variable-pitch nil :family "Iosevka Aile")
 ;;   ;; (set-face-attribute 'org-modern-symbol nil :family "Iosevka")
 ;;   (set-face-attribute 'default nil :family "PragmataPro Liga")
 ;;   (set-face-attribute 'variable-pitch nil :family "PragmataPro Liga")
 ;;   (set-face-attribute 'org-modern-symbol nil :family "PragmataPro Liga")
-;; 
+;;
 ;;   ;; ;; Add frame borders and window dividers
 ;;   ;; (modify-all-frames-parameters
 ;;   ;;  '((right-divider-width . 40)
@@ -54,7 +65,7 @@
 ;;   ;;   (face-spec-reset-face face)
 ;;   ;;   (set-face-foreground face (face-attribute 'default :background)))
 ;;   ;; (set-face-background 'fringe (face-attribute 'default :background))
-;; 
+;;
 ;;   (setq
 ;;    ;; Edit settings
 ;;    org-auto-align-tags nil
@@ -62,7 +73,7 @@
 ;;    org-catch-invisible-edits 'show-and-error
 ;;    org-special-ctrl-a/e t
 ;;    org-insert-heading-respect-content t
-;; 
+;;
 ;;    ;; Org styling, hide markup etc.
 ;;    org-hide-emphasis-markers t
 ;;    org-pretty-entities t

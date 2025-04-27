@@ -23,6 +23,7 @@
 (use-packages 
   'sunra-base
   'sunra-core
+  'sunra-editor
   'sunra-desktop
   'sunra-keybinds
   'sunra-navigation
@@ -37,4 +38,3 @@
   'sunra-completion
   'sunra-theme
   'sunra-dired)
-
