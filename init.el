@@ -23,9 +23,9 @@
 (use-packages 
   'sunra-base
   'sunra-core
+  'sunra-keybinds
   'sunra-editor
   'sunra-desktop
-  'sunra-keybinds
   'sunra-navigation
   'sunra-llm
   'sunra-multiple-cursors
