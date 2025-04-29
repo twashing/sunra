@@ -160,7 +160,14 @@
       "C-M-<" #'append-to-buffer
 
       "C-M-\\" #'avy-goto-char-2
-      "C-M-;" #'sunra/copy-remote-region)
+      "C-M-;" #'sunra/copy-remote-region
+
+      
+      "C-h C-k" #'describe-keymap
+      "C-h C-t" #'describe-theme
+      "C-h C-c" #'describe-char
+      "C-h C-f" #'describe-face
+      "C-h C-?" #'view-emacs-FAQS)
 
 
 (provide 'sunra-editor)
