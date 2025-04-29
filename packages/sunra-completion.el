@@ -200,9 +200,6 @@
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 
-(define-prefix-command 'sunra-M-m-map)
-(global-set-key (kbd "M-m") 'sunra-M-m-map)
-
 
 (use-package consult
 
@@ -261,10 +258,6 @@
          ("M-s g" . consult-grep)
          ("M-s G" . consult-git-grep)
          ("M-s r" . consult-ripgrep)
-         ;; ("M-s l" . consult-line)
-         ;; ("M-s L" . consult-line-multi)
-         ("M-m s s" . consult-line)
-         ("M-m s S" . consult-line-multi)
          ("M-s k" . consult-keep-lines)
          ("M-s u" . consult-focus-lines)
 

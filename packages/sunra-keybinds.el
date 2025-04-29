@@ -1,5 +1,8 @@
 
 
+(define-prefix-command 'sunra-M-m-map)
+(global-set-key (kbd "M-m") 'sunra-M-m-map)
+
 ;; Overview
 ;; Reimplementation of the `map!` macro from Doom Emacs' implementation that does not rely on Evil or general.el.
 ;; https://github.com/doomemacs/doomemacs/blob/master/lisp/doom-keybinds.el

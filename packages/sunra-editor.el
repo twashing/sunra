@@ -167,7 +167,15 @@
       "C-h C-t" #'describe-theme
       "C-h C-c" #'describe-char
       "C-h C-f" #'describe-face
-      "C-h C-?" #'view-emacs-FAQS)
+      "C-h C-?" #'view-emacs-FAQ
+      "C-h M-k" #'free-keys
 
+      "C-x C-v" #'restart-emacs
+      "C-c o b" #'sunra/new-buffer
+      "M-m M-SPC" #'ielm)
+
+(foo
+ [bar
+  (baz)])
 
 (provide 'sunra-editor)
