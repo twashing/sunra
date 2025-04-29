@@ -165,10 +165,13 @@
     (setq gptel-directives
           (append new-pairs filtered-old))))
 
-(defun load-all! (dir)
-  "Load all .el files from DIR"
-  (dolist (file (directory-files dir t "\\.el$"))
-    (sunra/load! file)))
+(defun load-all! (dir &optional exclusions)
+  "Load all .el files from DIR, excluding files that match any pattern in EXCLUSIONS."
+  (dolist (file (directory-files dir t))
+    (when (and (string-match-p "\\.el$" file)
+               (not (cl-some (lambda (pattern) (string-match-p pattern file)) exclusions)))
+      (sunra/load! file))))
+
 
 ;; NOTE
 ;;
@@ -202,7 +205,8 @@
 
   (apply-templates (file-name-concat (sunra/dir!) "gptel/directives"))
   (load-gptel-directives (file-name-concat (sunra/dir!) "gptel/directives"))
-  (load-all! (file-name-concat (sunra/dir!) "gptel/tools/"))
+  (load-all! (file-name-concat (sunra/dir!) "gptel/tools/")
+             '("tools-positron-solutions\\.el"))
 
   (sunra/setq! gptel-api-key openapi-key
                gptel-expert-commands t

@@ -35,7 +35,7 @@
   ;; Load the default smartparens configuration.
   (require 'smartparens-config)
 
-  ;; ;; Additional customization can be added here.
+  ;; Additional customization can be added here.
   (setq sp-base-key-bindings 'paredit) ; Use keybindings similar to paredit
   (setq sp-autoskip-closing-pair 'always)
 
