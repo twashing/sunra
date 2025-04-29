@@ -174,8 +174,5 @@
       "C-c o b" #'sunra/new-buffer
       "M-m M-SPC" #'ielm)
 
-(foo
- [bar
-  (baz)])
 
 (provide 'sunra-editor)

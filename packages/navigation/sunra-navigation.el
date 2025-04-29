@@ -21,6 +21,18 @@
               ("C-M-s" . sp-splice-sexp)
               ("C-M-t" . sp-transpose-sexp)
 
+              ("M-m p c" . sp-convolute-sexp)
+              ("M-m p s" . sp-swap-enclosing-sexp)
+
+              ("M-m p u" . sp-unwrap-sexp)
+              ("M-m p b" . sp-backward-unwrap-sexp)
+
+              ("M-m p r" . sp-rewrap-sexp)
+
+              ("M-m p a" . sp-absorb-sexp)
+              ("M-m p e" . sp-emit-sexp)
+              ("M-m p s" . sp-split-sexp)
+              ("M-m p j" . sp-join-sexp)
 
               ;; NOTE use case
               ;;
