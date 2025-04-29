@@ -30,13 +30,11 @@
 
 
 (use-package nerd-icons
-
   :ensure t
-
-  ;; TODO
-  ;; Only run this if nerd fonts is not already installed
-  ;; :init (nerd-icons-install-fonts t)
-  )
+  :init
+  (unless (and (member "Symbols Nerd Font Mono" (font-family-list))
+               (not (null (cl-find "Symbols Nerd Font Mono" (font-family-list) :test 'equal))))
+    (nerd-icons-install-fonts t)))
 
 
 ;; NOTE

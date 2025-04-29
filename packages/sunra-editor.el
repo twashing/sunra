@@ -25,6 +25,12 @@
 
 
 ;; Copy Remote Region
+
+(use-package avy
+  :ensure t
+  :config
+  (setq avy-all-windows 'all-frames))
+
 (defun zipmap (keys values)
   (cl-pairlis keys values))
 
