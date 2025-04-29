@@ -161,8 +161,8 @@
   :bind (("C->" . embark-export)
          ("C-<" . embark-collect)
          ("C-:" . embark-select)
-         ("C-M-\"" . embark-dwim)
-         ("C-\"" . embark-act)
+         ("C-!" . embark-dwim)
+         ("C-\\" . embark-act)
          ("C-{" . embark-become))
 
   ;; TODO
