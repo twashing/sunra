@@ -74,7 +74,8 @@
   :defer t)
 
 (use-package rainbow-delimiters
-  :defer t)
+  :ensure t
+  :hook ((prog-mode . rainbow-delimiters-mode)))
 
 (use-package expand-region
 
