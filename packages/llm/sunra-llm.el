@@ -219,7 +219,8 @@
 
                ;; Persist gptel configuration selections across sessions
                gptel-save-state-style '(buffer buffer-name model)
-               gptel-state-file (expand-file-name "gptel-state" user-emacs-directory))
+               gptel-state-file (expand-file-name "gptel-state" user-emacs-directory)
+               gptel--rewrite-message "")
 
   ;; :key can be a function that returns the API key.
   ;; Any name you want
