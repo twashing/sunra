@@ -175,10 +175,14 @@
 
 ;; NOTE
 ;;
-;; You can add a directory of files (or project) in GPTel, by trying to add a file (-f), and selecting an entire directory
+;; You can add a directory of files (or project) in GPTel,
+;;   by trying to add a file (-f), and selecting an entire directory
 ;; https://github.com/karthink/gptel/issues/513#issuecomment-2558919227
 ;; https://github.com/karthink/gptel/pull/438
 
+;; TODO
+;; Return to "How do I set GPTel's transient option menu's maximum height?"
+;; https://chatgpt.com/g/g-p-680c381e8e908191ae54d8110f1d55a3-emacs-from-scratch/c/6812abe2-13c8-8012-8290-740504f774ca
 (use-package gptel
   :defer t
 
