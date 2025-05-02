@@ -316,7 +316,23 @@
   ;; Optionally make narrowing help available in the minibuffer.
   ;; You may want to use `embark-prefix-help-command' or which-key instead.
   ;; (keymap-set consult-narrow-map (concat consult-narrow-key " ?") #'consult-narrow-help)
-)
+
+
+  ;; NOTE
+  ;;
+  ;; Previewing files in find-file
+  ;; https://github.com/minad/consult/wiki#previewing-files-in-find-file
+  (setq read-file-name-function #'consult-find-file-with-preview)
+
+  (defun consult-find-file-with-preview (prompt &optional dir default mustmatch initial pred)
+    (interactive)
+    (let ((default-directory (or dir default-directory))
+          (minibuffer-completing-file-name t))
+      (consult--read #'read-file-name-internal :state (consult--file-preview)
+                     :prompt prompt
+                     :initial initial
+                     :require-match mustmatch
+                     :predicate pred))))
 
 ;; (with-eval-after-load 'consult
 ;;   (unless (fboundp 'consult--async-split-style)

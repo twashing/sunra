@@ -82,6 +82,7 @@
     (make-directory backup-dir t)))
 
 
+(recentf-mode)
 (setq debug-on-error t
 
       ;; Disable backup files
