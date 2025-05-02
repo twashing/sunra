@@ -7,7 +7,6 @@
                      :host github
                      :repo "minad/vertico"
                      :branch "main")
-
   :custom
 
   ;; Enable cycling for `vertico-next/previous`
@@ -15,14 +14,14 @@
 
   ;; Defining multiform categories up front
   (vertico-multiform-categories
-   '((imenu         buffer mouse)
-     (consult-imenu buffer mouse)
-     (file          buffer mouse)
-     (buffer        buffer mouse)
-     (kill-ring     buffer mouse)
-     (outline       buffer mouse)
-     (mark          buffer mouse)
-     (t             reverse mouse)))
+   '((imenu         buffer reverse mouse)
+     (consult-imenu buffer reverse mouse)
+     (file          buffer reverse mouse)
+     (buffer        buffer reverse mouse)
+     (kill-ring     buffer reverse mouse)
+     (outline       buffer reverse mouse)
+     (mark          buffer reverse mouse)
+     (t             buffer reverse mouse)))
 
   :init (progn
           (vertico-mode)
@@ -42,16 +41,12 @@
   ;; Tidy shadowed file names
   ;; :hook (rfn-eshadow-update-overlay . vertico-directory-tidy)
 
-  :hook
-
-  ;; Turn on multiform *once* when vertico itself is enabled
-  (vertico-mode . vertico-multiform-mode)
-
   :config
 
   ;; TODO - After consult, embark
   ;; projectile minibuffer pop-ups
 
+  (vertico-multiform-mode)
 
   ;; NOTE
   ;;
