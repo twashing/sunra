@@ -24,6 +24,9 @@
 (column-number-mode)
 
 
+(add-hook 'prog-mode-hook 'goto-address-mode)
+
+
 ;; Copy Remote Region
 
 (use-package avy
