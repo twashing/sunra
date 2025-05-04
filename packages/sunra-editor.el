@@ -181,6 +181,8 @@
 
   :init (move-text-default-bindings))
 
+;; NOTE
+;; https://config.phundrak.com/emacs/packages/visual-config.html#ligatures
 (use-package ligature
 
   :ensure t
