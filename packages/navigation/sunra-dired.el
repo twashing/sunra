@@ -72,9 +72,7 @@
   (setq dirvish-large-directory-threshold 20000)
 
   ;; Bind `dirvish-fd|dirvish-side|dirvish-dwim' as you see fit
-  :bind (;; :map sunra-M-m-map
-         ;; ("M-m f" . dirvish)
-         :map dirvish-mode-map               ; Dirvish inherits `dired-mode-map'
+  :bind (:map dirvish-mode-map               ; Dirvish inherits `dired-mode-map'
          (";"   . dired-up-directory)        ; So you can adjust `dired' bindings here
          ("?"   . dirvish-dispatch)          ; [?] a helpful cheatsheet
          ("a"   . dirvish-setup-menu)        ; [a]ttributes settings:`t' toggles mtime, `f' toggles fullframe, etc.

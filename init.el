@@ -1,7 +1,8 @@
 (require 'package)
 
 
-;; NOTE
+;; NOTE - remove & refresh package
+;;
 ;; rm -rf ~/.emacs.d/straight/repos/gptel &&
 ;; emacs --batch \
 ;; -l ~/.emacs.d/init.el \
@@ -38,22 +39,3 @@
   'sunra-completion
   'sunra-theme
   'sunra-dired)
-
-
-
-;; ;; Q
-;; The "\"C-c f\" . dirvish" keybinding (in the "use-package dirvish" configuration) in the file "packages/sunra-dired.el" is not working.
-;; 
-;; Based on the configuration under this directory, what's the root cause and solution?
-;; Be clear and concise and focus on the solution code.
-
-
-
-;; ;; Q
-;; The "\"C-c f\" . dirvish" keybinding (in the "use-package dirvish" configuration) in the file "packages/sunra-dired.el" is not working.
-;; https://github.com/twashing/sunra/blob/emacs-from-scratch/packages/navigation/sunra-dired.el
-;; 
-;; Based on the configuration under this repository, what's the root cause and solution?
-;; https://github.com/twashing/sunra/tree/emacs-from-scratch
-;; 
-;; Be clear and concise and focus on the solution code.
