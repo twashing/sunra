@@ -1,11 +1,11 @@
 
 ;; TODO
 ;; (use-package dired
-;; 
+;;
 ;;   :config
 ;;   (setq dired-listing-switches
 ;;         "-l --almost-all --human-readable --group-directories-first --no-group")
-;; 
+;;
 ;;   ;; this command is useful when you want to close the window of `dirvish-side'
 ;;   ;; automatically when opening a file
 ;;   (put 'dired-find-alternate-file 'disabled nil))
@@ -36,6 +36,7 @@
 
   :init
   (dirvish-override-dired-mode)
+  (define-key sunra-M-m-map (kbd "f") 'dirvish)
 
   :after
   (sunra-themes)
@@ -66,30 +67,31 @@
                                  (format "  %s " (nerd-icons-codicon "nf-cod-home"))
                                  (format "  %s " (nerd-icons-codicon "nf-cod-root_folder"))
                                  (format " %s " (nerd-icons-faicon "nf-fa-angle_right"))))
-  
+
   ;; open large directory (over 20000 files) asynchronously with `fd' command
   (setq dirvish-large-directory-threshold 20000)
 
-  :bind ; Bind `dirvish-fd|dirvish-side|dirvish-dwim' as you see fit
-  (("C-c f" . dirvish)
-   :map dirvish-mode-map               ; Dirvish inherits `dired-mode-map'
-   (";"   . dired-up-directory)        ; So you can adjust `dired' bindings here
-   ("?"   . dirvish-dispatch)          ; [?] a helpful cheatsheet
-   ("a"   . dirvish-setup-menu)        ; [a]ttributes settings:`t' toggles mtime, `f' toggles fullframe, etc.
-   ("f"   . dirvish-file-info-menu)    ; [f]ile info
-   ("o"   . dirvish-quick-access)      ; [o]pen `dirvish-quick-access-entries'
-   ("s"   . dirvish-quicksort)         ; [s]ort file list
-   ("r"   . dirvish-history-jump)      ; [r]ecent visited
-   ("l"   . dirvish-ls-switches-menu)  ; [l]s command flags
-   ("v"   . dirvish-vc-menu)           ; [v]ersion control commands
-   ("*"   . dirvish-mark-menu)
-   ("y"   . dirvish-yank-menu)
-   ("N"   . dirvish-narrow)
-   ("^"   . dirvish-history-last)
-   ("TAB" . dirvish-subtree-toggle)
-   ("M-f" . dirvish-history-go-forward)
-   ("M-b" . dirvish-history-go-backward)
-   ("M-e" . dirvish-emerge-menu)))
+  ;; Bind `dirvish-fd|dirvish-side|dirvish-dwim' as you see fit
+  :bind (;; :map sunra-M-m-map
+         ;; ("M-m f" . dirvish)
+         :map dirvish-mode-map               ; Dirvish inherits `dired-mode-map'
+         (";"   . dired-up-directory)        ; So you can adjust `dired' bindings here
+         ("?"   . dirvish-dispatch)          ; [?] a helpful cheatsheet
+         ("a"   . dirvish-setup-menu)        ; [a]ttributes settings:`t' toggles mtime, `f' toggles fullframe, etc.
+         ("f"   . dirvish-file-info-menu)    ; [f]ile info
+         ("o"   . dirvish-quick-access)      ; [o]pen `dirvish-quick-access-entries'
+         ("s"   . dirvish-quicksort)         ; [s]ort file list
+         ("r"   . dirvish-history-jump)      ; [r]ecent visited
+         ("l"   . dirvish-ls-switches-menu)  ; [l]s command flags
+         ("v"   . dirvish-vc-menu)           ; [v]ersion control commands
+         ("*"   . dirvish-mark-menu)
+         ("y"   . dirvish-yank-menu)
+         ("N"   . dirvish-narrow)
+         ("^"   . dirvish-history-last)
+         ("TAB" . dirvish-subtree-toggle)
+         ("M-f" . dirvish-history-go-forward)
+         ("M-b" . dirvish-history-go-backward)
+         ("M-e" . dirvish-emerge-menu)))
 
 
 (provide 'sunra-dired)

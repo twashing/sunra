@@ -200,15 +200,6 @@
 
   :ensure t
 
-  ;; :straight t
-  ;; :straight (consult :type git
-  ;;                    :host github
-  ;;                    :repo "minad/consult"
-  ;;                    :branch "main"
-  ;;                    ;; :branch "v1.4"
-  ;;                    ;; :fork (:branch "v1.4")
-  ;;                    )
-
   ;; Replace bindings. Lazily loaded by `use-package'.
   :bind (;; C-c bindings in `mode-specific-map'
          ("C-c M-x" . consult-mode-command)
@@ -261,10 +252,6 @@
          :map isearch-mode-map
          ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
          ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
-         ;; ("M-s l" . consult-line)                  ;; needed by consult-line to detect isearch
-         ;; ("M-s L" . consult-line-multi)            ;; needed by consult-line to detect isearch
-         ("M-m s s" . consult-line)
-         ("M-m s S" . consult-line-multi)
 
          ;; Minibuffer history
          :map minibuffer-local-map
@@ -288,6 +275,47 @@
   ;; Use Consult to select xref locations with preview
   (setq xref-show-xrefs-function #'consult-xref
         xref-show-definitions-function #'consult-xref)
+
+  ;; NOTE
+  ;;
+  ;; Problem
+  ;; I've defined the "M-m" keybinding prefix in "packages/sunra-keybinds.el"
+  ;; (define-prefix-command 'sunra-M-m-map)
+  ;; (global-set-key (kbd "M-m") 'sunra-M-m-map)
+  ;;
+  ;; Yet these keybindings did not work in "packages/sunra-completion.el".
+  ;; (use-package consult
+  ;;   :ensure t
+  ;;   :bind (...
+  ;;          ("M-m s s" . consult-line)
+  ;;          ("M-m s S" . consult-line-multi)
+  ;;          ...)
+  ;;    ...)
+  ;;
+  ;; Diagnosis:
+  ;; The issue arises because of how the `use-package` binds the key combinations for `consult` after setting the global keybinding for `M-m`.
+  ;; If `sunra-M-m-map` is not fully defined or activated in the context needed, the keybindings will not work as expected.
+  ;;
+  ;; Solution Code:
+  ;; Ensure that `M-m` is linked to your defined keymap and that the `consult` bindings are set within the proper context of `sunra-M-m-map`.
+  ;; That represents this `use-package` declaration as follows:
+  ;;
+  ;; This configuration explicitly links the `consult` commands to the defined `sunra-M-m-map`, ensuring that the keybindings will function correctly when invoking `M-m`.
+  ;; Make sure to evaluate or reload this updated configuration to see the changes take effect.
+  ;;
+  ;; ```elisp
+  ;; (use-package consult
+  ;;   :ensure t
+  ;;   :bind
+  ;;   (("M-m s s" . consult-line)           <== This does NOT work
+  ;;    ("M-m s S" . consult-line-multi))
+  ;;   :init
+  ;;   (define-key sunra-M-m-map (kbd "s s") 'consult-line)
+  ;;   (define-key sunra-M-m-map (kbd "s S") 'consult-line-multi))
+  ;; ```
+
+  (define-key sunra-M-m-map (kbd "s s") 'consult-line)
+  (define-key sunra-M-m-map (kbd "s S") 'consult-line-multi)
 
   ;; Configure other variables and modes in the :config section,
   ;; after lazily loading the package.
