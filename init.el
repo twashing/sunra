@@ -8,7 +8,6 @@
 ;; -l ~/.emacs.d/init.el \
 ;; --eval="(straight-use-package 'gptel)"
 
-
 (setq emacs-dir (file-name-directory
 		 (or (buffer-file-name)
 		     (file-chase-links load-file-name))))
