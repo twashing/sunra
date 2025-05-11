@@ -10,36 +10,36 @@
 ;; emacs --batch \
 ;; -l ~/.emacs.d/init.el \
 ;; --eval="(straight-use-package 'gptel)"
-;; 
+;;
 ;; # Emacs
 ;; This Emacs function will refresh Emacs entire configuration starting from this "~/.emacs.d/init.el" initialization script. Including potentially re-compiling any .elc files. It should operate in the same manner as the command line script above.
-;; 
-;; 
+;;
+;;
 ;; Regarding the linkage between these directories, I'm noting down
 ;; why we delete from "~/.emacs.d/straight/repos"
 ;; but byte compile "~/.emacs.d/elpa"
 ;; where we presumably expect to have compiled ".elc" files in "~/.emacs.d/straight/build"
-;; 
+;;
 ;; ~/.emacs.d/elpa
 ;; ~/.emacs.d/straight/repos
 ;; ~/.emacs.d/straight/build
-;; 
-;; 
-;; Linkage Explanation:
-;; 
-;; - **~/.emacs.d/straight/repos**: This directory is used by the *straight.el* package manager to store the source files of installed packages. When a package is installed, its code is cloned or fetched from a version control repository and placed in this directory. The purpose of deleting folders from here is to ensure that stale or outdated code is removed, forcing a fresh installation or update of the package when it is needed again.
-;; 
-;; - **~/.emacs.d/elpa**: This directory typically contains packages installed using the built-in package manager. The compiled version of Emacs Lisp files (i.e., `.elc` files) is usually placed in
+;;
+;;
+;; Linkage Breakdown:
+;;
+;; ~/.emacs.d/straight/repos: This directory is used by the *straight.el* package manager to store the source files of installed packages. When a package is installed, its code is cloned or fetched from a version control repository and placed in this directory. The purpose of deleting folders from here is to ensure that stale or outdated code is removed, forcing a fresh installation or update of the package when it is needed again.
+;;
+;; ~/.emacs.d/elpa: This directory typically contains packages installed using the built-in package manager. The compiled version of Emacs Lisp files (i.e., `.elc` files) is usually placed in
 ;;  this directory after byte-compiling the original Emacs Lisp files (`.el`). We want to recompile from here because this library represents the installed packages that are loaded into Emacs.
-;; 
-;; - **~/.emacs.d/straight/build**: In this directory, *straight.el* compiles the packages that are stored in *~/.emacs.d/straight/repos*. When a package is built, its compiled files are placed in this directory. We do not delete these files directly because they represent the latest compiled versions of the packages they correspond to.
-;; 
+;;
+;; ~/.emacs.d/straight/build: In this directory, *straight.el* compiles the packages that are stored in *~/.emacs.d/straight/repos*. When a package is built, its compiled files are placed in this directory. We do not delete these files directly because they represent the latest compiled versions of the packages they correspond to.
+;;
 ;; To summarize:
 ;; We delete from `straight/repos`... to remove source files to ensure a fresh install,
 ;; while we manage compiled files in `elpa` and `straight/build` without direct deletion... to maintain the current work done on those packages,
 ;;    ensuring that we're always loading the proper compiled code when we refresh configurations.
 
-(defun refresh-emacs-configuration (&optional recompile?)
+(defun reload-emacs-configuration (&optional recompile?)
   "Refresh Emacs configuration by removing all repository and build directories."
   (interactive)
   (let ((repo-directories '("~/.emacs.d/straight/repos/"))
@@ -53,7 +53,24 @@
         (delete-directory dir 'recursive)))
 
     ;; Reload the init file
+
     (load-file "~/.emacs.d/init.el")
+    ;; (load-file "~/.emacs.d/init.el")
+    ;; (load "~/.emacs.d/init.el")
+
+    ;; (with-temp-buffer
+    ;;   (load-file "~/.emacs.d/init.el")
+    ;;   (goto-char (point-min))
+    ;;   (let ((results ()))
+    ;;     (while (not (eobp))
+    ;;       (let ((form (read (current-buffer))))
+    ;;         (when form
+    ;;           (let ((result (eval form)))
+    ;;             (push (format "%s => %s" form result) results)))))
+    ;;     (with-output-to-temp-buffer "*Reload Configuration*"
+    ;;       (dolist (line (nreverse results))
+    ;;         (princ line)
+    ;;         (terpri)))))
 
     ;; Optionally recompile all .el files
     (when recompile?
@@ -62,9 +79,8 @@
 
     (message "Emacs configuration refreshed.")))
 
-
-;; (refresh-emacs-configuration t)
-;; (refresh-emacs-configuration)
+;; (reload-emacs-configuration t)
+;; (reload-emacs-configuration)
 
 
 (setq emacs-dir (file-name-directory
