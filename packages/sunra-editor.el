@@ -142,6 +142,7 @@
 (use-package crux
 
   :defer t
+
   :init (global-set-key [remap move-beginning-of-line] #'crux-move-beginning-of-line))
 
 (map! "C-c k" #'copy-line
@@ -165,7 +166,7 @@
       "C-M-\\" #'avy-goto-char-2
       "C-M-;" #'sunra/copy-remote-region
 
-      
+
       "C-h C-k" #'describe-keymap
       "C-h C-t" #'describe-theme
       "C-h C-c" #'describe-char
@@ -216,6 +217,16 @@
                             "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
                             "\\\\" "://"))
   (global-ligature-mode t))
+
+(use-package command-log-mode
+
+  :ensure t
+
+  :bind ("C-`" . command-log-mode)
+  
+  :config
+  (setq command-log-mode-auto-show t))
+
 
 
 (provide 'sunra-editor)
