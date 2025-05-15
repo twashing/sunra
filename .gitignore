@@ -10,3 +10,7 @@ projectile-bookmarks.eld
 tmux-*
 url/
 recentf
+desktop
+**/*-key.el
+.cache/
+lisp/

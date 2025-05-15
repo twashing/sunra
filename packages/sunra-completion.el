@@ -1,0 +1,501 @@
+
+
+(use-package vertico
+
+  :ensure t
+  :straight (vertico :type git
+                     :host github
+                     :repo "minad/vertico"
+                     :branch "main")
+  :custom
+
+  ;; Enable cycling for `vertico-next/previous`
+  (vertico-cycle t)
+
+  ;; Defining multiform categories up front
+  (vertico-multiform-categories
+   '((imenu         buffer mouse)
+     (consult-imenu buffer mouse)
+     (file          buffer mouse)
+     (buffer        buffer mouse)
+     (kill-ring     buffer mouse)
+     (outline       buffer mouse)
+     (mark          buffer mouse)
+     (t             buffer mouse)))
+
+  :init (progn
+          (vertico-mode)
+          (require 'vertico-buffer)
+          (require 'vertico-reverse)
+          (require 'vertico-unobtrusive)
+          (require 'vertico-mouse)
+          (require 'vertico-multiform)
+          (require 'vertico-directory))
+
+  :bind (:map vertico-map
+              ("RET" . vertico-directory-enter)
+              ("DEL" . vertico-directory-delete-char)
+              ("M-DEL" . vertico-directory-delete-word))
+
+  ;; TODO - What is this
+  ;; Tidy shadowed file names
+  ;; :hook (rfn-eshadow-update-overlay . vertico-directory-tidy)
+
+  :config
+
+  ;; TODO - After consult, embark
+  ;; projectile minibuffer pop-ups
+
+  (vertico-multiform-mode)
+
+  ;; NOTE
+  ;;
+  ;; Configure multiform per command
+  ;; https://github.com/minad/vertico?tab=readme-ov-file#configure-vertico-per-command-or-completion-category
+  ;;
+  ;; Toggle Display Modes
+  ;; M-B	vertico-multiform-buffer
+  ;; M-F	vertico-multiform-flat
+  ;; M-G	vertico-multiform-grid
+  ;; M-R	vertico-multiform-reverse
+  ;; M-U	vertico-multiform-unobtrusive
+  ;; M-V	vertico-multiform-vertical
+
+  (setq vertico-multiform-commands
+        '(;; ("^describe-*" unobtrusive)
+          ;; (execute-extended-command unobtrusive)
+          ;; ("^consult-.*" buffer)
+          ;; ("^embark-.*" reverse)
+          )))
+
+(use-package marginalia
+
+  :ensure t
+
+  ;; Bind `marginalia-cycle' locally in the minibuffer.  To make the binding
+  ;; available in the *Completions* buffer, add it to the
+  ;; `completion-list-mode-map'.
+  :bind (:map minibuffer-local-map
+         ("M-A" . marginalia-cycle))
+
+  :init (marginalia-mode))
+
+;; NOTE
+;;
+;; Orderless selection, howto specify literal pattern is specified by its "Style dispatchers"
+;; https://github.com/oantolin/orderless?tab=readme-ov-file#style-dispatchers
+;;
+;; ! modifies the component with orderless-not. Both !bad and bad! will match strings that do not contain the pattern bad.
+;; & modifies the component with orderless-annotation. The pattern will match against the candidate’s annotation (cheesy mnemonic: andnotation!).
+;; , uses orderless-initialism.
+;; = uses orderless-literal.
+;; ^ uses orderless-literal-prefix.
+;; ~ uses orderless-flex.
+;; % makes the string match ignoring diacritics and similar inflections on characters (it uses the function char-fold-to-regexp to do this).
+
+(use-package orderless
+
+  :ensure t
+  :custom
+  ;; 1. Include both 'orderless' and 'partial-completion' in the global styles.
+  ;;    'orderless' goes first for general matching and robustness.
+  ;;    'partial-completion' enables the specific file path expansion.
+  ;;    'flex' is often a good addition for flexible matching.
+  (completion-styles '(orderless partial-completion flex))
+
+  ;; 2. Configure orderless itself for robust handling, including empty input.
+  ;;    'orderless-literal' ensures empty or exact matches work.
+  ;;    'orderless-regexp' handles the component-wise regex matching.
+  (orderless-matching-styles '(orderless-literal orderless-regexp))
+
+  ;; 3. IMPORTANT: Do NOT add a completion-category-overrides for 'file'
+  ;;    that excludes 'orderless'. Let 'file' completion use the global
+  ;;    'completion-styles' defined above.
+  )
+
+;; NOTE
+;;
+;; # Main Commands
+;;
+;; embark-act
+;; embark-dwim
+;; embark-collect
+;; embark-export
+;; embark-select
+;; embark-become
+;;
+;;
+;; # embark-collect vs embark-export
+;;
+;; Working with sets of possible targets
+;; https://github.com/oantolin/embark?tab=readme-ov-file#working-with-sets-of-possible-targets
+;;
+;; "The embark-collect command produces a buffer listing all the current candidates, for you to peruse and run actions on at your leisure. The candidates are displayed as a list showing additional annotations. If any of the candidates contain newlines, then horizontal lines are used to separate candidates. ...
+;; The embark-export command tries to open a buffer in an appropriate major mode for the set of candidates. If the candidates are files export produces a Dired buffer; if they are buffers, you get an Ibuffer buffer; and if they are packages you get a buffer in package menu mode.
+;;
+;; When in doubt choosing between exporting and collecting, a good rule of thumb is to always prefer embark-export since when an exporter to a special major mode is available for a given type of target, it will be more featureful than an Embark collect buffer, and if no such exporter is configured the embark-export command falls back to the generic embark-collect."
+;;
+;;
+;; # Go "Back" from embark-collect or embark-export
+;;
+;; "In Embark Collect or Embark Export buffers that were obtained by running embark-collect or embark-export from within a minibuffer completion session,
+;; "g" is bound to a command that restarts the completion session..."
+;;
+;;
+;; # Explore
+;;
+;; act on file (incl. insert file path into buffer (from find file))
+;; act on directory
+;; act on variable
+;; "C-u embark-act" (will keep the selection buffer open) ... (emark-act-noexit (no longer exists))
+;; embark-become lets you switch the target action, using the same (already entered input) input. In essence to go back to the embark-act menu, or reverse from an embark-act
+
+(use-package embark
+
+  :ensure t
+  :bind (("C->" . embark-export)
+         ("C-<" . embark-collect)
+         ("C-:" . embark-select)
+         ("C-!" . embark-dwim)
+         ("C-\\" . embark-act)
+         ("C-{" . embark-become))
+
+  ;; TODO
+  ;; completions (file, )
+  ;; file
+  ;; region
+  ;; symbol
+
+
+  :init
+
+  ;; NOTE
+  ;;
+  ;; Is there a way to add search to which-key instead of paging and hunting for a command?
+  ;; https://www.reddit.com/r/emacs/comments/otjn19/comment/h6vyx9q/
+  ;;
+  ;; In searching the C-x prefix. First I typed C-x, then C-h to bring up the embark-prefix-help-command prompt.
+  ;; Next I can (for example) type po ma to search for commands under C-x that have po and ma in their name in any order.
+  (setq prefix-help-command #'embark-prefix-help-command)
+
+
+  ;; (add-hook 'eldoc-documentation-functions #'embark-eldoc-first-target)
+  ;; (setq eldoc-documentation-strategy #'eldoc-documentation-compose-eagerly)
+
+  ;; :config
+  ;; (add-to-list 'display-buffer-alist
+  ;;              '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
+  ;;                nil
+  ;;                (window-parameters (mode-line-format . none))))
+  )
+
+(use-package embark-consult
+
+  :ensure t ; only need to install it, embark loads it after consult if found
+  :hook
+  (embark-collect-mode . consult-preview-at-point-mode))
+
+
+(use-package consult
+
+  :ensure t
+
+  ;; Replace bindings. Lazily loaded by `use-package'.
+  :bind (;; C-c bindings in `mode-specific-map'
+         ("C-c M-x" . consult-mode-command)
+         ("C-c h" . consult-history)
+         ;; ("C-c k" . consult-kmacro)
+         ;; ("C-c m" . consult-man)
+         ("C-c i" . consult-info)
+         ([remap Info-search] . consult-info)
+
+         ;; C-x bindings in `ctl-x-map'
+         ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
+         ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
+         ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
+         ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
+         ("C-x t b" . consult-buffer-other-tab)    ;; orig. switch-to-buffer-other-tab
+         ("C-x r b" . consult-bookmark)            ;; orig. bookmark-jump
+         ("C-x p b" . consult-project-buffer)      ;; orig. project-switch-to-buffer
+
+         ;; Custom M-# bindings for fast register access
+         ("M-#" . consult-register-load)
+         ("M-'" . consult-register-store)          ;; orig. abbrev-prefix-mark (unrelated)
+         ("C-M-#" . consult-register)
+
+         ;; Other custom bindings
+         ;; ("M-y" . consult-yank-pop)                ;; orig. yank-pop
+         ("M-y" . consult-yank-from-kill-ring)
+
+         ;; M-g bindings in `goto-map'
+         ("M-g e" . consult-compile-error)
+         ("M-g f" . consult-flymake)               ;; Alternative: consult-flycheck
+         ("M-g g" . consult-goto-line)             ;; orig. goto-line
+         ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
+         ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
+         ("M-g m" . consult-mark)
+         ("M-g k" . consult-global-mark)
+         ("M-g i" . consult-imenu)
+         ("M-g I" . consult-imenu-multi)
+
+         ;; M-s bindings in `search-map'
+         ("M-s d" . consult-find)                  ;; Alternative: consult-fd
+         ("M-s c" . consult-locate)
+         ("M-s g" . consult-grep)
+         ("M-s G" . consult-git-grep)
+         ("M-s r" . consult-ripgrep)
+         ("M-s k" . consult-keep-lines)
+         ("M-s u" . consult-focus-lines)
+
+         ;; Isearch integration
+         ("M-s e" . consult-isearch-history)
+         :map isearch-mode-map
+         ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
+         ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
+
+         ;; Minibuffer history
+         :map minibuffer-local-map
+         ("M-s" . consult-history)                 ;; orig. next-matching-history-element
+         ("M-r" . consult-history))                ;; orig. previous-matching-history-element
+
+  ;; Enable automatic preview at point in the *Completions* buffer. This is
+  ;; relevant when you use the default completion UI.
+  :hook (completion-list-mode . consult-preview-at-point-mode)
+
+  ;; The :init configuration is always executed (Not lazy)
+  :init
+
+  ;; Tweak the register preview for `consult-register-load',
+  ;; `consult-register-store' and the built-in commands.  This improves the
+  ;; register formatting, adds thin separator lines, register sorting and hides
+  ;; the window mode line.
+  (advice-add #'register-preview :override #'consult-register-window)
+  (setq register-preview-delay 0.5)
+
+  ;; Use Consult to select xref locations with preview
+  (setq xref-show-xrefs-function #'consult-xref
+        xref-show-definitions-function #'consult-xref)
+
+  ;; NOTE
+  ;;
+  ;; Problem
+  ;; I've defined the "M-m" keybinding prefix in "packages/sunra-keybinds.el"
+  ;; (define-prefix-command 'sunra-M-m-map)
+  ;; (global-set-key (kbd "M-m") 'sunra-M-m-map)
+  ;;
+  ;; Yet these keybindings did not work in "packages/sunra-completion.el".
+  ;; (use-package consult
+  ;;   :ensure t
+  ;;   :bind (...
+  ;;          ("M-m s s" . consult-line)
+  ;;          ("M-m s S" . consult-line-multi)
+  ;;          ...)
+  ;;    ...)
+  ;;
+  ;; Diagnosis:
+  ;; The issue arises because of how the `use-package` binds the key combinations for `consult` after setting the global keybinding for `M-m`.
+  ;; If `sunra-M-m-map` is not fully defined or activated in the context needed, the keybindings will not work as expected.
+  ;;
+  ;; Solution Code:
+  ;; Ensure that `M-m` is linked to your defined keymap and that the `consult` bindings are set within the proper context of `sunra-M-m-map`.
+  ;; That represents this `use-package` declaration as follows:
+  ;;
+  ;; This configuration explicitly links the `consult` commands to the defined `sunra-M-m-map`, ensuring that the keybindings will function correctly when invoking `M-m`.
+  ;; Make sure to evaluate or reload this updated configuration to see the changes take effect.
+  ;;
+  ;; ```elisp
+  ;; (use-package consult
+  ;;   :ensure t
+  ;;   :bind
+  ;;   (("M-m s s" . consult-line)           <== This does NOT work
+  ;;    ("M-m s S" . consult-line-multi))
+  ;;   :init
+  ;;   (define-key sunra-M-m-map (kbd "s s") 'consult-line)
+  ;;   (define-key sunra-M-m-map (kbd "s S") 'consult-line-multi))
+  ;; ```
+
+  (define-key sunra-M-m-map (kbd "s s") 'consult-line)
+  (define-key sunra-M-m-map (kbd "s S") 'consult-line-multi)
+
+  ;; Configure other variables and modes in the :config section,
+  ;; after lazily loading the package.
+  :config
+
+  ;; Optionally configure preview. The default value
+  ;; is 'any, such that any key triggers the preview.
+  ;; (setq consult-preview-key 'any)
+  ;; (setq consult-preview-key "M-.")
+  ;; (setq consult-preview-key '("S-<down>" "S-<up>"))
+  ;; For some commands and buffer sources it is useful to configure the
+  ;; :preview-key on a per-command basis using the `consult-customize' macro.
+  (consult-customize
+   consult-theme :preview-key '(:debounce 0.2 any)
+   consult-ripgrep consult-git-grep consult-grep consult-man
+   consult-bookmark consult-recent-file consult-xref
+   consult--source-bookmark consult--source-file-register
+   consult--source-recent-file consult--source-project-recent-file
+   ;; :preview-key "M-."
+   :preview-key '(:debounce 0.4 any))
+
+  ;; Optionally configure the narrowing key.
+  ;; Both < and C-+ work reasonably well.
+  (setq consult-narrow-key "<") ;; "C-+"
+
+  ;; Optionally make narrowing help available in the minibuffer.
+  ;; You may want to use `embark-prefix-help-command' or which-key instead.
+  ;; (keymap-set consult-narrow-map (concat consult-narrow-key " ?") #'consult-narrow-help)
+
+
+  ;; NOTE
+  ;;
+  ;; Previewing files in find-file
+  ;; https://github.com/minad/consult/wiki#previewing-files-in-find-file
+  (setq read-file-name-function #'consult-find-file-with-preview)
+
+  (defun consult-find-file-with-preview (prompt &optional dir default mustmatch initial pred)
+    (interactive)
+    (let ((default-directory (or dir default-directory))
+          (minibuffer-completing-file-name t))
+      (consult--read #'read-file-name-internal :state (consult--file-preview)
+                     :prompt prompt
+                     :initial initial
+                     :require-match mustmatch
+                     :predicate pred))))
+
+;; (with-eval-after-load 'consult
+;;   (unless (fboundp 'consult--async-split-style)
+;;     (defun consult--async-split-style ()
+;;       "Compatibility function for older consult versions."
+;;       (cons 'perl "\\s-+"))))
+;;
+;; (use-package consult-dir
+;;
+;;   :ensure t
+;;   :straight (consult-dir :type git
+;;                          :host github
+;;                          :repo "karthink/consult-dir"
+;;                          :branch "master")
+;;
+;;   ;; :after consult
+;;
+;;   :bind (("C-x C-d" . consult-dir)
+;;          :map vertico-map
+;;          ("C-x C-d" . consult-dir)
+;;          ("C-x C-j" . consult-dir-jump-file)))
+
+;; Statement:
+;; Your error is due to a Consult/Consult-Dir and Consult version mismatch.
+;;
+;; #### Origin of the failure: missing =consult--async-split-style=
+;;
+;; - Your stacktrace shows =(void-function consult--async-split-style)=.
+;; - This function was added in Consult *v0.34* (Aug 2023) and is required by recent =consult-dir= releases.
+;; - If you have =consult-dir= from MELPA or a new commit, but an older =consult= (pre-0.34), any async source (e.g., =consult-dir=, =consult-locate=, =consult-find=) will trigger this error on startup or first use.
+;; - The presence of this error, especially on a timer, means that =consult-dir= is calling into =consult--async-split-style= at load/init time or when a candidate source is built (it uses =consult--async-command= which requires =consult--async-split-style= for file processing).
+;;
+;; #### Solution options
+;;
+;; You must *upgrade* =consult= so it provides =consult--async-split-style=.
+;; Alternatively, you could *downgrade* =consult-dir= to a version compatible with your older consult, but you will lose fixes and features in =consult-dir=.
+;;
+;; ##### How to upgrade consult (recommended)
+;;
+;; If using =straight.el= (as your config suggests), edit your =straight/recipes= lockfile or run:
+;;
+;; #+begin_src emacs-lisp
+;; (straight-use-package 'consult)  ;; Or M-x straight-pull-package RET consult
+;; #+end_src
+;;
+;; Then kill all leftover =consult.elc= files and reload.
+;;
+;; If using =package.el= (MELPA), simply =M-x package-upgrade consult=.
+;;
+;; ##### How to confirm
+;;
+;; After upgrade, =M-x find-function RET consult--async-split-style= should find the function (not error “void function”).
+;;
+;; ##### Alternate workarounds
+;;
+;; - Temporarily uninstall =consult-dir= if you can't upgrade =consult=.
+;; - Do not attempt to patch =consult-dir= to avoid the call—many sources now require this helper for async completion output processing.
+;;
+;; #### Summary
+;;
+;; - The =consult-dir= package version you are using now *requires* consult >= 0.34.
+;; - Your current =consult= is too old and missing required internal helpers, producing the void function error.
+;; - Upgrade consult, or downgrade consult-dir.
+;;
+;; Refer to:
+;; [[https://github.com/minad/consult/blob/main/CHANGELOG.org#v0340-2023-08-03][consult v0.34 changelog : see entry for “Add consult--async-split-style function”]]
+;; [[https://github.com/karthink/consult-dir/issues/75][consult-dir issue 75]]
+;; [[https://github.com/minad/consult/issues/989][consult issue 989 (explains the same error origin)]]
+;;
+;; No further user configuration change is needed—just ensure Consult is new enough.
+
+(use-package corfu
+
+  :ensure t
+
+  :custom
+  (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
+  ;; (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
+  ;; (corfu-quit-no-match nil)      ;; Never quit, even if there is no match
+  ;; (corfu-preview-current nil)    ;; Disable current candidate preview
+  ;; (corfu-preselect 'prompt)      ;; Preselect the prompt
+  ;; (corfu-on-exact-match nil)     ;; Configure handling of exact matches
+
+  ;; Enable Corfu only for certain modes. See also `global-corfu-modes'.
+  ;; :hook ((prog-mode . corfu-mode)
+  ;;        (shell-mode . corfu-mode)
+  ;;        (eshell-mode . corfu-mode))
+
+  :init
+
+  ;; Recommended: Enable Corfu globally.  Recommended since many modes provide
+  ;; Capfs and Dabbrev can be used globally (M-/).  See also the customization
+  ;; variable `global-corfu-modes' to exclude certain modes.
+  (global-corfu-mode)
+
+  ;; Enable optional extension modes:
+  ;; (corfu-history-mode)
+  ;; (corfu-popupinfo-mode)
+  )
+
+(use-package cape
+
+  :ensure t
+
+  ;; Bind prefix keymap providing all Cape commands under a mnemonic key.
+  ;; Press C-c p ? to for help.
+  :bind ("M-p" . cape-prefix-map) ;; Alternative key: M-<tab>, M-p, M-+
+  ;; Alternatively bind Cape commands individually.
+  ;; :bind (("C-c p d" . cape-dabbrev)
+  ;;        ("C-c p h" . cape-history)
+  ;;        ("C-c p f" . cape-file)
+  ;;        ...)
+
+  :init
+
+  ;; NOTE
+  ;;
+  ;; Add to the global default value of `completion-at-point-functions' which is
+  ;; used by `completion-at-point'.  The order of the functions matters, the
+  ;; first function returning a result wins.  Note that the list of buffer-local
+  ;; completion functions takes precedence over the global list.
+
+  ;; NOTE
+  ;;
+  ;; (sp-delete-) ; completion works here
+  ;; sp-delete-   ; completion doesn't give fn options,
+                  ;;  but completes the variable 'sp-delete-blank-sexps
+
+  (add-hook 'completion-at-point-functions #'cape-dabbrev)
+  (add-hook 'completion-at-point-functions #'cape-file)
+  (add-hook 'completion-at-point-functions #'cape-elisp-block)
+  ;; (add-hook 'completion-at-point-functions #'cape-history)
+  ;; ...
+
+  )
+
+
+(provide 'sunra-completion)
