@@ -224,13 +224,31 @@
 
   :hook ((text-mode . command-log-mode)
          (prog-mode . command-log-mode))
-  
-  :bind ("C-`" . clm/toggle-command-log-buffer)
-  
-  :config
-  (setq command-log-mode-window-size 50
-        command-log-mode-window-font-size 0.5))
 
+  :bind ("C-`" . clm/toggle-command-log-buffer)
+
+  :config
+
+  (setq command-log-mode-window-size 60
+        command-log-mode-window-font-size (- 0.5 1))
+
+  ;; NOTE have to redefine this function, or else create a PR that makes *command-log* buffer font configurable
+  ;; https://github.com/lewang/command-log-mode
+  (defun clm/open-command-log-buffer (&optional arg)
+    (interactive "P")
+    (with-current-buffer
+        (setq clm/command-log-buffer
+              (get-buffer-create " *command-log*"))
+
+      (text-scale-set (or command-log-mode-window-font-size 1)))
+
+    (when arg
+      (with-current-buffer clm/command-log-buffer
+        (erase-buffer)))
+    (let ((new-win (split-window-horizontally
+                    (- 0 command-log-mode-window-size))))
+      (set-window-buffer new-win clm/command-log-buffer)
+      (set-window-dedicated-p new-win t))))
 
 
 (provide 'sunra-editor)
