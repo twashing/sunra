@@ -218,6 +218,13 @@
                             "\\\\" "://"))
   (global-ligature-mode t))
 
+
+;; NOTE
+;;
+;; Command-Log buffer
+;; https://github.com/lewang/command-log-mode
+;; https://www.youtube.com/watch?v=ct-DJliTN3s
+
 (use-package command-log-mode
 
   :ensure t
@@ -230,10 +237,12 @@
   :config
 
   (setq command-log-mode-window-size 60
-        command-log-mode-window-font-size (- 0.5 1))
+        command-log-mode-window-font-size (- 0.5 1)
 
-  ;; NOTE have to redefine this function, or else create a PR that makes *command-log* buffer font configurable
-  ;; https://github.com/lewang/command-log-mode
+        ;; Disable hijacking of "C-c o" key binding prefix
+        command-log-mode-key-binding-open-log nil)
+
+  ;; have to redefine this function, or else create a PR that makes *command-log* buffer font configurable
   (defun clm/open-command-log-buffer (&optional arg)
     (interactive "P")
     (with-current-buffer
