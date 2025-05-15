@@ -222,10 +222,14 @@
 
   :ensure t
 
-  :bind ("C-`" . command-log-mode)
+  :hook ((text-mode . command-log-mode)
+         (prog-mode . command-log-mode))
+  
+  :bind ("C-`" . clm/toggle-command-log-buffer)
   
   :config
-  (setq command-log-mode-auto-show t))
+  (setq command-log-mode-window-size 50
+        command-log-mode-window-font-size 0.5))
 
 
 
